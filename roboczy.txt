@@ -1,0 +1,7 @@
+ <div class="absolute inset-0 z-0">
+            <video class="w-full h-full object-cover" autoplay muted loop playsinline webkit-playsinline>
+                <source src="file:///C:/Users/karol/Desktop/Projekt%20biznes%20dronowy/Landing%20Mój/skyviewdigital.github.io/videos/video.jpg" type="video/mp4>s
+                <div class="w-full h-full bg-gradient-to-br from-primary to-blue-800"></div>
+            </video>
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
