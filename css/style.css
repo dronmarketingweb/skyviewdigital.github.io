@@ -1,0 +1,743 @@
+/* Enhanced CSS for SkyView Digital - Storytelling Focused */
+
+/* Font Imports for Better Character */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
+}
+
+@keyframes floatUp {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Base Styles with Character */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #1e293b;
+    background-color: #ffffff;
+}
+
+/* Custom Properties for Consistent Theming */
+:root {
+    --primary-color: #2563eb;
+    --accent-color: #f59e0b;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --background-light: #f8fafc;
+    --border-light: #e2e8f0;
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-strong: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+    --border-radius: 12px;
+    --border-radius-large: 24px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Enhanced Typography */
+.font-serif {
+    font-family: var(--font-display);
+}
+
+.font-space {
+    font-family: var(--font-body);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.animation-delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.animation-delay-600 {
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.pulse-animation {
+    animation: gentlePulse 3s infinite;
+}
+
+.float-animation {
+    animation: floatUp 3s ease-in-out infinite;
+}
+
+/* Hero Section Enhanced */
+#hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+#hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(0.7) contrast(1.1);
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 1;
+}
+
+/* Navigation Enhanced */
+nav {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+nav.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Interactive Timeline Styles */
+.step-indicator {
+    position: relative;
+    z-index: 10;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.step-indicator:hover {
+    transform: scale(1.2);
+}
+
+.step-indicator.active {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
+}
+
+.step-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
+}
+
+.step-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+#progress-bar {
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced Cards and Components */
+.group:hover .group-hover\\:rotate-6 {
+    transform: rotate(6deg);
+}
+
+.group:hover .group-hover\\:scale-105 {
+    transform: scale(1.05);
+}
+
+.group:hover .group-hover\\:-translate-y-2 {
+    transform: translateY(-8px);
+}
+
+/* FAQ Enhanced Styles */
+.faq-item .faq-question {
+    transition: var(--transition-smooth);
+}
+
+.faq-item .faq-question:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+}
+
+.faq-answer {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                padding 0.3s ease;
+}
+
+.faq-answer.max-h-96 {
+    max-height: 24rem;
+}
+
+.faq-answer.max-h-0 {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+/* Calendar Enhanced Styles */
+.calendar-day {
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.calendar-day:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-soft);
+}
+
+.calendar-day.bg-primary {
+    animation: gentlePulse 2s infinite;
+}
+
+.time-slot {
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.time-slot:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.time-slot.selected {
+    animation: gentlePulse 2s infinite;
+}
+
+/* Form Enhancements */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+button {
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Portfolio Item Enhanced */
+.portfolio-item,
+.group .rounded-2xl {
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.portfolio-item:hover,
+.group:hover .rounded-2xl {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, var(--primary-color) 100%);
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    :root {
+        font-size: 14px;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Hero adjustments */
+    #hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+
+    #hero .text-2xl {
+        font-size: 1.25rem;
+    }
+
+    /* Timeline mobile adjustments */
+    .step-content {
+        padding: 1rem;
+    }
+
+    /* Card adjustments */
+    .p-8 {
+        padding: 1.5rem;
+    }
+
+    .p-6 {
+        padding: 1rem;
+    }
+
+    /* Button adjustments */
+    button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Further mobile optimizations */
+    #hero h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .text-5xl,
+    .text-6xl {
+        font-size: 2rem;
+    }
+
+    .text-4xl {
+        font-size: 1.75rem;
+    }
+
+    .text-3xl {
+        font-size: 1.5rem;
+    }
+
+    .py-32 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .portfolio-item img,
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .pulse-animation,
+    .float-animation {
+        animation: none;
+    }
+
+    .step-content.active {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #hero video,
+    #mobileMenu,
+    #videoModal,
+    nav {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: black;
+        background: white;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        color: black;
+    }
+
+    .py-32, .py-20 {
+        padding: 1rem 0;
+    }
+}
+
+/* Focus Styles for Accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.step-indicator:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .text-gray-600 {
+        color: #000000;
+    }
+
+    .text-gray-400 {
+        color: #333333;
+    }
+
+    button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Logo Styles - Transparent Background */
+.logo-main, .logo-footer {
+    transition: var(--transition-smooth);
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    object-fit: contain;
+    image-rendering: optimizeQuality;
+}
+
+/* Ensure logo images have transparent background */
+.logo-main img, .logo-footer img,
+img[src*="favicon"], img[src*="apple-touch-icon"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    object-fit: contain;
+    image-rendering: optimizeQuality;
+}
+
+/* Ensure favicon PNG files maintain transparency */
+img[src*="favicon-32x32.png"], img[src*="favicon-16x16.png"] {
+    background: transparent !important;
+    image-rendering: crisp-edges;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-dark: #f1f5f9;
+        --text-light: #cbd5e1;
+        --background-light: #0f172a;
+        --border-light: #334155;
+    }
+    
+    /* Ensure logo transparency in dark mode */
+    .logo-main, .logo-footer {
+        background: none !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Additional dark mode adjustments */
+    body {
+        background-color: #0f172a;
+        color: #f1f5f9;
+    }
+    
+    .bg-white {
+        background-color: #1e293b !important;
+    }
+    
+    .text-gray-900 {
+        color: #f1f5f9 !important;
+    }
+    
+    .text-gray-600 {
+        color: #cbd5e1 !important;
+    }
+    
+    .bg-background {
+        background-color: #0f172a !important;
+    }
+    
+    /* Ensure logo parent containers remain transparent */
+    nav .flex.items-center,
+    footer .flex.items-center {
+        background: transparent !important;
+        backdrop-filter: none !important;
+    }
+}
+
+/* Performance Optimizations */
+.group .rounded-2xl,
+.portfolio-item,
+.faq-item,
+.step-content,
+.calendar-day,
+.time-slot {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Enhanced Backdrop Filters */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(8px);
+}
+
+.backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+}
+
+/* Custom Utility Classes */
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.transition-smooth {
+    transition: var(--transition-smooth);
+}
+
+/* Additional Logo Transparency Fixes */
+.logo-main, .logo-footer {
+    /* Ensure no parent element applies background */
+    isolation: isolate;
+}
+
+/* Force transparent background for logo containers */
+nav .text-white.font-space.font-bold.flex.items-center,
+footer .font-serif.flex.items-center {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
+/* High DPI Logo Rendering */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-main, .logo-footer {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Specific styles for ICO and PNG favicon files */
+img[src$=".ico"] {
+    image-rendering: pixelated; /* Better for ICO files */
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+img[src*="apple-touch-icon"] {
+    border-radius: 15%; /* Apple-style rounded corners */
+}
+
+/* Video Modal Enhancements */
+#videoModal {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#modalVideo {
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-strong);
+    max-height: 80vh;
+    max-width: 90vw;
+}
+
+/* Intersection Observer Fade In */
+.fade-in-observer {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-observer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Special Effects */
+.shimmer-effect {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Mobile Menu Enhanced */
+#mobileMenu {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.95);
+}
+
+#mobileMenu a {
+    transition: var(--transition-smooth);
+}
+
+#mobileMenu a:hover {
+    transform: translateX(10px);
+    color: var(--accent-color);
+}
