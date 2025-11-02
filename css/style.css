@@ -443,8 +443,17 @@ button:active {
 @media (max-width: 640px) {
     /* Further mobile optimizations */
     #hero h1 {
-        font-size: 2rem;
+        font-size: 3rem; /* Zwiększone z 2rem */
         margin-bottom: 1rem;
+    }
+    
+    #hero .text-2xl,
+    #hero .text-3xl {
+        font-size: 1.5rem; /* Zwiększony opis */
+    }
+    
+    #hero p {
+        font-size: 1.125rem; /* Zwiększony tekst opisu */
     }
 
     .text-5xl,
@@ -740,4 +749,108 @@ img[src*="apple-touch-icon"] {
 #mobileMenu a:hover {
     transform: translateX(10px);
     color: var(--accent-color);
+}
+
+/* 🎯 ULTIMATE EDITOR - 2.11.2025, 20:15:34 */
+
+.font-serif.text-2xl.mb-4 {
+    color: #374151 !important;
+}
+
+.text-gray-600.font-space.leading-relaxed {
+    color: #0a3161 !important;
+}
+
+.text-orange-600.font-semibold.mb-3.flex.items-center.gap-2 {
+    color: #0a3161 !important;
+}
+
+.text-gray-600.leading-relaxed {
+    color: #0a3161 !important;
+}
+
+.bg-blue-50.border-l-4.border-blue-600.p-6.rounded-r-xl {
+    background-color: #fef3c7 !important;
+    border-color: #f59e0b !important;
+}
+
+.text-orange-600.font-serif.text-xl.mb-3 {
+    color: #0a3161 !important;
+}
+
+.text-gray-700.leading-relaxed {
+    color: #0a3161 !important;
+}
+
+.text-orange-600.font-semibold.mb-2 {
+    color: #0a3161 !important;
+}
+
+.bg-gradient-to-br.from-orange-500.to-orange-600 {
+    background: linear-gradient(to bottom right, #f59e0b, #f59e0b) !important;
+}
+
+.text-gray-800.leading-relaxed {
+    color: #0a3161 !important;
+}
+
+.text-blue-600.font-bold.mb-6 {
+    color: #0a3161 !important;
+}
+
+.text-gray-700 {
+    color: #0a3161 !important;
+}
+
+.bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg.hover\:bg-orange-700 {
+    background-color: #f59e0b !important;
+}
+
+.bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg.hover\:bg-orange-700:hover {
+    background-color: #db7900 !important;
+}
+
+.text-blue-600.font-serif.text-2xl.mb-6 {
+    color: #0a3161 !important;
+}
+
+.text-gray-800.mb-8.leading-relaxed {
+    color: #0a3161 !important;
+}
+
+.bg-gradient-to-br.from-blue-600.to-blue-700 {
+    background: linear-gradient(to bottom right, #3b82f6, #3b82f6) !important;
+}
+
+.text-blue-600.font-serif.font-bold.text-5xl.mb-6 {
+    color: #0a3161 !important;
+}
+
+.text-gray-800.text-lg.leading-relaxed.max-w-3xl.mx-auto {
+    color: #0a3161 !important;
+}
+
+.text-orange-600.font-serif.text-4xl.font-bold.mb-6 {
+    color: #0a3161 !important;
+}
+
+.faq-question.w-full.p-8 {
+    background-color: #db7900 !important;
+    border-color: #fff7ed !important;
+}
+
+.text-gray-800.font-serif.text-xl.flex-1.text-left {
+    color: #f8f4ee !important;
+}
+
+.text-orange-600.text-2xl.transition-transform.duration-300 {
+    color: #f8f4ee !important;
+}
+
+.faq-answer.overflow-hidden.transition-all.duration-300.ease-in-out {
+    background-color: #fff7ed !important;
+}
+
+.text-gray-700.leading-relaxed.text-lg {
+    color: #0a3161 !important;
 }

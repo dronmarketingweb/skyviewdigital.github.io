@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 ULTIMATE EDITOR - Edytuj Dosłownie Wszystko</title>
+    <style>
+        /* Załaduj oryginalną stronę w iframe */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        #main-container {
+            display: flex;
+            height: 100vh;
+            transition: all 0.3s ease;
+        }
+        
+        #preview-frame {
+            flex: 1;
+            border: none;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        #editor-sidebar {
+            width: 450px;
+            background: #1e293b;
+            color: white;
+            overflow-y: auto;
+            display: none;
+            flex-direction: column;
+        }
+        
+        #editor-sidebar.active {
+            display: flex;
+        }
+        
+        .sidebar-header {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .sidebar-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .control-section {
+            background: #334155;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .control-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+        }
+        
+        .control-input, .control-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #475569;
+            border-radius: 8px;
+            background: #1e293b;
+            color: white;
+            font-size: 0.875rem;
+        }
+        
+        .control-input:focus, .control-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        input[type="color"] {
+            height: 50px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        
+        .color-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .color-group input[type="color"] {
+            width: 60px;
+        }
+        
+        .color-group input[type="text"] {
+            flex: 1;
+        }
+        
+        .btn {
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            font-size: 0.875rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .element-info {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-family: monospace;
+            font-size: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-box {
+            flex: 1;
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+        }
+        
+        .toolbar {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 1rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: flex;
+            gap: 1rem;
+            z-index: 999999;
+        }
+        
+        .toolbar-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .toolbar-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .toolbar-btn.active {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+        }
+        
+        .value-display {
+            color: #60a5fa;
+            font-weight: 700;
+        }
+        
+        .device-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            background: #0f172a;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+        
+        .device-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: #1e293b;
+            color: #cbd5e1;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .device-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        
+        .css-output {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            max-height: 400px;
+            overflow-y: auto;
+            color: #10b981;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <!-- Preview Frame -->
+        <iframe id="preview-frame" src="index.html"></iframe>
+        
+        <!-- Editor Sidebar -->
+        <div id="editor-sidebar">
+            <div class="sidebar-header">
+                <h1 style="margin: 0; font-size: 1.5rem; font-weight: 800;">
+                    🎯 ULTIMATE EDITOR
+                </h1>
+                <p style="margin: 0.5rem 0 0 0; opacity: 0.9; font-size: 0.875rem;">
+                    Edytuj dosłownie wszystko!
+                </p>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="edited-count">0</div>
+                        <div class="stat-label">Edytowane</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="changes-count">0</div>
+                        <div class="stat-label">Zmiany</div>
+                    </div>
+                </div>
+                
+                <div class="device-toggle">
+                    <button class="device-btn active" onclick="setDevice('desktop')">
+                        🖥️ Desktop
+                    </button>
+                    <button class="device-btn" onclick="setDevice('tablet')">
+                        📱 Tablet
+                    </button>
+                    <button class="device-btn" onclick="setDevice('mobile')">
+                        📱 Mobile
+                    </button>
+                </div>
+                
+                <div id="editor-controls">
+                    <div style="text-align: center; padding: 3rem 1rem; color: #64748b;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">👆</div>
+                        <p style="font-size: 1rem; line-height: 1.6;">
+                            <strong style="color: #f1f5f9;">Kliknij "WŁĄCZ TRYB EDYCJI"</strong><br>
+                            a następnie kliknij na dowolny element na stronie
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <button class="toolbar-btn" id="toggle-btn" onclick="toggleEditor()" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
+            <span>🎨</span>
+            <span id="toggle-text">WŁĄCZ TRYB EDYCJI</span>
+        </button>
+        <button class="toolbar-btn" id="export-btn" onclick="exportCSS()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; display: none;">
+            <span>📥</span>
+            <span>EKSPORTUJ CSS</span>
+        </button>
+    </div>
+
+    <script>
+        let editorActive = false;
+        let selectedElement = null;
+        let iframe = null;
+        let iframeDoc = null;
+        let cssChanges = {};
+        let currentDevice = 'desktop';
+        
+        // Wait for iframe to load
+        window.addEventListener('DOMContentLoaded', function() {
+            iframe = document.getElementById('preview-frame');
+            
+            iframe.addEventListener('load', function() {
+                iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                console.log('✅ Strona załadowana');
+                
+                // Inject custom styles for editor
+                const style = iframeDoc.createElement('style');
+                style.id = 'editor-styles';
+                style.textContent = `
+                    .editor-highlight {
+                        outline: 3px dashed #3b82f6 !important;
+                        outline-offset: 3px !important;
+                        cursor: crosshair !important;
+                    }
+                    .editor-selected {
+                        outline: 4px solid #ef4444 !important;
+                        outline-offset: 3px !important;
+                        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2) !important;
+                    }
+                    body.editor-active * {
+                        pointer-events: auto !important;
+                    }
+                    body.editor-active button,
+                    body.editor-active .calendar-day,
+                    body.editor-active .time-slot,
+                    body.editor-active .faq-question,
+                    body.editor-active a[href^=\"#\"] {
+                        pointer-events: none !important;
+                    }
+                    body.editor-active .editor-highlight,
+                    body.editor-active .editor-selected {
+                        pointer-events: auto !important;
+                    }
+                `;
+                iframeDoc.head.appendChild(style);
+            });
+        });
+        
+        function toggleEditor() {
+            editorActive = !editorActive;
+            const btn = document.getElementById('toggle-btn');
+            const text = document.getElementById('toggle-text');
+            const sidebar = document.getElementById('editor-sidebar');
+            const exportBtn = document.getElementById('export-btn');
+            
+            if (editorActive) {
+                text.textContent = 'WYŁĄCZ TRYB EDYCJI';
+                btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                btn.classList.add('active');
+                sidebar.classList.add('active');
+                exportBtn.style.display = 'flex';
+                enableEditing();
+            } else {
+                text.textContent = 'WŁĄCZ TRYB EDYCJI';
+                btn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                btn.classList.remove('active');
+                sidebar.classList.remove('active');
+                exportBtn.style.display = 'none';
+                disableEditing();
+            }
+        }
+        
+        function enableEditing() {
+            if (!iframeDoc) return;
+            
+            // Add editor-active class to body to disable interactive elements
+            iframeDoc.body.classList.add('editor-active');
+            
+            // Get ALL elements that can be styled
+            const elements = iframeDoc.querySelectorAll('*');
+            
+            elements.forEach(el => {
+                // Skip script, style, and svg elements
+                if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.tagName === 'svg' || el.tagName === 'path') return;
+                
+                el.addEventListener('mouseenter', handleHover, true);
+                el.addEventListener('mouseleave', handleLeave, true);
+                el.addEventListener('click', handleClick, true);
+            });
+        }
+        
+        function disableEditing() {
+            if (!iframeDoc) return;
+            
+            // Remove editor-active class to re-enable interactive elements
+            iframeDoc.body.classList.remove('editor-active');
+            
+            const elements = iframeDoc.querySelectorAll('*');
+            elements.forEach(el => {
+                el.removeEventListener('mouseenter', handleHover);
+                el.removeEventListener('mouseleave', handleLeave);
+                el.removeEventListener('click', handleClick);
+                el.classList.remove('editor-highlight', 'editor-selected');
+            });
+            
+            if (selectedElement) {
+                selectedElement.classList.remove('editor-selected');
+                selectedElement = null;
+            }
+        }
+        
+        function handleHover(e) {
+            if (!editorActive) return;
+            e.stopPropagation();
+            e.target.classList.add('editor-highlight');
+        }
+        
+        function handleLeave(e) {
+            if (!editorActive) return;
+            e.stopPropagation();
+            e.target.classList.remove('editor-highlight');
+        }
+        
+        function handleClick(e) {
+            if (!editorActive) return;
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            if (selectedElement) {
+                selectedElement.classList.remove('editor-selected');
+            }
+            
+            selectedElement = e.target;
+            selectedElement.classList.add('editor-selected');
+            
+            showControls(selectedElement);
+        }
+        
+        function showControls(element) {
+            const computed = iframeDoc.defaultView.getComputedStyle(element);
+            const tag = element.tagName.toLowerCase();
+            const text = element.textContent ? element.textContent.trim().substring(0, 50) : '';
+            const classes = element.className || 'brak';
+            
+            const controls = document.getElementById('editor-controls');
+            controls.innerHTML = `
+                <div class="element-info">
+                    <strong>Element:</strong> &lt;${tag}&gt;<br>
+                    <strong>Tekst:</strong> ${text}...<br>
+                    <strong>Klasy:</strong> ${classes}<br>
+                    <strong>Widok:</strong> ${currentDevice}
+                </div>
+                
+                <div class="control-section">
+                    <div class="section-title">📝 TEKST</div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">
+                            Rozmiar: <span class="value-display" id="val-fontSize">${computed.fontSize}</span>
+                        </label>
+                        <input type="range" class="control-input" min="8" max="150" value="${parseInt(computed.fontSize)}"
+                               oninput="applyStyle('fontSize', this.value + 'px')">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Grubość</label>
+                        <select class="control-select" onchange="applyStyle('fontWeight', this.value)">
+                            ${[100,200,300,400,500,600,700,800,900].map(w => 
+                                `<option value="${w}" ${computed.fontWeight == w ? 'selected' : ''}>${w}</option>`
+                            ).join('')}
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Wyrównanie</label>
+                        <select class="control-select" onchange="applyStyle('textAlign', this.value)">
+                            <option value="left" ${computed.textAlign === 'left' ? 'selected' : ''}>Lewo</option>
+                            <option value="center" ${computed.textAlign === 'center' ? 'selected' : ''}>Środek</option>
+                            <option value="right" ${computed.textAlign === 'right' ? 'selected' : ''}>Prawo</option>
+                            <option value="justify" ${computed.textAlign === 'justify' ? 'selected' : ''}>Justuj</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <div class="section-title">🎨 KOLORY</div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Kolor Tekstu</label>
+                        <div class="color-group">
+                            <input type="color" value="${rgbToHex(computed.color)}" onchange="applyStyle('color', this.value)">
+                            <input type="text" class="control-input" value="${rgbToHex(computed.color)}" onchange="applyStyle('color', this.value)">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Kolor Tła</label>
+                        <div class="color-group">
+                            <input type="color" value="${computed.backgroundColor !== 'rgba(0, 0, 0, 0)' ? rgbToHex(computed.backgroundColor) : '#ffffff'}" 
+                                   onchange="applyStyle('backgroundColor', this.value)">
+                            <input type="text" class="control-input" value="${computed.backgroundColor !== 'rgba(0, 0, 0, 0)' ? rgbToHex(computed.backgroundColor) : '#ffffff'}" 
+                                   onchange="applyStyle('backgroundColor', this.value)">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Kolor Ramki</label>
+                        <div class="color-group">
+                            <input type="color" value="${computed.borderColor !== 'rgb(0, 0, 0)' ? rgbToHex(computed.borderColor) : '#000000'}" 
+                                   onchange="applyStyle('borderColor', this.value)">
+                            <input type="text" class="control-input" value="${computed.borderColor !== 'rgb(0, 0, 0)' ? rgbToHex(computed.borderColor) : '#000000'}" 
+                                   onchange="applyStyle('borderColor', this.value)">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <div class="section-title">📏 WYMIARY & ODSTĘPY</div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">
+                            Padding: <span class="value-display" id="val-padding">${computed.padding}</span>
+                        </label>
+                        <input type="text" class="control-input" value="${computed.padding}" 
+                               placeholder="10px 20px" onchange="applyStyle('padding', this.value)">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">
+                            Margin: <span class="value-display" id="val-margin">${computed.margin}</span>
+                        </label>
+                        <input type="text" class="control-input" value="${computed.margin}" 
+                               placeholder="10px 0" onchange="applyStyle('margin', this.value)">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">
+                            Zaokrąglenie: <span class="value-display" id="val-borderRadius">${computed.borderRadius}</span>
+                        </label>
+                        <input type="range" class="control-input" min="0" max="100" value="${parseInt(computed.borderRadius) || 0}"
+                               oninput="applyStyle('borderRadius', this.value + 'px')">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Szerokość Ramki</label>
+                        <input type="text" class="control-input" value="${computed.border}" 
+                               placeholder="2px solid #000" onchange="applyStyle('border', this.value)">
+                    </div>
+                </div>
+                
+                <button class="btn btn-success" onclick="saveElement()" style="margin-bottom: 0.5rem;">
+                    💾 Zapisz Element
+                </button>
+                
+                <button class="btn btn-danger" onclick="resetElement()">
+                    ↩️ Cofnij Zmiany
+                </button>
+            `;
+            
+            updateStats();
+        }
+        
+        function applyStyle(property, value) {
+            if (!selectedElement) return;
+            
+            // Apply with !important by setting inline style
+            selectedElement.style.setProperty(property, value, 'important');
+            
+            // Update display value
+            const display = document.getElementById('val-' + property);
+            if (display) display.textContent = value;
+            
+            // Save to changes
+            const selector = generateSelector(selectedElement);
+            const mediaQuery = getMediaQuery();
+            const key = mediaQuery ? `${mediaQuery}::${selector}` : selector;
+            
+            if (!cssChanges[key]) {
+                cssChanges[key] = { selector, mediaQuery, styles: {} };
+            }
+            cssChanges[key].styles[property] = value;
+            
+            updateStats();
+            console.log(`✅ ${property} = ${value}`);
+        }
+        
+        function saveElement() {
+            alert('✅ Element zapisany! Kliknij "EKSPORTUJ CSS" aby pobrać plik.');
+        }
+        
+        function resetElement() {
+            if (!selectedElement) return;
+            
+            // Remove all inline styles
+            selectedElement.removeAttribute('style');
+            
+            const selector = generateSelector(selectedElement);
+            Object.keys(cssChanges).forEach(key => {
+                if (key.includes(selector)) delete cssChanges[key];
+            });
+            
+            showControls(selectedElement);
+            updateStats();
+            alert('↩️ Element przywrócony');
+        }
+        
+        function updateStats() {
+            const uniqueSelectors = new Set();
+            let totalChanges = 0;
+            
+            Object.values(cssChanges).forEach(item => {
+                uniqueSelectors.add(item.selector);
+                totalChanges += Object.keys(item.styles).length;
+            });
+            
+            document.getElementById('edited-count').textContent = uniqueSelectors.size;
+            document.getElementById('changes-count').textContent = totalChanges;
+        }
+        
+        function exportCSS() {
+            let css = '/* 🎯 ULTIMATE EDITOR - ' + new Date().toLocaleString('pl-PL') + ' */\n\n';
+            
+            const grouped = {};
+            Object.values(cssChanges).forEach(item => {
+                const key = item.mediaQuery || 'base';
+                if (!grouped[key]) grouped[key] = {};
+                if (!grouped[key][item.selector]) grouped[key][item.selector] = {};
+                Object.assign(grouped[key][item.selector], item.styles);
+            });
+            
+            // Base styles (no media query)
+            if (grouped.base) {
+                for (const [selector, styles] of Object.entries(grouped.base)) {
+                    css += `${selector} {\n`;
+                    for (const [property, value] of Object.entries(styles)) {
+                        const cssProperty = property.replace(/([A-Z])/g, '-$1').toLowerCase();
+                        css += `    ${cssProperty}: ${value} !important;\n`;
+                    }
+                    css += '}\n\n';
+                }
+            }
+            
+            // Media queries
+            for (const [mediaQuery, selectors] of Object.entries(grouped)) {
+                if (mediaQuery === 'base') continue;
+                css += `${mediaQuery} {\n`;
+                for (const [selector, styles] of Object.entries(selectors)) {
+                    css += `    ${selector} {\n`;
+                    for (const [property, value] of Object.entries(styles)) {
+                        const cssProperty = property.replace(/([A-Z])/g, '-$1').toLowerCase();
+                        css += `        ${cssProperty}: ${value} !important;\n`;
+                    }
+                    css += `    }\n`;
+                }
+                css += '}\n\n';
+            }
+            
+            // Show in modal
+            const modal = document.createElement('div');
+            modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);z-index:9999999;display:flex;align-items:center;justify-content:center;padding:2rem;';
+            modal.innerHTML = `
+                <div style="background:#1e293b;color:white;padding:2rem;border-radius:16px;max-width:800px;width:100%;max-height:80vh;overflow:auto;">
+                    <h2 style="margin:0 0 1rem 0;font-size:1.5rem;">📥 Wygenerowany CSS</h2>
+                    <div class="css-output">${css}</div>
+                    <button onclick="this.closest('div').parentElement.remove()" style="margin-top:1rem;padding:1rem;background:#ef4444;color:white;border:none;border-radius:8px;cursor:pointer;width:100%;font-weight:700;">
+                        ❌ Zamknij
+                    </button>
+                    <button onclick="navigator.clipboard.writeText(\`${css.replace(/`/g, '\\`')}\`).then(() => alert('✅ Skopiowano!'))" style="margin-top:0.5rem;padding:1rem;background:#10b981;color:white;border:none;border-radius:8px;cursor:pointer;width:100%;font-weight:700;">
+                        📋 Kopiuj do Schowka
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Download file
+            const blob = new Blob([css], { type: 'text/css' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ultimate-editor-styles.css';
+            a.click();
+            
+            console.log('=== EXPORTED CSS ===\n' + css);
+        }
+        
+        function setDevice(device) {
+            currentDevice = device;
+            const buttons = document.querySelectorAll('.device-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const frame = document.getElementById('preview-frame');
+            const container = document.getElementById('main-container');
+            
+            if (device === 'mobile') {
+                // Mobile: 375px width with proper viewport simulation
+                frame.style.width = '375px';
+                frame.style.height = '100vh';
+                frame.style.transform = 'scale(1)';
+                frame.style.transformOrigin = 'top center';
+                frame.style.margin = '0 auto';
+                frame.style.border = '1px solid #ccc';
+                frame.style.boxShadow = '0 0 20px rgba(0,0,0,0.2)';
+                container.style.background = '#f0f0f0';
+                container.style.justifyContent = 'center';
+                
+                // Update viewport meta tag in iframe
+                if (iframeDoc) {
+                    let viewport = iframeDoc.querySelector('meta[name="viewport"]');
+                    if (viewport) {
+                        viewport.setAttribute('content', 'width=375, initial-scale=1');
+                    }
+                }
+            } else if (device === 'tablet') {
+                // Tablet: 768px width with proper viewport simulation
+                frame.style.width = '768px';
+                frame.style.height = '100vh';
+                frame.style.transform = 'scale(1)';
+                frame.style.transformOrigin = 'top center';
+                frame.style.margin = '0 auto';
+                frame.style.border = '1px solid #ccc';
+                frame.style.boxShadow = '0 0 20px rgba(0,0,0,0.2)';
+                container.style.background = '#f0f0f0';
+                container.style.justifyContent = 'center';
+                
+                // Update viewport meta tag in iframe
+                if (iframeDoc) {
+                    let viewport = iframeDoc.querySelector('meta[name="viewport"]');
+                    if (viewport) {
+                        viewport.setAttribute('content', 'width=768, initial-scale=1');
+                    }
+                }
+            } else {
+                // Desktop: full width
+                frame.style.width = '100%';
+                frame.style.height = '100vh';
+                frame.style.transform = 'none';
+                frame.style.margin = '0';
+                frame.style.border = 'none';
+                frame.style.boxShadow = 'none';
+                container.style.background = 'transparent';
+                container.style.justifyContent = 'flex-start';
+                
+                // Reset viewport meta tag in iframe
+                if (iframeDoc) {
+                    let viewport = iframeDoc.querySelector('meta[name="viewport"]');
+                    if (viewport) {
+                        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                    }
+                }
+            }
+            
+            // Force iframe to reload styles by triggering a resize event
+            if (iframeDoc && iframeDoc.defaultView) {
+                iframeDoc.defaultView.dispatchEvent(new Event('resize'));
+            }
+            
+            if (selectedElement) {
+                showControls(selectedElement);
+            }
+        }
+        
+        function getMediaQuery() {
+            if (currentDevice === 'mobile') return '@media (max-width: 640px)';
+            if (currentDevice === 'tablet') return '@media (max-width: 768px)';
+            return null;
+        }
+        
+        function generateSelector(element) {
+            if (element.id) return '#' + element.id;
+            
+            const classes = Array.from(element.classList).filter(c => !c.includes('editor-'));
+            if (classes.length > 0) {
+                return '.' + classes.slice(0, 3).join('.');
+            }
+            
+            let path = element.tagName.toLowerCase();
+            const parent = element.parentElement;
+            
+            if (parent && parent.id) {
+                return '#' + parent.id + ' ' + path;
+            }
+            
+            if (parent) {
+                const parentClasses = Array.from(parent.classList).filter(c => c).slice(0, 2);
+                if (parentClasses.length > 0) {
+                    return '.' + parentClasses.join('.') + ' ' + path;
+                }
+            }
+            
+            return path;
+        }
+        
+        function rgbToHex(rgb) {
+            if (!rgb || rgb.startsWith('#')) return rgb || '#000000';
+            
+            const match = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+            if (!match) return '#000000';
+            
+            return '#' + [1, 2, 3].map(i => {
+                const hex = parseInt(match[i]).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }).join('');
+        }
+    </script>
+</body>
+</html>
