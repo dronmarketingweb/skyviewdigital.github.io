@@ -1222,106 +1222,131 @@
     <!-- 🎯 ULTIMATE EDITOR STYLES - Loaded after Tailwind for proper override -->
     <style>
         /* 🎯 ULTIMATE EDITOR - 2.11.2025, 20:15:34 */
+        /* High specificity selectors to override Tailwind */
         
-        .font-serif.text-2xl.mb-4 {
+        html body .font-serif.text-2xl.mb-4,
+        html body h3.font-serif.text-2xl.mb-4 {
             color: #374151 !important;
         }
         
-        .text-gray-600.font-space.leading-relaxed {
+        html body .text-gray-600.font-space.leading-relaxed,
+        html body p.text-gray-600.font-space.leading-relaxed {
             color: #0a3161 !important;
         }
         
-        .text-orange-600.font-semibold.mb-3.flex.items-center.gap-2 {
+        html body .text-orange-600.font-semibold.mb-3.flex.items-center.gap-2 {
             color: #0a3161 !important;
         }
         
-        .text-gray-600.leading-relaxed {
+        html body .text-gray-600.leading-relaxed,
+        html body p.text-gray-600.leading-relaxed {
             color: #0a3161 !important;
         }
         
-        .bg-blue-50.border-l-4.border-blue-600.p-6.rounded-r-xl {
+        html body .bg-blue-50.border-l-4.border-blue-600.p-6.rounded-r-xl,
+        html body div.bg-blue-50.border-l-4.border-blue-600.p-6.rounded-r-xl {
             background-color: #fef3c7 !important;
             border-color: #f59e0b !important;
         }
         
-        .text-orange-600.font-serif.text-xl.mb-3 {
+        html body .text-orange-600.font-serif.text-xl.mb-3,
+        html body h4.text-orange-600.font-serif.text-xl.mb-3 {
             color: #0a3161 !important;
         }
         
-        .text-gray-700.leading-relaxed {
+        html body .text-gray-700.leading-relaxed,
+        html body p.text-gray-700.leading-relaxed {
             color: #0a3161 !important;
         }
         
-        .text-orange-600.font-semibold.mb-2 {
+        html body .text-orange-600.font-semibold.mb-2 {
             color: #0a3161 !important;
         }
         
-        .bg-gradient-to-br.from-orange-500.to-orange-600 {
+        html body .bg-gradient-to-br.from-orange-500.to-orange-600,
+        html body button.bg-gradient-to-br.from-orange-500.to-orange-600 {
             background: linear-gradient(to bottom right, #f59e0b, #f59e0b) !important;
         }
         
-        .text-gray-800.leading-relaxed {
+        html body .text-gray-800.leading-relaxed,
+        html body p.text-gray-800.leading-relaxed {
             color: #0a3161 !important;
         }
         
-        .text-blue-600.font-bold.mb-6 {
+        html body .text-blue-600.font-bold.mb-6 {
             color: #0a3161 !important;
         }
         
-        .text-gray-700 {
+        html body .text-gray-700,
+        html body p.text-gray-700,
+        html body li.text-gray-700 {
             color: #0a3161 !important;
         }
         
-        .bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg.hover\:bg-orange-700 {
+        html body .bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg,
+        html body button.bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg {
             background-color: #f59e0b !important;
         }
         
-        .bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg.hover\:bg-orange-700:hover {
+        html body .bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg:hover,
+        html body button.bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg:hover {
             background-color: #db7900 !important;
         }
         
-        .text-blue-600.font-serif.text-2xl.mb-6 {
+        html body .text-blue-600.font-serif.text-2xl.mb-6,
+        html body h3.text-blue-600.font-serif.text-2xl.mb-6 {
             color: #0a3161 !important;
         }
         
-        .text-gray-800.mb-8.leading-relaxed {
+        html body .text-gray-800.mb-8.leading-relaxed,
+        html body p.text-gray-800.mb-8.leading-relaxed {
             color: #0a3161 !important;
         }
         
-        .bg-gradient-to-br.from-blue-600.to-blue-700 {
+        html body .bg-gradient-to-br.from-blue-600.to-blue-700,
+        html body button.bg-gradient-to-br.from-blue-600.to-blue-700 {
             background: linear-gradient(to bottom right, #3b82f6, #3b82f6) !important;
         }
         
-        .text-blue-600.font-serif.font-bold.text-5xl.mb-6 {
+        html body .text-blue-600.font-serif.font-bold.text-5xl.mb-6,
+        html body h2.text-blue-600.font-serif.font-bold.text-5xl.mb-6 {
             color: #0a3161 !important;
         }
         
-        .text-gray-800.text-lg.leading-relaxed.max-w-3xl.mx-auto {
+        html body .text-gray-800.text-lg.leading-relaxed.max-w-3xl.mx-auto,
+        html body p.text-gray-800.text-lg.leading-relaxed.max-w-3xl.mx-auto {
             color: #0a3161 !important;
         }
         
-        .text-orange-600.font-serif.text-4xl.font-bold.mb-6 {
+        html body .text-orange-600.font-serif.text-4xl.font-bold.mb-6,
+        html body h2.text-orange-600.font-serif.text-4xl.font-bold.mb-6 {
             color: #0a3161 !important;
         }
         
-        .faq-question.w-full.p-8 {
+        html body .faq-question.w-full.p-8,
+        html body button.faq-question.w-full.p-8,
+        html body .faq-question {
             background-color: #db7900 !important;
             border-color: #fff7ed !important;
         }
         
-        .text-gray-800.font-serif.text-xl.flex-1.text-left {
+        html body .faq-question .text-gray-800.font-serif.text-xl.flex-1.text-left,
+        html body button.faq-question h3.text-gray-800.font-serif.text-xl.flex-1.text-left {
             color: #f8f4ee !important;
         }
         
-        .text-orange-600.text-2xl.transition-transform.duration-300 {
+        html body .faq-question .text-orange-600.text-2xl.transition-transform.duration-300,
+        html body button.faq-question span.text-orange-600.text-2xl.transition-transform.duration-300 {
             color: #f8f4ee !important;
         }
         
-        .faq-answer.overflow-hidden.transition-all.duration-300.ease-in-out {
+        html body .faq-answer.overflow-hidden.transition-all.duration-300.ease-in-out,
+        html body div.faq-answer {
             background-color: #fff7ed !important;
         }
         
-        .text-gray-700.leading-relaxed.text-lg {
+        html body .faq-answer .text-gray-700.leading-relaxed.text-lg,
+        html body .faq-answer p.text-gray-700.leading-relaxed.text-lg {
             color: #0a3161 !important;
         }
     </style>
