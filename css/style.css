@@ -911,3 +911,80 @@ input:focus-visible {
     .py-32 { padding-top: 4rem; padding-bottom: 4rem; }
     .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
 }
+
+/* ============================================
+   CUSTOM COLORS - ZMIANY KOLORÓW WG SPECYFIKACJI
+   ============================================ */
+
+/* 1. "Które latają" - ŻÓŁTY (już ustawione w HTML inline) */
+/* Backup rule na wszelki wypadek */
+h1 span.italic {
+    color: #f59e0b !important;
+}
+
+/* 2. Tło za trzema kreskami (hamburger menu) - USUŃ TŁO */
+#mobileMenuBtn,
+button[id="mobileMenuBtn"] {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+#mobileMenuBtn:hover {
+    background: rgba(26, 40, 56, 0.2) !important;
+}
+
+/* 3. "It's not about..." cytat - ŻÓŁTY (już ustawione w HTML inline) */
+/* Backup rule */
+blockquote em[style*="f59e0b"] {
+    color: #f59e0b !important;
+}
+
+/* 4. "Strony internetowe z filmami..." - JASNY NIEBIESKI */
+blockquote span.font-bold {
+    color: #5db2ff !important;
+}
+
+/* 5. FAZY - kolory już ustawione w HTML, ale dodajmy backup */
+.step-content[data-step="1"] .font-mono { color: #ffb84d !important; }
+.step-content[data-step="2"] .font-mono { color: #5db2ff !important; }
+.step-content[data-step="3"] .font-mono { color: #34d399 !important; }
+.step-content[data-step="4"] .font-mono { color: #a855f7 !important; }
+.step-content[data-step="5"] .font-mono { color: #f472b6 !important; }
+
+/* 6. PAKIETY - kolory już ustawione w HTML */
+
+/* 7. "Nie jesteś pewien..." - PRZEZROCZYSTY NIEBIESKI */
+h3[style*="3b9ff31a"] {
+    color: rgba(59, 159, 243, 0.7) !important;
+}
+
+/* 8. WARTOŚCI - kolory już ustawione w HTML */
+
+/* 9. Strzałki kalendarza - USUŃ TŁO */
+.calendar-header button,
+.calendar-nav button,
+button[aria-label*="Previous"],
+button[aria-label*="Next"],
+.calendar button.rounded-lg {
+    background: transparent !important;
+    border: 1px solid rgba(59, 159, 243, 0.25) !important;
+}
+
+.calendar-header button:hover,
+.calendar-nav button:hover {
+    background: rgba(26, 40, 56, 0.3) !important;
+    border-color: rgba(59, 159, 243, 0.5) !important;
+}
+
+/* 10. Tło za ikonami w FAQ - CIEMNE KARTY */
+#faq .w-12.h-12,
+#faq div[class*="w-12"][class*="h-12"] {
+    background: #1a2838 !important;
+}
+
+/* Upewnienie się, że ikony są widoczne */
+#faq .w-12.h-12 i,
+#faq div[class*="w-12"][class*="h-12"] i {
+    color: #ff9500 !important;
+}

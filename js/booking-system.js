@@ -571,12 +571,12 @@ class BookingSystem {
             calendarHeader = document.createElement('div');
             calendarHeader.className = 'calendar-header flex items-center justify-between mb-4';
             calendarHeader.innerHTML = `
-                <button id="prevMonth" class="p-2 rounded-lg transition" style="background: #1a2838;" title="Poprzedni miesiąc">
-                    <i class="fas fa-chevron-left"></i>
+                <button id="prevMonth" class="p-2 rounded-lg transition" style="background: transparent; border: 1px solid rgba(59, 159, 243, 0.25);" title="Poprzedni miesiąc">
+                    <i class="fas fa-chevron-left" style="color: #5db2ff;"></i>
                 </button>
                 <h4 class="font-semibold text-lg" id="monthYear"></h4>
-                <button id="nextMonth" class="p-2 rounded-lg transition" style="background: #1a2838;" title="Następny miesiąc">
-                    <i class="fas fa-chevron-right"></i>
+                <button id="nextMonth" class="p-2 rounded-lg transition" style="background: transparent; border: 1px solid rgba(59, 159, 243, 0.25);" title="Następny miesiąc">
+                    <i class="fas fa-chevron-right" style="color: #5db2ff;"></i>
                 </button>
             `;
             calendarWidget.insertBefore(calendarHeader, calendarWidget.firstChild);
