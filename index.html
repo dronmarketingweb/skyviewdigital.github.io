@@ -66,15 +66,18 @@
                 extend: {
                     colors: {
                         primary: '#ff9500',
-                        accent: '#ff9500',
+                        accent: '#3b9ff3',
                         charcoal: '#ffffff',
-                        'warm-gray': '#e0e0e0',
-                        sand: '#1a2332',
-                        cream: '#0f1419',
-                        ivory: '#0a0e13',
+                        'warm-gray': '#e8f4f8',
+                        sand: '#2a3f54',
+                        cream: '#1a2838',
+                        ivory: '#0f1419',
                         sage: '#ff9500',
                         'sage-dark': '#e07800',
-                        terra: '#ffb84d'
+                        terra: '#3b9ff3',
+                        'light-blue': '#5db2ff',
+                        'light-orange': '#ffb84d',
+                        'soft-cyan': '#4dd4e8'
                     },
                     fontFamily: {
                         'space': ['Space Grotesk', 'sans-serif'],
@@ -123,10 +126,10 @@
             <div class="max-w-4xl relative z-10 p-8 md:p-12">
                 <h1 class="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); opacity: 0; animation: fadeIn 0.8s ease-out 0.2s forwards;">
                     Tworzymy historie,<br>
-                    <span class="italic font-bold" style="font-family: 'Inter', sans-serif; color: #ff9500;">które latają</span>
+                    <span class="italic font-bold" style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #ff9500 0%, #ffb84d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">które latają</span>
                 </h1>
                 
-                <blockquote class="text-2xl md:text-3xl mb-8 font-serif italic leading-relaxed px-6 py-4 rounded-2xl border-2" style="color: #ff9500; background: rgba(255, 149, 0, 0.08); backdrop-filter: blur(10px); border-color: rgba(255, 149, 0, 0.2); opacity: 0; animation: fadeIn 0.8s ease-out 0.4s forwards;">
+                <blockquote class="text-2xl md:text-3xl mb-8 font-serif italic leading-relaxed px-6 py-4 rounded-2xl border-2" style="background: linear-gradient(135deg, rgba(59, 159, 243, 0.15) 0%, rgba(255, 149, 0, 0.1) 100%); backdrop-filter: blur(12px); border: 2px solid rgba(59, 159, 243, 0.3); color: #3b9ff3; text-shadow: 0 0 20px rgba(59, 159, 243, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.4s forwards;">
                     "It's not about what you sell, it's about what you tell."
                 </blockquote>
                 
@@ -136,7 +139,7 @@
                     Dzięki profesjonalnemu filmowaniu dronem Twoja marka zyskuje skrzydła i wyróżnia się na tle konkurencji jak nigdy wcześniej.
                 </p>
                 
-                <button id="hero-cta-btn" class="font-bold py-6 px-12 rounded-2xl text-lg lg:text-xl shadow-2xl transform transition-all duration-300 hover:scale-105" style="background: #ff9500; color: #0a0e13; font-weight: 700; box-shadow: 0 8px 30px rgba(255, 149, 0, 0.4); opacity: 0; animation: fadeIn 0.8s ease-out 0.8s forwards;">
+                <button id="hero-cta-btn" class="font-bold py-6 px-12 rounded-2xl text-lg lg:text-xl shadow-2xl transform transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, #ff9500 0%, #3b9ff3 100%); color: #ffffff; font-weight: 700; box-shadow: 0 8px 30px rgba(255, 149, 0, 0.4), 0 4px 20px rgba(59, 159, 243, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.8s forwards;">
                     ☕ UMÓW SIĘ NA WIRTUALNĄ KAWĘ
                 </button>
             </div>
@@ -179,8 +182,8 @@
                         
                         <div id="pierwsza-historia-overlay" class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
                             <div class="absolute bottom-8 left-8 right-8">
-                                <h3 class="font-serif text-3xl text-white mb-2" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Pierwsza historia</h3>
-                                <p class="text-white mb-4 font-space" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Każdy projekt zaczyna się od słuchania. Dopiero potem latamy.</p>
+                                <h3 class="font-serif text-3xl mb-2 font-space" style="color: #ffffff; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Pierwsza historia</h3>
+                                <p class="mb-4 font-space" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Każdy projekt zaczyna się od słuchania. Dopiero potem latamy.</p>
                                 <button id="play-historia-btn" class="inline-flex items-center px-6 py-3 bg-white/30 backdrop-blur-sm text-white rounded-lg hover:bg-white/40 transition-all duration-300 font-mono shadow-lg">
                                     <i class="fas fa-play mr-2"></i>
                                     Zobacz Jak Tworzymy
@@ -628,7 +631,7 @@
                             </div>
                             <div class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-gray-700 font-space">Platforma e-commerce/rezerwacje</p>
+                                <p class="text-gray-700 font-space">Platforma e-commerce/rezerwacje + Połączony z chmurą AI</p>
                             </div>
                             <div class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
@@ -1048,8 +1051,8 @@
                 <!-- CTA -->
                 <div class="text-center mt-16" data-aos="fade-up">
                     <div class="bg-gradient-to-r from-charcoal to-warm-gray rounded-2xl p-8 text-white shadow-xl">
-                        <h3 class="font-serif text-2xl mb-4 text-white">Masz inne pytanie?</h3>
-                        <p class="mb-6 font-space text-white" style="opacity: 0.95;">
+                        <h3 class="font-serif text-2xl mb-4" style="color: #ffffff;">Masz inne pytanie?</h3>
+                        <p class="mb-6 font-space" style="color: #ffffff;">
                             Nie wszystkie odpowiedzi mieszczą się w FAQ. Zadzwoń, napisz, umów się na rozmowę.
                         </p>
                         <button id="contact-popup-btn" class="bg-white text-primary px-8 py-4 rounded-xl font-space hover:shadow-lg transition-all duration-300">
