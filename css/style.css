@@ -1,34 +1,34 @@
 /* ============================================
-   DEEP OCEAN PALETTE - SkyView Digital
-   Nowoczesny, energetyczny, tech-forward
+   CHARCOAL PREMIUM PALETTE - SkyView Digital
+   Elegancki, luksusowy, ciepły premium
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* === DEEP OCEAN COLOR PALETTE === */
+    /* === CHARCOAL PREMIUM COLOR PALETTE === */
     
-    /* Paleta główna - Morski Granat */
-    --charcoal: #e2e8f0;            /* Jasny tekst główny na ciemnym tle */
-    --warm-gray: #cbd5e1;           /* Szary tekst drugoplanowy */
-    --sand: #2d5278;                /* Morski akcent - elementy subtelne */
-    --cream: #1e293b;               /* Ciemne tło - karty */
-    --ivory: #0f172a;               /* Najciemniejsze tło główne */
+    /* Paleta główna - Ciepły Grafitowy */
+    --charcoal: #ffffff;            /* Biały tekst główny na ciemnym tle */
+    --warm-gray: #e5e5e7;           /* Jasny szary tekst drugoplanowy */
+    --sand: #3a3a3c;                /* Grafitowy akcent - elementy subtelne */
+    --cream: #2c2c2e;               /* Średnie ciemne tło - karty */
+    --ivory: #1c1c1e;               /* Najciemniejsze tło główne */
     
-    /* Akcent - Cyan + Amber */
-    --sage: #06b6d4;                /* Cyan - główny kolor akcent */
-    --sage-dark: #0891b2;           /* Ciemniejszy cyan - hover */
-    --sage-light: #06b6d41a;        /* Przezroczysty cyan - tła */
+    /* Akcent - Złoty + Fioletowy */
+    --sage: #fbbf24;                /* Złoty - główny kolor akcent */
+    --sage-dark: #f59e0b;           /* Ciemniejszy złoty - hover */
+    --sage-light: #fbbf241a;        /* Przezroczysty złoty - tła */
     
     /* Dodatkowy akcent dla kontrastu */
-    --terra: #f59e0b;               /* Amber - elementy wyróżnione */
-    --terra-light: #f59e0b1a;       /* Przezroczysty amber */
+    --terra: #8b5cf6;               /* Fioletowy - elementy wyróżnione */
+    --terra-light: #8b5cf61a;       /* Przezroczysty fiolet */
     
-    /* Cienie - Ocean theme */
-    --shadow-sm: 0 1px 3px rgba(6, 182, 212, 0.12);
-    --shadow-md: 0 4px 12px rgba(6, 182, 212, 0.18);
-    --shadow-lg: 0 10px 25px rgba(6, 182, 212, 0.25);
-    --shadow-accent: 0 4px 14px rgba(6, 182, 212, 0.4);
+    /* Cienie - Premium gold glow */
+    --shadow-sm: 0 1px 3px rgba(251, 191, 36, 0.15);
+    --shadow-md: 0 4px 12px rgba(251, 191, 36, 0.22);
+    --shadow-lg: 0 10px 25px rgba(251, 191, 36, 0.3);
+    --shadow-accent: 0 4px 14px rgba(251, 191, 36, 0.45);
     
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -40,7 +40,7 @@
 }
 
 /* ============================================
-   BASE STYLES - DEEP OCEAN
+   BASE STYLES - CHARCOAL PREMIUM
    ============================================ */
 
 * {
@@ -56,16 +56,16 @@ html {
 
 body {
     font-family: var(--font-body);
-    /* Gradient morski - od najciemniejszego do średniego */
+    /* Gradient grafitowy - od najciemniejszego do średniego */
     background: linear-gradient(to bottom,
-        #0f172a 0%,
-        #1e293b 15%,
-        #1e3a52 30%,
-        #1f4662 45%,
-        #225370 60%,
-        #265f7d 75%,
-        #2d5278 90%,
-        #2d5278 100%
+        #1c1c1e 0%,
+        #232325 15%,
+        #2a2a2c 30%,
+        #313133 45%,
+        #343436 60%,
+        #373739 75%,
+        #3a3a3c 90%,
+        #3a3a3c 100%
     ) !important;
     background-attachment: fixed !important;
     color: var(--charcoal);
@@ -77,7 +77,7 @@ body {
     position: relative;
 }
 
-/* Subtelny efekt ocean waves */
+/* Subtelny efekt luxury glow */
 body::before {
     content: '';
     position: fixed;
@@ -85,11 +85,11 @@ body::before {
     right: 10%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
-    animation: wave-flow 8s ease-in-out infinite;
+    animation: luxury-glow 6s ease-in-out infinite;
 }
 
 body::after {
@@ -99,11 +99,11 @@ body::after {
     left: 10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
-    animation: wave-flow 10s ease-in-out infinite reverse;
+    animation: luxury-glow 8s ease-in-out infinite reverse;
 }
 
 /* ============================================
@@ -125,7 +125,7 @@ p, li {
 .font-mono { font-family: var(--font-mono); }
 
 /* ============================================
-   HERO SECTION - Ocean Theme
+   HERO SECTION - Premium Theme
    ============================================ */
 #hero {
     position: relative;
@@ -139,8 +139,8 @@ p, li {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(245, 158, 11, 0.12) 0%, transparent 50%) !important;
+        radial-gradient(circle at 30% 20%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%) !important;
     z-index: 1;
 }
 
@@ -153,16 +153,16 @@ p, li {
     object-fit: cover;
     z-index: 0;
     opacity: 0.2 !important;
-    filter: grayscale(20%) brightness(0.9) !important;
+    filter: grayscale(20%) brightness(0.85) !important;
 }
 
 /* ============================================
-   NAVIGATION - Ocean Theme
+   NAVIGATION - Premium Theme
    ============================================ */
 nav {
     backdrop-filter: blur(12px) saturate(120%) !important;
-    background: rgba(15, 23, 42, 0.92) !important;
-    border-bottom: 1px solid rgba(6, 182, 212, 0.25) !important;
+    background: rgba(28, 28, 30, 0.92) !important;
+    border-bottom: 1px solid rgba(251, 191, 36, 0.25) !important;
     transition: var(--transition);
     position: fixed;
     top: 0;
@@ -172,8 +172,8 @@ nav {
 }
 
 nav.scrolled {
-    background: rgba(15, 23, 42, 0.98) !important;
-    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2) !important;
+    background: rgba(28, 28, 30, 0.98) !important;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2) !important;
 }
 
 nav a {
@@ -190,7 +190,7 @@ nav a::after {
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--sage) !important;
+    background: linear-gradient(90deg, var(--sage), var(--terra)) !important;
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -210,7 +210,7 @@ nav a {
 }
 
 /* ============================================
-   SECTIONS - Ocean Background
+   SECTIONS - Premium Background
    ============================================ */
 section {
     background: transparent !important;
@@ -225,7 +225,7 @@ section::before {
     left: 10%;
     right: 10%;
     height: 1px;
-    background: rgba(6, 182, 212, 0.15) !important;
+    background: rgba(251, 191, 36, 0.12) !important;
     opacity: 0.3;
 }
 
@@ -261,7 +261,7 @@ section::before {
 }
 
 /* ============================================
-   KARTY I ELEMENTY - Ocean Theme
+   KARTY I ELEMENTY - Premium Theme
    ============================================ */
 .bg-white,
 .bg-gray-50,
@@ -269,9 +269,9 @@ section::before {
 .service-card,
 .value-card,
 .faq-item {
-    background: rgba(30, 41, 59, 0.6) !important;
+    background: rgba(44, 44, 46, 0.6) !important;
     backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(6, 182, 212, 0.2) !important;
+    border: 1px solid rgba(251, 191, 36, 0.2) !important;
     transition: var(--transition);
 }
 
@@ -301,7 +301,7 @@ section::before {
 }
 
 /* ============================================
-   TEXT COLORS - OCEAN THEME
+   TEXT COLORS - PREMIUM THEME
    ============================================ */
 .text-gray-900,
 .text-gray-800,
@@ -353,7 +353,7 @@ section::before {
 }
 
 /* ============================================
-   BUTTONS - Ocean Theme
+   BUTTONS - Premium Theme
    ============================================ */
 button,
 .btn-primary,
@@ -397,7 +397,7 @@ button:hover,
 button[type="submit"]:hover,
 .cta-button:hover {
     background: linear-gradient(135deg, var(--sage-dark) 0%, var(--terra) 100%) !important;
-    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5) !important;
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5) !important;
     transform: translateY(-2px);
 }
 
@@ -423,7 +423,7 @@ button:active {
 }
 
 /* ============================================
-   ICON CONTAINERS - Ocean Theme
+   ICON CONTAINERS - Premium Theme
    ============================================ */
 .bg-primary.rounded-xl,
 .bg-primary.rounded-2xl,
@@ -439,17 +439,17 @@ button:active {
 
 .bg-purple-600,
 .bg-indigo-600 {
-    background: var(--warm-gray) !important;
+    background: var(--terra) !important;
     color: #ffffff !important;
 }
 
 /* ============================================
-   GRADIENT BACKGROUNDS - Ocean
+   GRADIENT BACKGROUNDS - Premium
    ============================================ */
 .bg-gradient-to-br,
 .bg-gradient-to-r {
-    background: rgba(30, 41, 59, 0.6) !important;
-    border: 1px solid rgba(6, 182, 212, 0.2);
+    background: rgba(44, 44, 46, 0.6) !important;
+    border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .bg-cream {
@@ -461,13 +461,13 @@ button:active {
 }
 
 /* ============================================
-   FORMS - Ocean Theme
+   FORMS - Premium Theme
    ============================================ */
 input,
 textarea,
 select {
-    background: rgba(30, 41, 59, 0.5) !important;
-    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    background: rgba(44, 44, 46, 0.5) !important;
+    border: 1px solid rgba(251, 191, 36, 0.3) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(5px);
     transition: var(--transition);
@@ -477,14 +477,15 @@ input:focus,
 textarea:focus,
 select:focus {
     border-color: var(--sage) !important;
-    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2) !important;
     outline: none;
-    background: rgba(30, 41, 59, 0.7) !important;
+    background: rgba(44, 44, 46, 0.7) !important;
 }
 
 input::placeholder,
 textarea::placeholder {
     color: var(--warm-gray) !important;
+    opacity: 0.6;
 }
 
 label {
@@ -492,16 +493,16 @@ label {
 }
 
 /* ============================================
-   CALENDAR - Ocean Theme
+   CALENDAR - Premium Theme
    ============================================ */
 .calendar {
-    background: rgba(30, 41, 59, 0.6) !important;
-    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    background: rgba(44, 44, 46, 0.6) !important;
+    border: 1px solid rgba(251, 191, 36, 0.3) !important;
     backdrop-filter: blur(10px);
 }
 
 .calendar-header {
-    border-bottom: 1px solid rgba(6, 182, 212, 0.2) !important;
+    border-bottom: 1px solid rgba(251, 191, 36, 0.2) !important;
 }
 
 .calendar-month {
@@ -510,9 +511,9 @@ label {
 
 .calendar-day,
 .time-slot {
-    background: rgba(45, 82, 120, 0.4) !important;
+    background: rgba(58, 58, 60, 0.5) !important;
     color: var(--charcoal) !important;
-    border: 1px solid rgba(6, 182, 212, 0.2) !important;
+    border: 1px solid rgba(251, 191, 36, 0.15) !important;
     transition: var(--transition);
     cursor: pointer;
 }
@@ -521,8 +522,8 @@ label {
 .time-slot:hover:not(:disabled) {
     background: var(--sage) !important;
     color: var(--ivory) !important;
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4) !important;
-    transform: translateY(-1px);
+    box-shadow: 0 0 24px rgba(251, 191, 36, 0.5) !important;
+    transform: scale(1.05);
 }
 
 .calendar-day.selected,
@@ -531,7 +532,7 @@ label {
     background: linear-gradient(135deg, var(--sage), var(--terra)) !important;
     color: var(--ivory) !important;
     border-color: var(--terra) !important;
-    box-shadow: var(--shadow-accent);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4) !important;
 }
 
 .calendar-day.disabled {
@@ -539,11 +540,11 @@ label {
 }
 
 /* ============================================
-   TIMELINE - Ocean Theme
+   TIMELINE - Premium Theme
    ============================================ */
 .step-indicator {
-    background: rgba(30, 41, 59, 0.6);
-    border: 2px solid rgba(6, 182, 212, 0.3);
+    background: rgba(44, 44, 46, 0.6);
+    border: 2px solid rgba(251, 191, 36, 0.3);
     color: var(--charcoal);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -556,7 +557,7 @@ label {
 }
 
 .step-indicator.active {
-    background: var(--sage) !important;
+    background: linear-gradient(135deg, var(--sage), var(--terra)) !important;
     color: white;
     border-color: var(--sage);
     transform: scale(1.15);
@@ -564,16 +565,16 @@ label {
 }
 
 #progress-bar {
-    background: var(--sage) !important;
+    background: linear-gradient(90deg, var(--sage), var(--terra)) !important;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ============================================
-   FAQ - Ocean Theme
+   FAQ - Premium Theme
    ============================================ */
 .faq-item .faq-question {
-    background: rgba(30, 41, 59, 0.6) !important;
-    border: 2px solid rgba(6, 182, 212, 0.2) !important;
+    background: rgba(44, 44, 46, 0.6) !important;
+    border: 2px solid rgba(251, 191, 36, 0.2) !important;
     backdrop-filter: blur(10px);
     transition: var(--transition);
 }
@@ -593,7 +594,7 @@ label {
 }
 
 .faq-answer {
-    background: rgba(30, 41, 59, 0.4) !important;
+    background: rgba(44, 44, 46, 0.4) !important;
     border-left: 3px solid var(--sage);
     backdrop-filter: blur(5px);
 }
@@ -613,11 +614,11 @@ label {
 }
 
 /* ============================================
-   FOOTER - Ocean Theme
+   FOOTER - Premium Theme
    ============================================ */
 footer {
-    background: rgba(15, 23, 42, 0.95) !important;
-    border-top: 1px solid rgba(6, 182, 212, 0.2) !important;
+    background: rgba(28, 28, 30, 0.95) !important;
+    border-top: 1px solid rgba(251, 191, 36, 0.2) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(10px);
 }
@@ -647,7 +648,7 @@ footer span {
 }
 
 /* ============================================
-   SCROLLBAR - Ocean Theme
+   SCROLLBAR - Premium Theme
    ============================================ */
 ::-webkit-scrollbar {
     width: 10px;
@@ -658,20 +659,20 @@ footer span {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--sage);
+    background: linear-gradient(180deg, var(--sage), var(--terra));
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--sage-dark);
+    background: linear-gradient(180deg, var(--sage-dark), var(--terra));
 }
 
 /* ============================================
-   MOBILE MENU - Ocean Theme
+   MOBILE MENU - Premium Theme
    ============================================ */
 #mobileMenu {
     backdrop-filter: blur(20px);
-    background: rgba(15, 23, 42, 0.98) !important;
+    background: rgba(28, 28, 30, 0.98) !important;
 }
 
 #mobileMenu a {
@@ -683,16 +684,23 @@ footer span {
 }
 
 /* ============================================
-   ANIMATIONS - Ocean Wave
+   ANIMATIONS - Premium Glow
    ============================================ */
-@keyframes wave-flow {
+@keyframes luxury-glow {
     0%, 100% {
-        opacity: 0.6;
-        transform: translateY(0);
+        opacity: 0.5;
     }
     50% {
-        opacity: 0.9;
-        transform: translateY(-10px);
+        opacity: 0.8;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
     }
 }
 
@@ -719,11 +727,11 @@ footer span {
 @keyframes gentlePulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4);
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
     }
     50% {
         transform: scale(1.02);
-        box-shadow: 0 0 0 8px rgba(6, 182, 212, 0);
+        box-shadow: 0 0 0 8px rgba(251, 191, 36, 0);
     }
 }
 
@@ -764,6 +772,28 @@ footer span {
     display: block;
     opacity: 1;
     animation: fadeInUp 0.6s ease-out;
+}
+
+/* ============================================
+   PREMIUM ELEMENTS
+   ============================================ */
+.gradient-text {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.badge-premium {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: linear-gradient(135deg, var(--sage), var(--terra));
+    color: var(--ivory);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* ============================================
