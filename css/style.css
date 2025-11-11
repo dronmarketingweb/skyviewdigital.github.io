@@ -243,8 +243,16 @@ button[class*="fa-bars"],
 .mobile-menu-button,
 [aria-label="Menu"],
 #mobileMenuBtn {
-    background: rgba(15, 20, 25, 0.95) !important;
+    background: transparent !important;
     color: var(--charcoal) !important;
+}
+
+/* Przyciski X (zamknięcia) */
+#closeMobileMenu,
+#closeVideoModal,
+#closeContactModal,
+#close-video-btn {
+    background: transparent !important;
 }
 
 /* ============================================
@@ -826,6 +834,61 @@ a:focus-visible,
 input:focus-visible {
     outline: 2px solid var(--terra);
     outline-offset: 2px;
+}
+
+/* ============================================
+   KALENDARZ - STYL Z OBRAMOWANIEM
+   ============================================ */
+.calendar-widget {
+    background: rgba(26, 40, 56, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(59, 159, 243, 0.2) !important;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.calendar-widget .grid-cols-7 {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0 !important;
+}
+
+.calendar-day {
+    border: 1px solid rgba(59, 159, 243, 0.2) !important;
+    border-radius: 0 !important;
+    min-height: 40px;
+    background: rgba(26, 40, 56, 0.4) !important;
+    color: var(--charcoal) !important;
+    transition: all 0.2s ease;
+}
+
+.calendar-day:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--sage), var(--light-orange)) !important;
+    color: #ffffff !important;
+    border-color: var(--sage) !important;
+    z-index: 1;
+}
+
+.calendar-day.bg-primary {
+    background: linear-gradient(135deg, var(--sage), var(--light-orange)) !important;
+    color: #ffffff !important;
+    border-color: var(--sage) !important;
+}
+
+.calendar-day:disabled {
+    background: rgba(20, 30, 40, 0.3) !important;
+    color: rgba(232, 244, 248, 0.3) !important;
+    cursor: not-allowed;
+}
+
+/* Dni tygodnia (nagłówki) */
+.calendar-widget .grid-cols-7:first-of-type > div {
+    border: 1px solid rgba(59, 159, 243, 0.15) !important;
+    background: rgba(26, 40, 56, 0.6) !important;
+    color: var(--warm-gray) !important;
+    font-weight: 600;
+    padding: 0.5rem;
+    text-align: center;
 }
 
 /* ============================================

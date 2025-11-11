@@ -112,7 +112,7 @@
                     <a href="#values" class="hover:text-accent transition">Nasza Filozofia</a>
                     <a href="#booking" class="hover:text-accent transition">Kontakt</a>
                 </div>
-                <button class="md:hidden text-charcoal text-2xl" id="mobileMenuBtn">
+                <button class="md:hidden text-charcoal text-2xl" id="mobileMenuBtn" style="background: transparent !important;">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -124,9 +124,9 @@
             <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
             
             <div class="max-w-4xl relative z-10 p-8 md:p-12">
-                <h1 class="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); opacity: 0; animation: fadeIn 0.8s ease-out 0.2s forwards;">
+                <h1 class="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); opacity: 0; animation: fadeIn 0.8s ease-out 0.2s forwards;">
                     Tworzymy historie,<br>
-                    <span class="italic font-bold" style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #ff9500 0%, #ffb84d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">które latają</span>
+                    <span class="italic font-bold" style="font-family: 'Inter', sans-serif; color: #ff9500;">które latają</span>
                 </h1>
                 
                 <blockquote class="text-2xl md:text-3xl mb-8 font-serif italic leading-relaxed px-6 py-4 rounded-2xl border-2" style="background: linear-gradient(135deg, rgba(59, 159, 243, 0.15) 0%, rgba(255, 149, 0, 0.1) 100%); backdrop-filter: blur(12px); border: 2px solid rgba(59, 159, 243, 0.3); color: #3b9ff3; text-shadow: 0 0 20px rgba(59, 159, 243, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.4s forwards;">
@@ -146,7 +146,7 @@
         </div>
         
         <!-- Scroll Indicator - Only on mobile -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 md:hidden">
+        <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10 md:hidden">
             <div class="animate-bounce text-white text-2xl">
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -535,7 +535,7 @@
                             <div class="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:rotate-6 transition-transform duration-300" style="background: linear-gradient(135deg, #3b9ff3, #5db2ff);">
                                 <i class="fas fa-seedling text-white text-2xl"></i>
                             </div>
-                            <h3 class="font-serif text-3xl mb-2" style="color: #3b9ff3;">ESSENTIALS</h3>
+                            <h3 class="font-serif text-3xl mb-2" style="color: #3b9ff3; text-shadow: 0 0 10px rgba(59, 159, 243, 0.3);">ESSENTIALS</h3>
                             <p class="font-mono text-sm uppercase tracking-wider" style="color: #5db2ff;">Dla tych, którzy stawiają pierwszy krok</p>
                         </div>
                         
@@ -578,7 +578,7 @@
                             <div class="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:rotate-6 transition-transform duration-300" style="background: linear-gradient(135deg, #ff9500, #ffb84d);">
                                 <i class="fas fa-rocket text-white text-2xl"></i>
                             </div>
-                            <h3 class="font-serif text-3xl mb-2" style="color: #ff9500;">GROWTH</h3>
+                            <h3 class="font-serif text-3xl mb-2" style="color: #ff9500; text-shadow: 0 0 10px rgba(255, 149, 0, 0.3);">GROWTH</h3>
                             <p class="font-mono text-sm uppercase tracking-wider" style="color: #ffb84d;">Dla tych, którzy budują przewagę</p>
                         </div>
                         
@@ -616,7 +616,7 @@
                             <div class="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:rotate-6 transition-transform duration-300" style="background: linear-gradient(135deg, #9333ea, #a855f7);">
                                 <i class="fas fa-crown text-white text-2xl"></i>
                             </div>
-                            <h3 class="font-serif text-3xl mb-2" style="color: #9333ea;">ENTERPRISE</h3>
+                            <h3 class="font-serif text-3xl mb-2" style="color: #9333ea; text-shadow: 0 0 10px rgba(147, 51, 234, 0.3);">ENTERPRISE</h3>
                             <p class="font-mono text-sm uppercase tracking-wider" style="color: #a855f7;">Dla tych, którzy wyznaczają standardy</p>
                         </div>
                         
@@ -802,11 +802,11 @@
                     <h3 class="font-poppins font-bold text-2xl mb-6">Formularz kontaktowy</h3>
                     <form class="space-y-4" id="bookingForm">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Imię i nazwisko <span class="text-terra">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Imię i nazwisko <span style="color: #ef4444;">*</span></label>
                             <input type="text" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="Wprowadź swoje imię i nazwisko">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-terra">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email <span style="color: #ef4444;">*</span></label>
                             <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="twoj@email.pl">
                         </div>
                         <div>
@@ -814,7 +814,7 @@
                             <input type="tel" name="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="+48 123 456 789">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Nazwa firmy <span class="text-terra">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nazwa firmy <span style="color: #ef4444;">*</span></label>
                             <input type="text" name="company" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="Nazwa Twojej firmy">
                         </div>
                         <div>
@@ -848,7 +848,7 @@
                         <div>
                             <label class="flex items-center">
                                 <input type="checkbox" name="privacy" required class="mr-2">
-                                <span class="text-sm">Zgoda na przetwarzanie danych osobowych <span class="text-terra">*</span></span>
+                                <span class="text-sm">Zgoda na przetwarzanie danych osobowych <span style="color: #ef4444;">*</span></span>
                             </label>
                         </div>
                         <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition">
@@ -897,8 +897,8 @@
                         <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
                             <button class="faq-question w-full p-8 text-left transition-all duration-300 group-hover:bg-cream">
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-sand/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-sand/30 transition-colors">
-                                        <i class="fas fa-globe text-primary text-xl"></i>
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background: linear-gradient(135deg, rgba(255, 149, 0, 0.2), rgba(255, 184, 77, 0.2));">
+                                        <i class="fas fa-globe text-xl" style="color: #ff9500;"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h3 class="font-serif text-xl text-gray-900 mb-2">Czy potrzebuję własnej domeny?</h3>
@@ -923,8 +923,8 @@
                         <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
                             <button class="faq-question w-full p-8 text-left transition-all duration-300 group-hover:bg-cream">
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-terra/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-terra/30 transition-colors">
-                                        <i class="fas fa-mobile-alt text-terra text-xl"></i>
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background: linear-gradient(135deg, rgba(255, 149, 0, 0.2), rgba(255, 184, 77, 0.2));">
+                                        <i class="fas fa-mobile-alt text-xl" style="color: #ff9500;"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h3 class="font-serif text-xl text-gray-900 mb-2">A jeśli klient wejdzie na telefonie?</h3>
@@ -949,8 +949,8 @@
                         <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
                             <button class="faq-question w-full p-8 text-left transition-all duration-300 group-hover:bg-cream">
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-cream rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-sand/20 transition-colors">
-                                        <i class="fas fa-cloud-rain text-warm-gray text-xl"></i>
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background: linear-gradient(135deg, rgba(255, 149, 0, 0.2), rgba(255, 184, 77, 0.2));">
+                                        <i class="fas fa-cloud-rain text-xl" style="color: #ff9500;"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h3 class="font-serif text-xl text-gray-900 mb-2">Co z pogodą? Dron nie lata w deszczu...</h3>
@@ -975,8 +975,8 @@
                         <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
                             <button class="faq-question w-full p-8 text-left transition-all duration-300 group-hover:bg-cream">
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
-                                        <i class="fas fa-edit text-primary text-xl"></i>
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background: linear-gradient(135deg, rgba(255, 149, 0, 0.2), rgba(255, 184, 77, 0.2));">
+                                        <i class="fas fa-edit text-xl" style="color: #ff9500;"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h3 class="font-serif text-xl text-gray-900 mb-2">Czy będę mógł sam zmieniać treści?</h3>
@@ -1001,8 +1001,8 @@
                         <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
                             <button class="faq-question w-full p-8 text-left transition-all duration-300 group-hover:bg-cream">
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-charcoal/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-charcoal/20 transition-colors">
-                                        <i class="fas fa-handshake text-charcoal text-xl"></i>
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background: linear-gradient(135deg, rgba(255, 149, 0, 0.2), rgba(255, 184, 77, 0.2));">
+                                        <i class="fas fa-handshake text-xl" style="color: #ff9500;"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h3 class="font-serif text-xl text-gray-900 mb-2">Jak wyglądają płatności?</h3>
@@ -1027,8 +1027,8 @@
                         <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
                             <button class="faq-question w-full p-8 text-left transition-all duration-300 group-hover:bg-cream">
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-terra/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-terra/30 transition-colors">
-                                        <i class="fas fa-clock text-terra text-xl"></i>
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background: linear-gradient(135deg, rgba(255, 149, 0, 0.2), rgba(255, 184, 77, 0.2));">
+                                        <i class="fas fa-clock text-xl" style="color: #ff9500;"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h3 class="font-serif text-xl text-gray-900 mb-2">Ile to wszystko trwa?</h3>
