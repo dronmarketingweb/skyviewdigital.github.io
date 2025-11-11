@@ -1,51 +1,39 @@
 /* ============================================
-   ARCTIC NIGHT PALETTE - SkyView Digital
-   Zimny, profesjonalny, futurystyczny
+   SIMPLE NAVY - Prosty, Profesjonalny
+   Dla każdego, schludny, bez dziwactw
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* === ARCTIC NIGHT COLOR PALETTE === */
+    /* === SIMPLE NAVY PALETTE === */
+    --charcoal: #e8eaf6;
+    --warm-gray: #c5cae9;
+    --sand: #5c6bc0;
+    --cream: #3949ab;
+    --ivory: #283593;
     
-    /* Paleta główna - Lodowy Granat */
-    --charcoal: #f0f9ff;            /* Jasny lodowy tekst główny */
-    --warm-gray: #dbeafe;           /* Jasny niebieski tekst drugoplanowy */
-    --sand: #1e3a5f;                /* Głęboki lodowy akcent */
-    --cream: #1a2f4a;               /* Ciemne lodowe tło - karty */
-    --ivory: #0a1628;               /* Najciemniejsze tło główne */
+    --sage: #5c6bc0;
+    --sage-dark: #3949ab;
+    --sage-light: #5c6bc01a;
     
-    /* Akcenty - Elektryczny Niebieski + Lodowy Cyan */
-    --sage: #3b82f6;                /* Elektryczny niebieski - główny akcent */
-    --sage-dark: #2563eb;           /* Ciemniejszy niebieski - hover */
-    --sage-light: #3b82f61a;        /* Przezroczysty niebieski - tła */
+    --terra: #7986cb;
+    --terra-light: #7986cb1a;
     
-    /* Dodatkowy akcent dla kontrastu */
-    --terra: #06b6d4;               /* Lodowy cyan - elementy wyróżnione */
-    --terra-light: #06b6d41a;       /* Przezroczysty cyan */
+    --shadow-sm: 0 1px 3px rgba(92, 107, 192, 0.08);
+    --shadow-md: 0 4px 12px rgba(92, 107, 192, 0.12);
+    --shadow-lg: 0 10px 25px rgba(92, 107, 192, 0.16);
+    --shadow-accent: 0 4px 14px rgba(92, 107, 192, 0.35);
     
-    /* Kolory ikon */
-    --icon-bg-primary: #3b82f6;     /* Niebieski dla głównych ikon */
-    --icon-bg-secondary: #06b6d4;   /* Cyan dla drugorzędnych ikon */
-    --icon-text: #ffffff;           /* Biały tekst na ikonach */
-    
-    /* Cienie - Arctic glow */
-    --shadow-sm: 0 1px 3px rgba(59, 130, 246, 0.15);
-    --shadow-md: 0 4px 12px rgba(59, 130, 246, 0.22);
-    --shadow-lg: 0 10px 25px rgba(59, 130, 246, 0.3);
-    --shadow-accent: 0 4px 14px rgba(59, 130, 246, 0.5);
-    
-    /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Fonts */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Space Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ============================================
-   BASE STYLES - ARCTIC NIGHT
+   BASE STYLES
    ============================================ */
 
 * {
@@ -62,14 +50,12 @@ html {
 body {
     font-family: var(--font-body);
     background: linear-gradient(to bottom,
-        #0a1628 0%,
-        #0f1e35 15%,
-        #142842 30%,
-        #19324f 45%,
-        #1e3a5f 60%,
-        #234470 75%,
-        #2a5282 90%,
-        #2a5282 100%
+        #283593 0%,
+        #303f9f 20%,
+        #3949ab 40%,
+        #4054b2 60%,
+        #4a5fb9 80%,
+        #5c6bc0 100%
     ) !important;
     background-attachment: fixed !important;
     color: var(--charcoal);
@@ -81,7 +67,6 @@ body {
     position: relative;
 }
 
-/* Arctic aurora effect */
 body::before {
     content: '';
     position: fixed;
@@ -89,11 +74,10 @@ body::before {
     right: 10%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(92, 107, 192, 0.08) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
-    animation: aurora-pulse 8s ease-in-out infinite !important;
 }
 
 body::after {
@@ -103,16 +87,10 @@ body::after {
     left: 10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(121, 134, 203, 0.05) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
-    animation: aurora-pulse 10s ease-in-out infinite reverse;
-}
-
-@keyframes aurora-pulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.1); }
 }
 
 /* ============================================
@@ -134,7 +112,7 @@ p, li {
 .font-mono { font-family: var(--font-mono); }
 
 /* ============================================
-   HERO SECTION
+   HERO
    ============================================ */
 #hero {
     position: relative;
@@ -148,8 +126,8 @@ p, li {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%) !important;
+        radial-gradient(circle at 30% 20%, rgba(92, 107, 192, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(121, 134, 203, 0.08) 0%, transparent 50%) !important;
     z-index: 1;
 }
 
@@ -161,8 +139,8 @@ p, li {
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.25 !important;
-    filter: grayscale(10%) brightness(0.95) saturate(1.2) !important;
+    opacity: 0.2 !important;
+    filter: grayscale(15%) brightness(0.9) !important;
 }
 
 /* ============================================
@@ -170,8 +148,8 @@ p, li {
    ============================================ */
 nav {
     backdrop-filter: blur(12px) saturate(120%) !important;
-    background: rgba(10, 22, 40, 0.92) !important;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.3) !important;
+    background: rgba(40, 53, 147, 0.95) !important;
+    border-bottom: 1px solid rgba(92, 107, 192, 0.2) !important;
     transition: var(--transition);
     position: fixed;
     top: 0;
@@ -181,8 +159,8 @@ nav {
 }
 
 nav.scrolled {
-    background: rgba(10, 22, 40, 0.98) !important;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25) !important;
+    background: rgba(40, 53, 147, 0.98) !important;
+    box-shadow: 0 4px 15px rgba(40, 53, 147, 0.3) !important;
 }
 
 nav a {
@@ -199,13 +177,13 @@ nav a::after {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--sage), var(--terra)) !important;
+    background: var(--sage) !important;
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 nav a:hover {
-    color: var(--sage) !important;
+    color: var(--terra) !important;
 }
 
 nav a:hover::after {
@@ -214,6 +192,31 @@ nav a:hover::after {
 
 nav .text-charcoal,
 nav a {
+    color: var(--charcoal) !important;
+}
+
+/* ============================================
+   MOBILE MENU - TŁO = KOLOR NAGŁÓWKA
+   ============================================ */
+#mobileMenu {
+    backdrop-filter: blur(20px) !important;
+    background: rgba(40, 53, 147, 0.98) !important;
+}
+
+#mobileMenu a {
+    color: var(--charcoal) !important;
+}
+
+#mobileMenu a:hover {
+    color: var(--terra) !important;
+}
+
+/* HAMBURGER BUTTON - TŁO = KOLOR NAGŁÓWKA */
+button[class*="fa-bars"],
+.mobile-menu-button,
+[aria-label="Menu"],
+#mobileMenuBtn {
+    background: rgba(40, 53, 147, 0.95) !important;
     color: var(--charcoal) !important;
 }
 
@@ -233,7 +236,7 @@ section::before {
     left: 10%;
     right: 10%;
     height: 1px;
-    background: rgba(59, 130, 246, 0.12) !important;
+    background: rgba(92, 107, 192, 0.08) !important;
     opacity: 0.3;
 }
 
@@ -262,17 +265,16 @@ section::before {
 }
 
 /* ============================================
-   KARTY I ELEMENTY
+   KARTY
    ============================================ */
 .bg-white,
 .bg-gray-50,
 .card, 
 .service-card, 
-.value-card, 
-.faq-item {
-    background: rgba(26, 47, 74, 0.6) !important;
+.value-card {
+    background: rgba(57, 73, 171, 0.5) !important;
     backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(59, 130, 246, 0.25) !important;
+    border: 1px solid rgba(92, 107, 192, 0.2) !important;
     transition: var(--transition);
 }
 
@@ -284,11 +286,11 @@ section::before {
 .group:hover .bg-white,
 .group:hover .bg-gray-50 {
     border-color: var(--sage) !important;
-    box-shadow: var(--shadow-accent) !important;
-    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px) !important;
 }
 
-/* Tekst w kartach - jasny */
+/* Tekst w kartach */
 .bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4,
 .bg-gray-50 h1, .bg-gray-50 h2, .bg-gray-50 h3, .bg-gray-50 h4,
 .card h1, .card h2, .card h3, .card h4 {
@@ -361,42 +363,34 @@ section::before {
 }
 
 /* ============================================
-   IKONY - Arctic Theme
+   IKONY - WSZYSTKIE
    ============================================ */
 .bg-primary,
-.bg-blue-600,
-.bg-blue-700,
-.bg-accent {
-    background: var(--icon-bg-primary) !important;
-    color: var(--icon-text) !important;
-}
-
-.bg-accent {
-    background: var(--terra) !important;
-}
-
-.bg-orange-600,
-.bg-orange-500 {
-    background: var(--terra) !important;
-    color: #ffffff !important;
-}
-
-/* Kontenery ikon */
-.bg-primary.rounded-xl,
-.bg-primary.rounded-2xl,
 .bg-blue-500,
 .bg-blue-600,
-.bg-accent.rounded-xl,
-.bg-accent.rounded-2xl,
-.bg-green-600 {
+.bg-blue-700,
+.bg-accent,
+div[class*="w-12 h-12"].bg-primary,
+div[class*="w-16 h-16"].bg-primary,
+.bg-primary.rounded-xl,
+.bg-primary.rounded-2xl {
     background: var(--sage) !important;
     color: #ffffff !important;
-    box-shadow: var(--shadow-md);
+}
+
+.bg-orange-500,
+.bg-orange-600,
+.bg-terra,
+div[class*="w-12 h-12"].bg-terra,
+div[class*="w-16 h-16"].bg-terra {
+    background: var(--terra) !important;
+    color: #ffffff !important;
 }
 
 .bg-purple-600,
-.bg-indigo-600 {
-    background: var(--terra) !important;
+.bg-indigo-600,
+.bg-green-600 {
+    background: var(--sage) !important;
     color: #ffffff !important;
 }
 
@@ -404,12 +398,12 @@ section::before {
    BUTTONS
    ============================================ */
 button,
-.btn-primary, 
-button[type="submit"], 
+.btn-primary,
+button[type="submit"],
 .cta-button {
-    background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%) !important;
+    background: var(--sage) !important;
     color: #ffffff !important;
-    box-shadow: var(--shadow-accent) !important;
+    box-shadow: var(--shadow-md) !important;
     border: none;
     transition: var(--transition);
     cursor: pointer;
@@ -437,11 +431,11 @@ button:hover::before {
 }
 
 button:hover,
-.btn-primary:hover, 
-button[type="submit"]:hover, 
+.btn-primary:hover,
+button[type="submit"]:hover,
 .cta-button:hover {
-    background: linear-gradient(135deg, var(--sage-dark) 0%, var(--terra) 100%) !important;
-    box-shadow: 0 6px 24px rgba(59, 130, 246, 0.6) !important;
+    background: var(--sage-dark) !important;
+    box-shadow: var(--shadow-accent) !important;
     transform: translateY(-2px) !important;
 }
 
@@ -465,8 +459,8 @@ button:active {
    ============================================ */
 .bg-gradient-to-br,
 .bg-gradient-to-r {
-    background: rgba(26, 47, 74, 0.6) !important;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(57, 73, 171, 0.5) !important;
+    border: 1px solid rgba(92, 107, 192, 0.2);
 }
 
 .bg-cream {
@@ -483,8 +477,8 @@ button:active {
 input, 
 textarea, 
 select {
-    background: rgba(26, 47, 74, 0.5) !important;
-    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    background: rgba(57, 73, 171, 0.4) !important;
+    border: 1px solid rgba(92, 107, 192, 0.3) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(5px);
     transition: var(--transition);
@@ -494,9 +488,9 @@ input:focus,
 textarea:focus, 
 select:focus {
     border-color: var(--sage) !important;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+    background: rgba(57, 73, 171, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.2) !important;
     outline: none;
-    background: rgba(26, 47, 74, 0.7) !important;
 }
 
 input::placeholder, 
@@ -510,165 +504,32 @@ label {
 }
 
 /* ============================================
-   CALENDAR - Enhanced Arctic Design
+   FAQ - POPRAWIONE RAMKI
    ============================================ */
-.calendar {
-    background: linear-gradient(135deg, rgba(26, 47, 74, 0.8) 0%, rgba(30, 58, 95, 0.8) 100%) !important;
-    border: 2px solid rgba(59, 130, 246, 0.4) !important;
-    border-radius: 20px !important;
-    padding: 2rem !important;
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2) !important;
-    backdrop-filter: blur(10px);
+.faq-item {
+    margin-bottom: 1rem;
 }
 
-.calendar-header {
-    border-bottom: 2px solid rgba(59, 130, 246, 0.3) !important;
-    padding-bottom: 1.5rem !important;
-    margin-bottom: 2rem !important;
-}
-
-.calendar-month {
-    color: var(--sage) !important;
-    font-size: 2rem !important;
-    font-weight: 700 !important;
-    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.4) !important;
-}
-
-.calendar-nav-btn {
-    background: rgba(59, 130, 246, 0.2) !important;
-    border: 1px solid rgba(59, 130, 246, 0.4) !important;
-    color: var(--charcoal) !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 10px !important;
-    transition: all 0.3s ease !important;
-}
-
-.calendar-nav-btn:hover {
-    background: var(--sage) !important;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
-}
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.75rem;
-}
-
-.calendar-day,
-.time-slot {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, rgba(30, 58, 95, 0.6) 0%, rgba(42, 82, 130, 0.4) 100%) !important;
-    color: var(--charcoal) !important;
-    border: 2px solid rgba(59, 130, 246, 0.25) !important;
-    border-radius: 12px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    position: relative;
-    overflow: hidden;
-}
-
-.calendar-day::before,
-.time-slot::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.calendar-day:hover::before,
-.time-slot:hover::before {
-    opacity: 1;
-}
-
-.calendar-day:hover:not(:disabled),
-.time-slot:hover:not(:disabled) {
-    border-color: var(--sage) !important;
-    box-shadow: 0 0 24px rgba(59, 130, 246, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.2) !important;
-    transform: scale(1.08) translateY(-2px) !important;
-    z-index: 10;
-}
-
-.calendar-day span,
-.time-slot span {
-    position: relative;
-    z-index: 2;
-}
-
-.calendar-day.selected,
-.calendar-day.bg-primary,
-.time-slot.selected {
-    background: linear-gradient(135deg, var(--sage), var(--terra)) !important;
-    color: #ffffff !important;
-    border-color: var(--terra) !important;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5), inset 0 2px 8px rgba(255, 255, 255, 0.2) !important;
-    transform: scale(1.05) !important;
-}
-
-.calendar-day.disabled {
-    opacity: 0.3 !important;
-    cursor: not-allowed !important;
-}
-
-.calendar-day.disabled:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    border-color: rgba(59, 130, 246, 0.25) !important;
-}
-
-/* ============================================
-   TIMELINE
-   ============================================ */
-.step-indicator {
-    background: rgba(26, 47, 74, 0.6);
-    border: 2px solid rgba(59, 130, 246, 0.3);
-    color: var(--charcoal);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.step-indicator:hover {
-    background: var(--sage-light);
-    border-color: var(--sage);
-    transform: scale(1.1);
-}
-
-.step-indicator.active {
-    background: linear-gradient(135deg, var(--sage), var(--terra)) !important;
-    color: white;
-    border-color: var(--sage);
-    transform: scale(1.15);
-    box-shadow: var(--shadow-accent);
-}
-
-#progress-bar {
-    background: linear-gradient(90deg, var(--sage), var(--terra)) !important;
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ============================================
-   FAQ
-   ============================================ */
 .faq-item .faq-question {
-    background: rgba(26, 47, 74, 0.6) !important;
-    border: 2px solid rgba(59, 130, 246, 0.2) !important;
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
+    background: rgba(57, 73, 171, 0.5) !important;
+    border: 2px solid rgba(92, 107, 192, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 1.25rem !important;
+    border-radius: 12px !important;
+    transition: var(--transition) !important;
+    width: 100% !important;
+    display: block !important;
 }
 
 .faq-item .faq-question:hover {
     border-color: var(--sage) !important;
-    box-shadow: var(--shadow-md);
-    transform: translateX(3px);
+    box-shadow: var(--shadow-sm) !important;
+    transform: translateX(4px) !important;
 }
 
 .faq-item .faq-question h3 {
     color: var(--charcoal) !important;
+    margin: 0 !important;
 }
 
 .faq-item .faq-question .fas {
@@ -676,9 +537,12 @@ label {
 }
 
 .faq-answer {
-    background: rgba(26, 47, 74, 0.4) !important;
-    border-left: 3px solid var(--sage);
-    backdrop-filter: blur(5px);
+    background: rgba(48, 63, 159, 0.4) !important;
+    border-left: 3px solid var(--sage) !important;
+    border-radius: 0 0 12px 12px !important;
+    margin-top: -8px !important;
+    padding: 1.25rem !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 .faq-answer p {
@@ -696,11 +560,105 @@ label {
 }
 
 /* ============================================
+   CALENDAR - PROSTY I PRZYJEMNY
+   ============================================ */
+.calendar {
+    background: rgba(57, 73, 171, 0.5) !important;
+    border: 1px solid rgba(92, 107, 192, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.calendar-header {
+    border-bottom: 1px solid rgba(92, 107, 192, 0.2) !important;
+    padding-bottom: 1rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.calendar-month {
+    color: var(--sage) !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-day,
+.time-slot {
+    background: rgba(74, 95, 185, 0.4) !important;
+    border: 1px solid rgba(92, 107, 192, 0.25) !important;
+    color: var(--charcoal) !important;
+    padding: 0.75rem !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    transition: var(--transition) !important;
+    cursor: pointer !important;
+}
+
+.calendar-day:hover:not(:disabled),
+.time-slot:hover:not(:disabled) {
+    background: rgba(92, 107, 192, 0.5) !important;
+    border-color: var(--sage) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.calendar-day.bg-primary,
+.calendar-day.selected,
+.time-slot.selected {
+    background: var(--sage) !important;
+    color: #ffffff !important;
+    border-color: var(--sage) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.calendar-day:disabled,
+.time-slot:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+}
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+.step-indicator {
+    background: rgba(74, 95, 185, 0.4) !important;
+    border: 2px solid rgba(92, 107, 192, 0.3) !important;
+    color: var(--charcoal);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.step-indicator:hover {
+    background: rgba(92, 107, 192, 0.5) !important;
+    border-color: var(--sage) !important;
+    transform: scale(1.1);
+}
+
+.step-indicator.active {
+    background: var(--sage) !important;
+    border-color: var(--sage) !important;
+    color: white;
+    box-shadow: var(--shadow-accent) !important;
+    transform: scale(1.15);
+}
+
+#progress-bar {
+    background: var(--sage) !important;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 footer {
-    background: rgba(10, 22, 40, 0.95) !important;
-    border-top: 2px solid rgba(59, 130, 246, 0.3) !important;
+    background: rgba(40, 53, 147, 0.95) !important;
+    border-top: 1px solid rgba(92, 107, 192, 0.2) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(10px);
 }
@@ -720,7 +678,7 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--sage) !important;
+    color: var(--terra) !important;
 }
 
 footer p,
@@ -741,28 +699,12 @@ footer span {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--sage), var(--terra));
+    background: var(--sage);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--sage-dark), var(--terra));
-}
-
-/* ============================================
-   MOBILE MENU
-   ============================================ */
-#mobileMenu {
-    backdrop-filter: blur(20px);
-    background: rgba(10, 22, 40, 0.98) !important;
-}
-
-#mobileMenu a {
-    color: var(--charcoal) !important;
-}
-
-#mobileMenu a:hover {
-    color: var(--sage) !important;
+    background: var(--sage-dark);
 }
 
 /* ============================================
@@ -791,11 +733,11 @@ footer span {
 @keyframes gentlePulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+        box-shadow: 0 0 0 0 rgba(92, 107, 192, 0.4);
     }
     50% {
         transform: scale(1.02);
-        box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+        box-shadow: 0 0 0 8px rgba(92, 107, 192, 0);
     }
 }
 
