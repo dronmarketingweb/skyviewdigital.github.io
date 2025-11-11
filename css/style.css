@@ -988,3 +988,29 @@ button[aria-label*="Next"],
 #faq div[class*="w-12"][class*="h-12"] i {
     color: #ff9500 !important;
 }
+
+/* 11. Przyciski zamykające (X) - BEZ TŁA */
+#close-video-btn,
+#closeMobileMenu,
+#closeVideoModal,
+#closeContactModal,
+button[id*="close"],
+.close-btn,
+.modal-close {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+#close-video-btn:hover,
+#closeMobileMenu:hover,
+#closeVideoModal:hover,
+#closeContactModal:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 12. Cytat - CIEMNIEJSZY ŻÓŁTY */
+blockquote[style*="ab6f09"] {
+    color: #ab6f09 !important;
+    border-color: #ab6f09 !important;
+}

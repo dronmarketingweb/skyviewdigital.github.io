@@ -1,4 +1,4 @@
-# 🎨 ZMIANY KOLORÓW - PODSUMOWANIE
+# 🎨 ZMIANY KOLORÓW - PODSUMOWANIE (AKTUALIZACJA 2)
 
 ## ✅ WYKONANE ZMIANY
 
@@ -13,10 +13,10 @@
   - CSS: style.css - dodano regułę dla #mobileMenuBtn (transparent background)
   - Przycisk teraz nie ma tła, tylko pojawia się delikatne tło przy hover
 
-### 3. ✅ "It's not about..." → ŻÓŁTY (#f59e0b)
-- **Status**: ZROBIONE
+### 3. ✅ "It's not about..." → CIEMNIEJSZY ŻÓŁTY (#ab6f09) + OBRAMÓWKA
+- **Status**: ZROBIONE - ZAKTUALIZOWANE
 - **Lokalizacja**: index.html, linia 133
-- Już miał ustawiony kolor żółty w inline style
+- Zmieniono na ciemniejszy żółty (#ab6f09) z dopasowaną obramówką
 
 ### 4. ✅ "Strony internetowe z filmami..." → JASNY NIEBIESKI (#5db2ff)
 - **Status**: ZROBIONE
@@ -34,12 +34,12 @@
   - FAZA EWOLUCJI: jasny różowy (#f472b6)
 
 ### 6. ✅ PAKIETY - nagłówki → różne kolory
-- **Status**: ZROBIONE
+- **Status**: ZROBIONE - ZAKTUALIZOWANE
 - **Lokalizacja**: index.html, linie 539, 582, 620
-- Wszystkie pakiety już miały odpowiednie kolory:
+- Wszystkie pakiety mają odpowiednie kolory:
   - "Dla tych, którzy stawiają pierwszy krok": jasny niebieski (#5db2ff)
   - "Dla tych, którzy budują przewagę": jasny pomarańczowy (#ffb84d)
-  - "Dla tych, którzy wyznaczają standardy": fioletowy (#9333ea)
+  - "Dla tych, którzy wyznaczają standardy": jasny fioletowy (#a855f7) - ZMIENIONE z #9333ea
 
 ### 7. ✅ "Nie jesteś pewien..." → PRZEZROCZYSTY NIEBIESKI
 - **Status**: ZROBIONE
@@ -65,6 +65,12 @@
 - **Status**: ZROBIONE
 - **Lokalizacja**: index.html, sekcja About Us (linie z ikonami)
 - Wszystkie ikony mają teraz ciemne tło #1a2838
+- Kolory ikon dostosowane dla lepszej widoczności
+
+### 11. ✅ Przyciski X (zamykające) → BEZ TŁA
+- **Status**: ZROBIONE
+- **Lokalizacja**: index.html, sekcja About Us (linie z ikonami)
+- Wszystkie ikony mają teraz ciemne tło #1a2838
 - Kolory ikon dostosowane dla lepszej widoczności:
   - Coffee: pomarańczowy (#ff9500)
   - Map: jasny niebieski (#5db2ff)
@@ -74,19 +80,19 @@
 
 ## 📁 ZMODYFIKOWANE PLIKI
 
-1. **index.html** - zaktualizowane kolory elementów
-2. **css/style.css** - dodane nowe reguły CSS dla customowych kolorów
+1. **index.html** - zaktualizowane kolory elementów + przyciski X bez tła
+2. **css/style.css** - dodane nowe reguły CSS dla customowych kolorów + style dla przycisków X
 3. **js/booking-system.js** - zaktualizowane style przycisków kalendarza
 
 ## 🎨 UŻYTA PALETA KOLORÓW
 
 - **Żółty**: #f59e0b
+- **Ciemniejszy żółty**: #ab6f09 (dla cytatu)
 - **Jasny pomarańczowy**: #ffb84d
 - **Jasny niebieski**: #5db2ff
 - **Jasny zielony**: #34d399
 - **Jasny fioletowy**: #a855f7
 - **Jasny różowy**: #f472b6
-- **Fioletowy**: #9333ea
 - **Ciemne tło karty**: #1a2838
 - **Przezroczysty niebieski**: rgba(59, 159, 243, 0.7)
 
