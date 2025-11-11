@@ -1,34 +1,39 @@
 /* ============================================
-   CHARCOAL PREMIUM PALETTE - SkyView Digital
-   Elegancki, luksusowy, ciepły premium
+   ARCTIC NIGHT PALETTE - SkyView Digital
+   Zimny, profesjonalny, futurystyczny
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* === CHARCOAL PREMIUM COLOR PALETTE === */
+    /* === ARCTIC NIGHT COLOR PALETTE === */
     
-    /* Paleta główna - Ciepły Grafitowy */
-    --charcoal: #ffffff;            /* Biały tekst główny na ciemnym tle */
-    --warm-gray: #e5e5e7;           /* Jasny szary tekst drugoplanowy */
-    --sand: #3a3a3c;                /* Grafitowy akcent - elementy subtelne */
-    --cream: #2c2c2e;               /* Średnie ciemne tło - karty */
-    --ivory: #1c1c1e;               /* Najciemniejsze tło główne */
+    /* Paleta główna - Lodowy Granat */
+    --charcoal: #f0f9ff;            /* Jasny lodowy tekst główny */
+    --warm-gray: #dbeafe;           /* Jasny niebieski tekst drugoplanowy */
+    --sand: #1e3a5f;                /* Głęboki lodowy akcent */
+    --cream: #1a2f4a;               /* Ciemne lodowe tło - karty */
+    --ivory: #0a1628;               /* Najciemniejsze tło główne */
     
-    /* Akcent - Złoty + Fioletowy */
-    --sage: #fbbf24;                /* Złoty - główny kolor akcent */
-    --sage-dark: #f59e0b;           /* Ciemniejszy złoty - hover */
-    --sage-light: #fbbf241a;        /* Przezroczysty złoty - tła */
+    /* Akcenty - Elektryczny Niebieski + Lodowy Cyan */
+    --sage: #3b82f6;                /* Elektryczny niebieski - główny akcent */
+    --sage-dark: #2563eb;           /* Ciemniejszy niebieski - hover */
+    --sage-light: #3b82f61a;        /* Przezroczysty niebieski - tła */
     
     /* Dodatkowy akcent dla kontrastu */
-    --terra: #8b5cf6;               /* Fioletowy - elementy wyróżnione */
-    --terra-light: #8b5cf61a;       /* Przezroczysty fiolet */
+    --terra: #06b6d4;               /* Lodowy cyan - elementy wyróżnione */
+    --terra-light: #06b6d41a;       /* Przezroczysty cyan */
     
-    /* Cienie - Premium gold glow */
-    --shadow-sm: 0 1px 3px rgba(251, 191, 36, 0.15);
-    --shadow-md: 0 4px 12px rgba(251, 191, 36, 0.22);
-    --shadow-lg: 0 10px 25px rgba(251, 191, 36, 0.3);
-    --shadow-accent: 0 4px 14px rgba(251, 191, 36, 0.45);
+    /* Kolory ikon */
+    --icon-bg-primary: #3b82f6;     /* Niebieski dla głównych ikon */
+    --icon-bg-secondary: #06b6d4;   /* Cyan dla drugorzędnych ikon */
+    --icon-text: #ffffff;           /* Biały tekst na ikonach */
+    
+    /* Cienie - Arctic glow */
+    --shadow-sm: 0 1px 3px rgba(59, 130, 246, 0.15);
+    --shadow-md: 0 4px 12px rgba(59, 130, 246, 0.22);
+    --shadow-lg: 0 10px 25px rgba(59, 130, 246, 0.3);
+    --shadow-accent: 0 4px 14px rgba(59, 130, 246, 0.5);
     
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -40,7 +45,7 @@
 }
 
 /* ============================================
-   BASE STYLES - CHARCOAL PREMIUM
+   BASE STYLES - ARCTIC NIGHT
    ============================================ */
 
 * {
@@ -56,16 +61,15 @@ html {
 
 body {
     font-family: var(--font-body);
-    /* Gradient grafitowy - od najciemniejszego do średniego */
     background: linear-gradient(to bottom,
-        #1c1c1e 0%,
-        #232325 15%,
-        #2a2a2c 30%,
-        #313133 45%,
-        #343436 60%,
-        #373739 75%,
-        #3a3a3c 90%,
-        #3a3a3c 100%
+        #0a1628 0%,
+        #0f1e35 15%,
+        #142842 30%,
+        #19324f 45%,
+        #1e3a5f 60%,
+        #234470 75%,
+        #2a5282 90%,
+        #2a5282 100%
     ) !important;
     background-attachment: fixed !important;
     color: var(--charcoal);
@@ -77,7 +81,7 @@ body {
     position: relative;
 }
 
-/* Subtelny efekt luxury glow */
+/* Arctic aurora effect */
 body::before {
     content: '';
     position: fixed;
@@ -85,11 +89,11 @@ body::before {
     right: 10%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
-    animation: luxury-glow 6s ease-in-out infinite;
+    animation: aurora-pulse 8s ease-in-out infinite !important;
 }
 
 body::after {
@@ -99,11 +103,16 @@ body::after {
     left: 10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
-    animation: luxury-glow 8s ease-in-out infinite reverse;
+    animation: aurora-pulse 10s ease-in-out infinite reverse;
+}
+
+@keyframes aurora-pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.1); }
 }
 
 /* ============================================
@@ -125,7 +134,7 @@ p, li {
 .font-mono { font-family: var(--font-mono); }
 
 /* ============================================
-   HERO SECTION - Premium Theme
+   HERO SECTION
    ============================================ */
 #hero {
     position: relative;
@@ -139,8 +148,8 @@ p, li {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%) !important;
+        radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%) !important;
     z-index: 1;
 }
 
@@ -152,17 +161,17 @@ p, li {
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.2 !important;
-    filter: grayscale(20%) brightness(0.85) !important;
+    opacity: 0.25 !important;
+    filter: grayscale(10%) brightness(0.95) saturate(1.2) !important;
 }
 
 /* ============================================
-   NAVIGATION - Premium Theme
+   NAVIGATION
    ============================================ */
 nav {
     backdrop-filter: blur(12px) saturate(120%) !important;
-    background: rgba(28, 28, 30, 0.92) !important;
-    border-bottom: 1px solid rgba(251, 191, 36, 0.25) !important;
+    background: rgba(10, 22, 40, 0.92) !important;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.3) !important;
     transition: var(--transition);
     position: fixed;
     top: 0;
@@ -172,8 +181,8 @@ nav {
 }
 
 nav.scrolled {
-    background: rgba(28, 28, 30, 0.98) !important;
-    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2) !important;
+    background: rgba(10, 22, 40, 0.98) !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25) !important;
 }
 
 nav a {
@@ -203,14 +212,13 @@ nav a:hover::after {
     transform: scaleX(1);
 }
 
-/* Logo na nav - jasny tekst */
 nav .text-charcoal,
 nav a {
     color: var(--charcoal) !important;
 }
 
 /* ============================================
-   SECTIONS - Premium Background
+   SECTIONS
    ============================================ */
 section {
     background: transparent !important;
@@ -225,18 +233,11 @@ section::before {
     left: 10%;
     right: 10%;
     height: 1px;
-    background: rgba(251, 191, 36, 0.12) !important;
+    background: rgba(59, 130, 246, 0.12) !important;
     opacity: 0.3;
 }
 
-/* Wszystkie sekcje - jasny tekst na ciemnym */
-#demo,
-#process,
-#values,
-#faq,
-#portfolio,
-#contact,
-#booking {
+#demo, #process, #values, #faq, #portfolio, #contact, #booking {
     color: var(--charcoal) !important;
 }
 
@@ -261,30 +262,30 @@ section::before {
 }
 
 /* ============================================
-   KARTY I ELEMENTY - Premium Theme
+   KARTY I ELEMENTY
    ============================================ */
 .bg-white,
 .bg-gray-50,
-.card,
-.service-card,
-.value-card,
+.card, 
+.service-card, 
+.value-card, 
 .faq-item {
-    background: rgba(44, 44, 46, 0.6) !important;
+    background: rgba(26, 47, 74, 0.6) !important;
     backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(251, 191, 36, 0.2) !important;
+    border: 1px solid rgba(59, 130, 246, 0.25) !important;
     transition: var(--transition);
 }
 
 .bg-white:hover,
 .bg-gray-50:hover,
-.card:hover,
-.service-card:hover,
+.card:hover, 
+.service-card:hover, 
 .value-card:hover,
 .group:hover .bg-white,
 .group:hover .bg-gray-50 {
     border-color: var(--sage) !important;
     box-shadow: var(--shadow-accent) !important;
-    transform: translateY(-4px);
+    transform: translateY(-4px) !important;
 }
 
 /* Tekst w kartach - jasny */
@@ -301,7 +302,7 @@ section::before {
 }
 
 /* ============================================
-   TEXT COLORS - PREMIUM THEME
+   TEXT COLORS
    ============================================ */
 .text-gray-900,
 .text-gray-800,
@@ -328,7 +329,7 @@ section::before {
     color: var(--terra) !important;
 }
 
-/* WYJĄTKI - Białe teksty - NAJWYŻSZY PRIORYTET */
+/* WYJĄTKI - Białe teksty */
 .text-white,
 .text-white *,
 .text-white h1,
@@ -346,25 +347,68 @@ section::before {
     color: #ffffff !important;
 }
 
-/* Wymuś kolor charcoal dla elementów które tego wymagają */
 .text-charcoal,
 .text-charcoal * {
     color: var(--charcoal) !important;
 }
 
+.text-sage { 
+    color: var(--sage) !important; 
+}
+
+.text-terra { 
+    color: var(--terra) !important; 
+}
+
 /* ============================================
-   BUTTONS - Premium Theme
+   IKONY - Arctic Theme
    ============================================ */
-button,
-.btn-primary,
-button[type="submit"],
-.cta-button,
 .bg-primary,
 .bg-blue-600,
 .bg-blue-700,
 .bg-accent {
+    background: var(--icon-bg-primary) !important;
+    color: var(--icon-text) !important;
+}
+
+.bg-accent {
+    background: var(--terra) !important;
+}
+
+.bg-orange-600,
+.bg-orange-500 {
+    background: var(--terra) !important;
+    color: #ffffff !important;
+}
+
+/* Kontenery ikon */
+.bg-primary.rounded-xl,
+.bg-primary.rounded-2xl,
+.bg-blue-500,
+.bg-blue-600,
+.bg-accent.rounded-xl,
+.bg-accent.rounded-2xl,
+.bg-green-600 {
+    background: var(--sage) !important;
+    color: #ffffff !important;
+    box-shadow: var(--shadow-md);
+}
+
+.bg-purple-600,
+.bg-indigo-600 {
+    background: var(--terra) !important;
+    color: #ffffff !important;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+button,
+.btn-primary, 
+button[type="submit"], 
+.cta-button {
     background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%) !important;
-    color: var(--ivory) !important;
+    color: #ffffff !important;
     box-shadow: var(--shadow-accent) !important;
     border: none;
     transition: var(--transition);
@@ -393,12 +437,12 @@ button:hover::before {
 }
 
 button:hover,
-.btn-primary:hover,
-button[type="submit"]:hover,
+.btn-primary:hover, 
+button[type="submit"]:hover, 
 .cta-button:hover {
     background: linear-gradient(135deg, var(--sage-dark) 0%, var(--terra) 100%) !important;
-    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5) !important;
-    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(59, 130, 246, 0.6) !important;
+    transform: translateY(-2px) !important;
 }
 
 button:active {
@@ -413,43 +457,16 @@ button:active {
 
 .btn-secondary:hover {
     background: var(--sage) !important;
-    color: var(--ivory) !important;
-}
-
-.bg-orange-600,
-.bg-orange-500 {
-    background: var(--terra) !important;
     color: #ffffff !important;
 }
 
 /* ============================================
-   ICON CONTAINERS - Premium Theme
-   ============================================ */
-.bg-primary.rounded-xl,
-.bg-primary.rounded-2xl,
-.bg-blue-500,
-.bg-blue-600,
-.bg-accent.rounded-xl,
-.bg-accent.rounded-2xl,
-.bg-green-600 {
-    background: var(--sage) !important;
-    color: #ffffff !important;
-    box-shadow: var(--shadow-md);
-}
-
-.bg-purple-600,
-.bg-indigo-600 {
-    background: var(--terra) !important;
-    color: #ffffff !important;
-}
-
-/* ============================================
-   GRADIENT BACKGROUNDS - Premium
+   GRADIENT BACKGROUNDS
    ============================================ */
 .bg-gradient-to-br,
 .bg-gradient-to-r {
-    background: rgba(44, 44, 46, 0.6) !important;
-    border: 1px solid rgba(251, 191, 36, 0.2);
+    background: rgba(26, 47, 74, 0.6) !important;
+    border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .bg-cream {
@@ -461,28 +478,28 @@ button:active {
 }
 
 /* ============================================
-   FORMS - Premium Theme
+   FORMS
    ============================================ */
-input,
-textarea,
+input, 
+textarea, 
 select {
-    background: rgba(44, 44, 46, 0.5) !important;
-    border: 1px solid rgba(251, 191, 36, 0.3) !important;
+    background: rgba(26, 47, 74, 0.5) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(5px);
     transition: var(--transition);
 }
 
-input:focus,
-textarea:focus,
+input:focus, 
+textarea:focus, 
 select:focus {
     border-color: var(--sage) !important;
-    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
     outline: none;
-    background: rgba(44, 44, 46, 0.7) !important;
+    background: rgba(26, 47, 74, 0.7) !important;
 }
 
-input::placeholder,
+input::placeholder, 
 textarea::placeholder {
     color: var(--warm-gray) !important;
     opacity: 0.6;
@@ -493,58 +510,123 @@ label {
 }
 
 /* ============================================
-   CALENDAR - Premium Theme
+   CALENDAR - Enhanced Arctic Design
    ============================================ */
 .calendar {
-    background: rgba(44, 44, 46, 0.6) !important;
-    border: 1px solid rgba(251, 191, 36, 0.3) !important;
+    background: linear-gradient(135deg, rgba(26, 47, 74, 0.8) 0%, rgba(30, 58, 95, 0.8) 100%) !important;
+    border: 2px solid rgba(59, 130, 246, 0.4) !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2) !important;
     backdrop-filter: blur(10px);
 }
 
 .calendar-header {
-    border-bottom: 1px solid rgba(251, 191, 36, 0.2) !important;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.3) !important;
+    padding-bottom: 1.5rem !important;
+    margin-bottom: 2rem !important;
 }
 
 .calendar-month {
     color: var(--sage) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.4) !important;
+}
+
+.calendar-nav-btn {
+    background: rgba(59, 130, 246, 0.2) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    color: var(--charcoal) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+}
+
+.calendar-nav-btn:hover {
+    background: var(--sage) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.75rem;
 }
 
 .calendar-day,
 .time-slot {
-    background: rgba(58, 58, 60, 0.5) !important;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.6) 0%, rgba(42, 82, 130, 0.4) 100%) !important;
     color: var(--charcoal) !important;
-    border: 1px solid rgba(251, 191, 36, 0.15) !important;
-    transition: var(--transition);
+    border: 2px solid rgba(59, 130, 246, 0.25) !important;
+    border-radius: 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.calendar-day::before,
+.time-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.calendar-day:hover::before,
+.time-slot:hover::before {
+    opacity: 1;
 }
 
 .calendar-day:hover:not(:disabled),
 .time-slot:hover:not(:disabled) {
-    background: var(--sage) !important;
-    color: var(--ivory) !important;
-    box-shadow: 0 0 24px rgba(251, 191, 36, 0.5) !important;
-    transform: scale(1.05);
+    border-color: var(--sage) !important;
+    box-shadow: 0 0 24px rgba(59, 130, 246, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.2) !important;
+    transform: scale(1.08) translateY(-2px) !important;
+    z-index: 10;
+}
+
+.calendar-day span,
+.time-slot span {
+    position: relative;
+    z-index: 2;
 }
 
 .calendar-day.selected,
 .calendar-day.bg-primary,
 .time-slot.selected {
     background: linear-gradient(135deg, var(--sage), var(--terra)) !important;
-    color: var(--ivory) !important;
+    color: #ffffff !important;
     border-color: var(--terra) !important;
-    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5), inset 0 2px 8px rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.05) !important;
 }
 
 .calendar-day.disabled {
     opacity: 0.3 !important;
+    cursor: not-allowed !important;
+}
+
+.calendar-day.disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
 }
 
 /* ============================================
-   TIMELINE - Premium Theme
+   TIMELINE
    ============================================ */
 .step-indicator {
-    background: rgba(44, 44, 46, 0.6);
-    border: 2px solid rgba(251, 191, 36, 0.3);
+    background: rgba(26, 47, 74, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
     color: var(--charcoal);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -570,11 +652,11 @@ label {
 }
 
 /* ============================================
-   FAQ - Premium Theme
+   FAQ
    ============================================ */
 .faq-item .faq-question {
-    background: rgba(44, 44, 46, 0.6) !important;
-    border: 2px solid rgba(251, 191, 36, 0.2) !important;
+    background: rgba(26, 47, 74, 0.6) !important;
+    border: 2px solid rgba(59, 130, 246, 0.2) !important;
     backdrop-filter: blur(10px);
     transition: var(--transition);
 }
@@ -594,7 +676,7 @@ label {
 }
 
 .faq-answer {
-    background: rgba(44, 44, 46, 0.4) !important;
+    background: rgba(26, 47, 74, 0.4) !important;
     border-left: 3px solid var(--sage);
     backdrop-filter: blur(5px);
 }
@@ -614,11 +696,11 @@ label {
 }
 
 /* ============================================
-   FOOTER - Premium Theme
+   FOOTER
    ============================================ */
 footer {
-    background: rgba(28, 28, 30, 0.95) !important;
-    border-top: 1px solid rgba(251, 191, 36, 0.2) !important;
+    background: rgba(10, 22, 40, 0.95) !important;
+    border-top: 2px solid rgba(59, 130, 246, 0.3) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(10px);
 }
@@ -648,7 +730,7 @@ footer span {
 }
 
 /* ============================================
-   SCROLLBAR - Premium Theme
+   SCROLLBAR
    ============================================ */
 ::-webkit-scrollbar {
     width: 10px;
@@ -668,11 +750,11 @@ footer span {
 }
 
 /* ============================================
-   MOBILE MENU - Premium Theme
+   MOBILE MENU
    ============================================ */
 #mobileMenu {
     backdrop-filter: blur(20px);
-    background: rgba(28, 28, 30, 0.98) !important;
+    background: rgba(10, 22, 40, 0.98) !important;
 }
 
 #mobileMenu a {
@@ -684,26 +766,8 @@ footer span {
 }
 
 /* ============================================
-   ANIMATIONS - Premium Glow
+   ANIMATIONS
    ============================================ */
-@keyframes luxury-glow {
-    0%, 100% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 0.8;
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
-    }
-    100% {
-        background-position: 1000px 0;
-    }
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -727,11 +791,11 @@ footer span {
 @keyframes gentlePulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
     }
     50% {
         transform: scale(1.02);
-        box-shadow: 0 0 0 8px rgba(251, 191, 36, 0);
+        box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
     }
 }
 
@@ -775,33 +839,12 @@ footer span {
 }
 
 /* ============================================
-   PREMIUM ELEMENTS
-   ============================================ */
-.gradient-text {
-    background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.badge-premium {
-    display: inline-block;
-    padding: 0.375rem 0.875rem;
-    background: linear-gradient(135deg, var(--sage), var(--terra));
-    color: var(--ivory);
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* ============================================
    UTILITIES
    ============================================ */
 .text-charcoal { color: var(--charcoal) !important; }
 .text-sage { color: var(--sage) !important; }
 .text-terra { color: var(--terra) !important; }
+.text-primary { color: var(--sage) !important; }
 .bg-cream { background: var(--cream) !important; }
 .bg-ivory { background: var(--ivory) !important; }
 
