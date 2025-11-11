@@ -26,6 +26,20 @@
     --light-orange: #ffb84d;        /* Jasny pomarańczowy */
     --soft-cyan: #4dd4e8;           /* Miękki cyan */
     
+    /* Różnorodne kolory dla ikon i poziomów */
+    --purple: #9333ea;              /* Fioletowy */
+    --purple-light: #a855f7;        /* Jasny fioletowy */
+    --green: #10b981;               /* Zielony */
+    --green-light: #34d399;         /* Jasny zielony */
+    --pink: #ec4899;                /* Różowy */
+    --pink-light: #f472b6;          /* Jasny różowy */
+    --yellow: #f59e0b;              /* Żółty */
+    --yellow-light: #fbbf24;        /* Jasny żółty */
+    
+    /* Jasne teksty - bardzo widoczne */
+    --text-bright: #f0f9ff;         /* Bardzo jasny niebieski */
+    --text-highlight: #fef3c7;      /* Jasny żółtawy */
+    
     --shadow-sm: 0 1px 3px rgba(255, 149, 0, 0.1);
     --shadow-md: 0 4px 12px rgba(59, 159, 243, 0.15);
     --shadow-lg: 0 10px 25px rgba(255, 149, 0, 0.2);
@@ -366,35 +380,78 @@ section::before {
 .text-sage { color: var(--sage) !important; }
 .text-terra { color: var(--terra) !important; }
 
+/* Jasne, wyróżnione teksty */
+.text-bright {
+    color: var(--text-bright) !important;
+    text-shadow: 0 0 10px rgba(240, 249, 255, 0.3) !important;
+}
+
+.text-highlight {
+    color: var(--text-highlight) !important;
+    text-shadow: 0 0 10px rgba(254, 243, 199, 0.3) !important;
+}
+
 /* ============================================
-   IKONY - MIX POMARAŃCZOWY + NIEBIESKI
+   IKONY - RÓŻNORODNE KOLORY
    ============================================ */
+/* Pomarańczowe ikony */
 .bg-primary,
-.bg-blue-500,
-.bg-blue-600,
-.bg-blue-700,
 .bg-primary.rounded-xl,
 .bg-primary.rounded-2xl {
     background: linear-gradient(135deg, var(--sage), var(--light-orange)) !important;
     color: #ffffff !important;
 }
 
-.bg-accent {
+/* Niebieskie ikony */
+.bg-accent,
+.bg-blue-500,
+.bg-blue-600,
+.bg-blue-700 {
     background: linear-gradient(135deg, var(--terra), var(--light-blue)) !important;
     color: #ffffff !important;
 }
 
+/* Fioletowe ikony */
+.bg-purple-600,
+.bg-indigo-600 {
+    background: linear-gradient(135deg, var(--purple), var(--purple-light)) !important;
+    color: #ffffff !important;
+}
+
+/* Zielone ikony */
+.bg-green-600 {
+    background: linear-gradient(135deg, var(--green), var(--green-light)) !important;
+    color: #ffffff !important;
+}
+
+/* Różowe ikony */
+.bg-pink-600 {
+    background: linear-gradient(135deg, var(--pink), var(--pink-light)) !important;
+    color: #ffffff !important;
+}
+
+/* Żółte ikony */
+.bg-yellow-600 {
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-light)) !important;
+    color: #ffffff !important;
+}
+
+/* Cyan ikony */
 .bg-orange-500,
 .bg-orange-600,
 .bg-terra {
-    background: linear-gradient(135deg, var(--terra), var(--soft-cyan)) !important;
+    background: linear-gradient(135deg, var(--soft-cyan), var(--light-blue)) !important;
     color: #ffffff !important;
 }
 
-.bg-purple-600,
-.bg-indigo-600,
-.bg-green-600 {
-    background: linear-gradient(135deg, var(--terra), var(--light-blue)) !important;
+/* Szare/charcoal ikony */
+.bg-warm-gray {
+    background: linear-gradient(135deg, #64748b, #94a3b8) !important;
+    color: #ffffff !important;
+}
+
+.bg-charcoal {
+    background: linear-gradient(135deg, #475569, #64748b) !important;
     color: #ffffff !important;
 }
 
