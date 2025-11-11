@@ -1014,3 +1014,80 @@ blockquote[style*="ab6f09"] {
     color: #ab6f09 !important;
     border-color: #ab6f09 !important;
 }
+
+/* ========================================
+   FORCE COLORS - Wymuszenie kolorów dla konkretnych elementów
+   ======================================== */
+
+/* 1. Cytat - obramówka ciemny żółty */
+blockquote {
+    border-left-color: #ab6f09 !important;
+    border-color: #ab6f09 !important;
+}
+
+/* 2-6. Wszystkie nazwy faz - ciemny żółty */
+.step-content[data-step="1"] .font-mono,
+.step-content[data-step="2"] .font-mono,
+.step-content[data-step="3"] .font-mono,
+.step-content[data-step="4"] .font-mono,
+.step-content[data-step="5"] .font-mono {
+    color: #ab6f09 !important;
+}
+
+/* Alternatywnie dla h3 w fazach */
+.process-step[data-step="1"] h3,
+.process-step[data-step="2"] h3,
+.process-step[data-step="3"] h3,
+.process-step[data-step="4"] h3,
+.process-step[data-step="5"] h3 {
+    color: #ab6f09 !important;
+}
+
+/* 7-9. Wartości (values) - jasny niebieski */
+#values .font-serif,
+#values h3,
+#values .value-card h3 {
+    color: #3b9ff3 !important;
+}
+
+/* 10-12. Pakiety (pricing) - pierwszy niebieski, reszta pomarańczowa */
+#pricing .grid > div:nth-child(1) p.font-mono,
+#pricing .pricing-card:nth-child(1) h3,
+#pricing .pricing-card:nth-child(1) p {
+    color: #3b9ff3 !important; /* STARTOWY / Pierwszy krok */
+}
+
+#pricing .grid > div:nth-child(2) p.font-mono,
+#pricing .pricing-card:nth-child(2) h3,
+#pricing .pricing-card:nth-child(2) p,
+#pricing .grid > div:nth-child(3) p.font-mono,
+#pricing .pricing-card:nth-child(3) h3,
+#pricing .pricing-card:nth-child(3) p {
+    color: #ff9500 !important; /* ROZSZERZONY i PREMIUM */
+}
+
+/* 13-14. Przycisk zamykania modala */
+.close-modal,
+button[aria-label="Close"],
+button[aria-label*="Close"],
+.modal-close,
+#closeMobileMenu,
+#closeVideoModal,
+#closeContactModal,
+#close-video-btn {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #3b9ff3 !important;
+    border-color: rgba(59, 159, 243, 0.3) !important;
+}
+
+.close-modal:hover,
+button[aria-label="Close"]:hover,
+#closeMobileMenu:hover,
+#closeVideoModal:hover,
+#closeContactModal:hover,
+#close-video-btn:hover {
+    background: rgba(59, 159, 243, 0.1) !important;
+    color: #5db2ff !important;
+    border-color: rgba(59, 159, 243, 0.5) !important;
+}
