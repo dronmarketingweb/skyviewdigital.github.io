@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Color Helper - SkyView Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .color-box {
+            width: 100%;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+        .code-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold mb-2">🎨 Color Helper</h1>
+            <p class="text-gray-600">Narzędzie do łatwej zmiany kolorów na stronie</p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Left Column: Palette -->
+            <div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4">Paleta Kolorów Projektu</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Primary -->
+                        <div onclick="selectColor('#8b5a8c', 'Primary (Fiolet)')">
+                            <div class="color-box" style="background: #8b5a8c; color: white;">
+                                #8B5A8C
+                            </div>
+                            <p class="text-sm mt-1 text-gray-600">Primary (Fiolet)</p>
+                        </div>
+
+                        <!-- Charcoal -->
+                        <div onclick="selectColor('#2a2e35', 'Charcoal (Ciemny)')">
+                            <div class="color-box" style="background: #2a2e35; color: white;">
+                                #2A2E35
+                            </div>
+                            <p class="text-sm mt-1 text-gray-600">Charcoal (Ciemny)</p>
+                        </div>
+
+                        <!-- Terra -->
+                        <div onclick="selectColor('#d4a574', 'Terra (Karmel)')">
+                            <div class="color-box" style="background: #d4a574; color: white;">
+                                #D4A574
+                            </div>
+                            <p class="text-sm mt-1 text-gray-600">Terra (Karmel)</p>
+                        </div>
+
+                        <!-- Warm Gray -->
+                        <div onclick="selectColor('#6b7280', 'Warm Gray (Szary)')">
+                            <div class="color-box" style="background: #6b7280; color: white;">
+                                #6B7280
+                            </div>
+                            <p class="text-sm mt-1 text-gray-600">Warm Gray (Szary)</p>
+                        </div>
+
+                        <!-- White -->
+                        <div onclick="selectColor('#ffffff', 'Biały')">
+                            <div class="color-box" style="background: #ffffff; color: black; border: 2px solid #e5e5e5;">
+                                #FFFFFF
+                            </div>
+                            <p class="text-sm mt-1 text-gray-600">Biały</p>
+                        </div>
+
+                        <!-- Black -->
+                        <div onclick="selectColor('#000000', 'Czarny')">
+                            <div class="color-box" style="background: #000000; color: white;">
+                                #000000
+                            </div>
+                            <p class="text-sm mt-1 text-gray-600">Czarny</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Lub wybierz własny kolor:</label>
+                        <div class="flex gap-2">
+                            <input type="color" id="customColor" class="w-20 h-12 rounded cursor-pointer">
+                            <input type="text" id="customColorHex" placeholder="#ff0000" 
+                                   class="flex-1 px-4 py-2 border rounded"
+                                   onchange="updateColorPicker(this.value)">
+                            <button onclick="selectCustomColor()" 
+                                    class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                Użyj
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mt-6">
+                    <h3 class="text-xl font-bold mb-4">Wybrany Kolor</h3>
+                    <div id="selectedColorBox" class="color-box mb-4" 
+                         style="background: #8b5a8c; color: white;">
+                        #8B5A8C
+                    </div>
+                    <p id="selectedColorName" class="text-center text-gray-600">Primary (Fiolet)</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Code Generator -->
+            <div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4">Generator Kodu</h2>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2">Wybierz element do zmiany:</label>
+                        <select id="elementType" class="w-full px-4 py-2 border rounded" onchange="generateCode()">
+                            <option value="film-title">Film - "Pierwsza historia" (tytuł)</option>
+                            <option value="film-desc">Film - "Pierwsza historia" (opis)</option>
+                            <option value="faq-cta-title">FAQ - "Masz inne pytanie?" (tytuł)</option>
+                            <option value="faq-cta-desc">FAQ - "Masz inne pytanie?" (opis)</option>
+                            <option value="button-prev">Przycisk "Poprzedni"</option>
+                            <option value="button-next">Przycisk "Następny"</option>
+                            <option value="section-heading">Nagłówek sekcji (H2)</option>
+                            <option value="paragraph">Paragraf (P)</option>
+                            <option value="custom">Własny selektor CSS</option>
+                        </select>
+                    </div>
+
+                    <div id="customSelectorDiv" class="mb-4 hidden">
+                        <label class="block text-sm font-medium mb-2">Wpisz selektor CSS:</label>
+                        <input type="text" id="customSelector" placeholder=".moja-klasa" 
+                               class="w-full px-4 py-2 border rounded"
+                               onchange="generateCode()">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2">Metoda:</label>
+                        <select id="method" class="w-full px-4 py-2 border rounded" onchange="generateCode()">
+                            <option value="css">CSS (style.css)</option>
+                            <option value="inline">HTML Inline Style</option>
+                            <option value="tailwind">Tailwind Class</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="addShadow" onchange="generateCode()">
+                            <span class="ml-2">Dodaj text-shadow (dla jasnych tekstów)</span>
+                        </label>
+                    </div>
+
+                    <button onclick="generateCode()" 
+                            class="w-full px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 font-bold">
+                        🔄 Generuj Kod
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold">Wygenerowany Kod</h3>
+                        <button onclick="copyCode()" 
+                                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm">
+                            📋 Kopiuj
+                        </button>
+                    </div>
+                    <div id="codeOutput" class="code-output">
+/* Wybierz element i wciśnij "Generuj Kod" */
+                    </div>
+                    <div id="instructions" class="mt-4 p-4 bg-blue-50 rounded text-sm">
+                        <p class="font-bold mb-2">📝 Instrukcja:</p>
+                        <ol class="list-decimal list-inside space-y-1">
+                            <li>Wybierz element z listy</li>
+                            <li>Wybierz metodę (CSS/HTML/Tailwind)</li>
+                            <li>Kliknij "Generuj Kod"</li>
+                            <li>Skopiuj kod</li>
+                            <li>Wklej do odpowiedniego pliku</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedColor = '#8b5a8c';
+        let selectedColorName = 'Primary (Fiolet)';
+
+        function selectColor(color, name) {
+            selectedColor = color;
+            selectedColorName = name;
+            document.getElementById('selectedColorBox').style.background = color;
+            document.getElementById('selectedColorBox').textContent = color.toUpperCase();
+            document.getElementById('selectedColorBox').style.color = isLightColor(color) ? '#000' : '#fff';
+            document.getElementById('selectedColorName').textContent = name;
+            document.getElementById('customColorHex').value = color;
+            document.getElementById('customColor').value = color;
+            generateCode();
+        }
+
+        function selectCustomColor() {
+            const hex = document.getElementById('customColorHex').value || document.getElementById('customColor').value;
+            selectColor(hex, 'Własny kolor');
+        }
+
+        function updateColorPicker(hex) {
+            if (hex.startsWith('#')) {
+                document.getElementById('customColor').value = hex;
+            }
+        }
+
+        document.getElementById('customColor').addEventListener('change', function() {
+            document.getElementById('customColorHex').value = this.value;
+        });
+
+        document.getElementById('elementType').addEventListener('change', function() {
+            const isCustom = this.value === 'custom';
+            document.getElementById('customSelectorDiv').classList.toggle('hidden', !isCustom);
+        });
+
+        function isLightColor(color) {
+            const hex = color.replace('#', '');
+            const r = parseInt(hex.substr(0, 2), 16);
+            const g = parseInt(hex.substr(2, 2), 16);
+            const b = parseInt(hex.substr(4, 2), 16);
+            const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+            return brightness > 155;
+        }
+
+        function generateCode() {
+            const element = document.getElementById('elementType').value;
+            const method = document.getElementById('method').value;
+            const addShadow = document.getElementById('addShadow').checked;
+            const color = selectedColor;
+
+            let code = '';
+            let selector = '';
+            let file = '';
+
+            // Determine selector
+            const selectors = {
+                'film-title': '#pierwsza-historia-overlay h3',
+                'film-desc': '#pierwsza-historia-overlay p',
+                'faq-cta-title': '.bg-gradient-to-r.from-charcoal h3',
+                'faq-cta-desc': '.bg-gradient-to-r.from-charcoal p',
+                'button-prev': '#prev-step',
+                'button-next': '#next-step',
+                'section-heading': 'section h2',
+                'paragraph': 'section p',
+                'custom': document.getElementById('customSelector').value || '.custom-class'
+            };
+
+            selector = selectors[element];
+            const shadow = addShadow ? '\n    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);' : '';
+
+            if (method === 'css') {
+                file = '/home/user/webapp/css/style.css';
+                code = `/* Dodaj na końcu pliku: ${file} */\n\n${selector} {\n    color: ${color} !important;${shadow}\n}`;
+            } else if (method === 'inline') {
+                file = '/home/user/webapp/index.html';
+                const style = `color: ${color};${shadow ? ' text-shadow: 2px 2px 8px rgba(0,0,0,0.8);' : ''}`;
+                code = `<!-- Znajdź element w: ${file} i dodaj: -->\n\nstyle="${style}"`;
+            } else if (method === 'tailwind') {
+                const tailwindClass = color === '#ffffff' ? 'text-white' : 
+                                     color === '#2a2e35' ? 'text-charcoal' :
+                                     color === '#8b5a8c' ? 'text-primary' :
+                                     color === '#d4a574' ? 'text-terra' :
+                                     color === '#6b7280' ? 'text-warm-gray' : 'text-gray-500';
+                code = `<!-- Znajdź element w: /home/user/webapp/index.html i dodaj klasę: -->\n\nclass="${tailwindClass}"`;
+            }
+
+            document.getElementById('codeOutput').textContent = code;
+        }
+
+        function copyCode() {
+            const code = document.getElementById('codeOutput').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ Kod skopiowany do schowka!');
+            });
+        }
+
+        // Initial code generation
+        generateCode();
+    </script>
+</body>
+</html>

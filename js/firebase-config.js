@@ -1,11 +1,13 @@
 // Firebase Configuration for SkyView Digital Booking System
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
 import { getDatabase, ref, set, get, push, onValue, off, remove } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
 
 console.log('🔥 Loading Firebase configuration...');
 
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyD4rgeGO5BkVDRvtBrGNI0njgkB8yuI37k",
     authDomain: "skyview-booking.firebaseapp.com",
@@ -19,7 +21,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const database = getDatabase(app);
+
+console.log('🔥 Firebase initialized with Analytics');
 
 // Firebase Database Helper Class
 class FirebaseBookingManager {
@@ -250,6 +255,6 @@ class FirebaseBookingManager {
 window.firebaseBookingManager = new FirebaseBookingManager();
 
 // Export for module use
-export { FirebaseBookingManager, database };
+export { FirebaseBookingManager, database, analytics };
 
-console.log('🔥 Firebase configuration loaded and ready!');
+console.log('🔥 Firebase configuration loaded and ready with Analytics!');

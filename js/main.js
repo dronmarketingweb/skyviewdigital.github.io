@@ -105,8 +105,13 @@ function initPortfolioModal() {
             
             // Show and expand video to 16:9 aspect ratio
             videoContainer.classList.remove('hidden');
+            videoContainer.style.display = 'block';
             video.style.height = 'auto';
+            video.style.opacity = '1';
             video.style.aspectRatio = '16/9';
+            
+            // Add controls back when playing
+            video.setAttribute('controls', 'controls');
             
             // Play the video
             video.play();
@@ -127,11 +132,18 @@ function initPortfolioModal() {
     function resetToImage() {
         isVideoPlaying = false;
         
-        // Hide video
-        videoContainer.classList.add('hidden');
-        video.style.height = '0';
+        // Pause and reset video
         video.pause();
         video.currentTime = 0;
+        
+        // Force remove controls to prevent them from showing
+        video.removeAttribute('controls');
+        
+        // Hide video container completely
+        videoContainer.classList.add('hidden');
+        videoContainer.style.display = 'none';
+        video.style.height = '0';
+        video.style.opacity = '0';
         
         // Show image and overlay again
         img.style.display = 'block';
@@ -139,6 +151,9 @@ function initPortfolioModal() {
         
         // Remove the ended event listener
         video.removeEventListener('ended', resetToImage);
+        
+        // Force a reflow to ensure everything updates
+        void videoContainer.offsetHeight;
     }
 
     // ESC key to close video

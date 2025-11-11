@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Test - SkyView Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">🔥 Firebase Connection Test</h1>
+        
+        <div class="space-y-4">
+            <div id="status" class="p-4 bg-gray-100 rounded">
+                <p class="font-semibold">Status:</p>
+                <p id="statusText" class="text-gray-600">Inicjalizacja...</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="testRead()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition">
+                    📖 Test Odczytu
+                </button>
+                <button onclick="testWrite()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition">
+                    ✍️ Test Zapisu
+                </button>
+                <button onclick="testDelete()" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition">
+                    🗑️ Test Usuwania
+                </button>
+                <button onclick="testRealtime()" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg transition">
+                    🔄 Test Real-time
+                </button>
+            </div>
+            
+            <div id="results" class="mt-6 p-4 bg-gray-50 rounded-lg">
+                <p class="font-semibold mb-2">Wyniki testów:</p>
+                <div id="resultsContent" class="space-y-2 text-sm font-mono">
+                    <p class="text-gray-500">Uruchom testy powyżej...</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p class="font-semibold text-blue-800 mb-2">💡 Instrukcje:</p>
+                <ol class="list-decimal list-inside space-y-1 text-sm text-blue-700">
+                    <li>Sprawdź czy Firebase się połączył (status powyżej)</li>
+                    <li>Przetestuj wszystkie operacje (odczyt, zapis, usuwanie, real-time)</li>
+                    <li>Jeśli widzisz błędy "Permission denied", ustaw reguły Firebase:
+                        <pre class="mt-2 p-2 bg-white rounded text-xs overflow-x-auto">
+{
+  "rules": {
+    "bookedSlots": {
+      ".read": true,
+      ".write": true
+    },
+    "bookings": {
+      ".read": true,
+      "$bookingId": {
+        ".write": true
+      }
+    }
+  }
+}</pre>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { FirebaseBookingManager } from './js/firebase-config.js';
+        
+        // Wait for Firebase to initialize
+        window.addEventListener('load', async () => {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            if (window.firebaseBookingManager) {
+                updateStatus('✅ Firebase połączony!', 'green');
+                window.fbManager = window.firebaseBookingManager;
+            } else {
+                updateStatus('❌ Firebase nie został zainicjalizowany', 'red');
+            }
+        });
+        
+        function updateStatus(text, color) {
+            const statusText = document.getElementById('statusText');
+            statusText.textContent = text;
+            statusText.className = `text-${color}-600 font-semibold`;
+        }
+        
+        function addResult(text, type = 'info') {
+            const resultsContent = document.getElementById('resultsContent');
+            const p = document.createElement('p');
+            p.textContent = `[${new Date().toLocaleTimeString()}] ${text}`;
+            
+            if (type === 'success') p.className = 'text-green-600';
+            else if (type === 'error') p.className = 'text-red-600';
+            else if (type === 'warning') p.className = 'text-yellow-600';
+            else p.className = 'text-gray-700';
+            
+            resultsContent.appendChild(p);
+            resultsContent.scrollTop = resultsContent.scrollHeight;
+        }
+        
+        window.testRead = async function() {
+            addResult('📖 Rozpoczynam test odczytu...', 'info');
+            try {
+                const slots = await window.fbManager.getBookedSlots();
+                addResult(`✅ Odczyt udany! Znaleziono ${slots.length} slotów`, 'success');
+                console.log('Slots:', slots);
+            } catch (error) {
+                addResult(`❌ Błąd odczytu: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+        
+        window.testWrite = async function() {
+            addResult('✍️ Rozpoczynam test zapisu...', 'info');
+            const testKey = `test_${Date.now()}`;
+            try {
+                const result = await window.fbManager.bookTimeSlot(testKey);
+                if (result) {
+                    addResult(`✅ Zapis udany! Slot: ${testKey}`, 'success');
+                } else {
+                    addResult(`⚠️ Zapis zakończony, ale zwrócił false`, 'warning');
+                }
+            } catch (error) {
+                addResult(`❌ Błąd zapisu: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+        
+        window.testDelete = async function() {
+            addResult('🗑️ Rozpoczynam test usuwania...', 'info');
+            try {
+                // First get all slots to find a test slot
+                const slots = await window.fbManager.getBookedSlots();
+                const testSlot = slots.find(s => s.startsWith('test_'));
+                
+                if (testSlot) {
+                    const result = await window.fbManager.cancelTimeSlot(testSlot);
+                    if (result) {
+                        addResult(`✅ Usunięcie udane! Slot: ${testSlot}`, 'success');
+                    } else {
+                        addResult(`⚠️ Usunięcie zakończone, ale zwrócił false`, 'warning');
+                    }
+                } else {
+                    addResult(`⚠️ Brak testowych slotów do usunięcia. Najpierw wykonaj Test Zapisu.`, 'warning');
+                }
+            } catch (error) {
+                addResult(`❌ Błąd usuwania: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+        
+        window.testRealtime = function() {
+            addResult('🔄 Rozpoczynam test real-time...', 'info');
+            try {
+                const listenerId = window.fbManager.onBookedSlotsChange((slots) => {
+                    addResult(`🔄 Real-time update: ${slots.length} slotów`, 'info');
+                });
+                addResult(`✅ Nasłuchiwanie aktywne (ID: ${listenerId})`, 'success');
+                addResult(`💡 Otwórz drugą kartę i dodaj/usuń slot aby zobaczyć real-time update`, 'info');
+            } catch (error) {
+                addResult(`❌ Błąd real-time: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+    </script>
+</body>
+</html>

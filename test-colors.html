@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Kolorów - SkyView Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8b5a8c',
+                        accent: '#8b5a8c',
+                        charcoal: '#2a2e35',
+                        'warm-gray': '#6b7280',
+                        sand: '#d4c5b9',
+                        cream: '#faf8f5',
+                        ivory: '#ffffff',
+                        sage: '#8b5a8c',
+                        'sage-dark': '#6d4569',
+                        terra: '#d4a574'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="p-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <h1 class="text-4xl font-bold mb-8">🎨 Test Kolorów - Wszystkie Problematyczne Elementy</h1>
+        
+        <!-- Test 1: Film - Pierwsza Historia -->
+        <div class="bg-gray-100 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Test 1: Film - "Pierwsza Historia"</h2>
+            <div class="max-w-2xl">
+                <div class="relative bg-gray-400 rounded-lg overflow-hidden" style="height: 300px;">
+                    <div id="pierwsza-historia-overlay" class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
+                        <div class="absolute bottom-8 left-8 right-8">
+                            <h3 class="font-serif text-3xl text-white mb-2" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Pierwsza historia</h3>
+                            <p class="text-white mb-4 font-space" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Każdy projekt zaczyna się od słuchania. Dopiero potem latamy.</p>
+                            <button class="inline-flex items-center px-6 py-3 bg-white/30 backdrop-blur-sm text-white rounded-lg">
+                                Zobacz Jak Tworzymy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-2 text-sm">
+                    <strong>Oczekiwany kolor:</strong> #FFFFFF (biały)<br>
+                    <strong>Sprawdź w DevTools:</strong> h3 i p powinny mieć color: #ffffff !important
+                </p>
+            </div>
+        </div>
+
+        <!-- Test 2: FAQ CTA -->
+        <div class="bg-gray-100 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Test 2: FAQ CTA - "Masz inne pytanie?"</h2>
+            <div class="max-w-2xl">
+                <div class="bg-gradient-to-r from-charcoal to-warm-gray rounded-2xl p-8 text-white shadow-xl">
+                    <h3 class="font-serif text-2xl mb-4 text-white">Masz inne pytanie?</h3>
+                    <p class="mb-6 font-space text-white" style="opacity: 0.95;">
+                        Nie wszystkie odpowiedzi mieszczą się w FAQ. Zadzwoń, napisz, umów się na rozmowę.
+                    </p>
+                    <button class="bg-white text-primary px-8 py-4 rounded-xl">
+                        Zapytaj Bezpośrednio
+                    </button>
+                </div>
+                <p class="mt-2 text-sm">
+                    <strong>Oczekiwany kolor:</strong> #FFFFFF (biały)<br>
+                    <strong>Sprawdź w DevTools:</strong> h3 i p powinny mieć color: #ffffff !important
+                </p>
+            </div>
+        </div>
+
+        <!-- Test 3: Przycisk Poprzedni -->
+        <div class="bg-gray-100 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Test 3: Przycisk "Poprzedni"</h2>
+            <div class="max-w-2xl space-y-4">
+                <button class="flex items-center px-6 py-3 bg-white text-charcoal rounded-lg shadow-lg">
+                    <i class="fas fa-arrow-left mr-2 text-charcoal"></i>
+                    <span class="font-space text-charcoal">Poprzedni</span>
+                </button>
+                <p class="text-sm">
+                    <strong>Oczekiwany kolor:</strong> #2a2e35 (charcoal/ciemny)<br>
+                    <strong>Sprawdź w DevTools:</strong> span i ikona powinny mieć color: var(--charcoal)
+                </p>
+            </div>
+        </div>
+
+        <!-- Test 4: Footer -->
+        <div class="bg-gray-100 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Test 4: Footer</h2>
+            <footer class="bg-charcoal text-white p-8 rounded-lg">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-serif text-lg mb-4">SkyView Digital</h4>
+                        <p class="text-gray-300 mb-4">Twoja firma z lotu ptaka</p>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-4">Kontakt</h4>
+                        <p>+48 667 849 367</p>
+                    </div>
+                </div>
+            </footer>
+            <p class="mt-2 text-sm">
+                <strong>Oczekiwany kolor h4:</strong> #f5f5f5 (jasny szary)<br>
+                <strong>Oczekiwany kolor p:</strong> #d1d5db (szary)<br>
+            </p>
+        </div>
+
+        <!-- Legenda -->
+        <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+            <h2 class="text-2xl font-bold mb-4">📋 Instrukcje testowania</h2>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Otwórz DevTools (F12)</li>
+                <li>Kliknij na każdy tekst/element</li>
+                <li>Sprawdź w zakładce "Computed" → "color"</li>
+                <li>Porównaj z oczekiwanym kolorem</li>
+            </ol>
+            <div class="mt-4 p-4 bg-white rounded">
+                <p class="font-bold mb-2">Kolory w projekcie:</p>
+                <ul class="space-y-1 font-mono text-sm">
+                    <li><span class="inline-block w-4 h-4 bg-white border"></span> #FFFFFF - Biały (text-white)</li>
+                    <li><span class="inline-block w-4 h-4" style="background: #2a2e35;"></span> #2A2E35 - Charcoal (główny tekst)</li>
+                    <li><span class="inline-block w-4 h-4" style="background: #6b7280;"></span> #6B7280 - Warm Gray (drugoplanowy)</li>
+                    <li><span class="inline-block w-4 h-4" style="background: #8b5a8c;"></span> #8B5A8C - Primary (akcent)</li>
+                    <li><span class="inline-block w-4 h-4" style="background: #d4a574;"></span> #D4A574 - Terra (akcent dodatkowy)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</body>
+</html>

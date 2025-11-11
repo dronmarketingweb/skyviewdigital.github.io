@@ -1,81 +1,48 @@
-/* Enhanced CSS for SkyView Digital - Storytelling Focused */
+/* ============================================
+   DEEP OCEAN PALETTE - SkyView Digital
+   Nowoczesny, energetyczny, tech-forward
+   ============================================ */
 
-/* Font Imports for Better Character */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
-/* Animation Keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+:root {
+    /* === DEEP OCEAN COLOR PALETTE === */
+    
+    /* Paleta główna - Morski Granat */
+    --charcoal: #e2e8f0;            /* Jasny tekst główny na ciemnym tle */
+    --warm-gray: #cbd5e1;           /* Szary tekst drugoplanowy */
+    --sand: #2d5278;                /* Morski akcent - elementy subtelne */
+    --cream: #1e293b;               /* Ciemne tło - karty */
+    --ivory: #0f172a;               /* Najciemniejsze tło główne */
+    
+    /* Akcent - Cyan + Amber */
+    --sage: #06b6d4;                /* Cyan - główny kolor akcent */
+    --sage-dark: #0891b2;           /* Ciemniejszy cyan - hover */
+    --sage-light: #06b6d41a;        /* Przezroczysty cyan - tła */
+    
+    /* Dodatkowy akcent dla kontrastu */
+    --terra: #f59e0b;               /* Amber - elementy wyróżnione */
+    --terra-light: #f59e0b1a;       /* Przezroczysty amber */
+    
+    /* Cienie - Ocean theme */
+    --shadow-sm: 0 1px 3px rgba(6, 182, 212, 0.12);
+    --shadow-md: 0 4px 12px rgba(6, 182, 212, 0.18);
+    --shadow-lg: 0 10px 25px rgba(6, 182, 212, 0.25);
+    --shadow-accent: 0 4px 14px rgba(6, 182, 212, 0.4);
+    
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Fonts */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+/* ============================================
+   BASE STYLES - DEEP OCEAN
+   ============================================ */
 
-@keyframes slideInFromLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes gentlePulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
-    }
-    50% {
-        transform: scale(1.02);
-        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
-    }
-}
-
-@keyframes floatUp {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
-    }
-    100% {
-        background-position: 1000px 0;
-    }
-}
-
-/* Base Styles with Character */
 * {
     margin: 0;
     padding: 0;
@@ -88,81 +55,93 @@ html {
 }
 
 body {
+    font-family: var(--font-body);
+    /* Gradient morski - od najciemniejszego do średniego */
+    background: linear-gradient(to bottom,
+        #0f172a 0%,
+        #1e293b 15%,
+        #1e3a52 30%,
+        #1f4662 45%,
+        #225370 60%,
+        #265f7d 75%,
+        #2d5278 90%,
+        #2d5278 100%
+    ) !important;
+    background-attachment: fixed !important;
+    color: var(--charcoal);
+    min-height: 100vh;
     line-height: 1.7;
     overflow-x: hidden;
-    font-family: 'Space Grotesk', sans-serif;
-    color: #1e293b;
-    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
 }
 
-/* Custom Properties for Consistent Theming */
-:root {
-    --primary-color: #2563eb;
-    --accent-color: #f59e0b;
-    --text-dark: #1e293b;
-    --text-light: #64748b;
-    --background-light: #f8fafc;
-    --border-light: #e2e8f0;
-    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-strong: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-    --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-    --border-radius: 12px;
-    --border-radius-large: 24px;
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Space Grotesk', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+/* Subtelny efekt ocean waves */
+body::before {
+    content: '';
+    position: fixed;
+    top: 20%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%) !important;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    animation: wave-flow 8s ease-in-out infinite;
 }
 
-/* Enhanced Typography */
-.font-serif {
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 20%;
+    left: 10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%) !important;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    animation: wave-flow 10s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    color: var(--charcoal);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.font-space {
-    font-family: var(--font-body);
+p, li {
+    color: var(--warm-gray);
 }
 
-.font-mono {
-    font-family: var(--font-mono);
-}
+.font-serif { font-family: var(--font-display); }
+.font-space { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
 
-/* Animation Classes */
-.animate-fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
-}
-
-.animation-delay-200 {
-    animation-delay: 0.2s;
-    opacity: 0;
-}
-
-.animation-delay-400 {
-    animation-delay: 0.4s;
-    opacity: 0;
-}
-
-.animation-delay-600 {
-    animation-delay: 0.6s;
-    opacity: 0;
-}
-
-.pulse-animation {
-    animation: gentlePulse 3s infinite;
-}
-
-.float-animation {
-    animation: floatUp 3s ease-in-out infinite;
-}
-
-/* Hero Section Enhanced */
+/* ============================================
+   HERO SECTION - Ocean Theme
+   ============================================ */
 #hero {
     position: relative;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: transparent;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(245, 158, 11, 0.12) 0%, transparent 50%) !important;
+    z-index: 1;
 }
 
 #hero video {
@@ -173,23 +152,18 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    filter: brightness(0.7) contrast(1.1);
+    opacity: 0.2 !important;
+    filter: grayscale(20%) brightness(0.9) !important;
 }
 
-#hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-    z-index: 1;
-}
-
-/* Navigation Enhanced */
+/* ============================================
+   NAVIGATION - Ocean Theme
+   ============================================ */
 nav {
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: var(--transition-smooth);
+    backdrop-filter: blur(12px) saturate(120%) !important;
+    background: rgba(15, 23, 42, 0.92) !important;
+    border-bottom: 1px solid rgba(6, 182, 212, 0.25) !important;
+    transition: var(--transition);
     position: fixed;
     top: 0;
     left: 0;
@@ -198,125 +172,204 @@ nav {
 }
 
 nav.scrolled {
-    background: rgba(0, 0, 0, 0.95);
-    border-bottom-color: rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2) !important;
 }
 
-/* Interactive Timeline Styles */
-.step-indicator {
+nav a {
+    color: var(--charcoal) !important;
+    transition: var(--transition);
+    position: relative;
+    font-weight: 500;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--sage) !important;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--sage) !important;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Logo na nav - jasny tekst */
+nav .text-charcoal,
+nav a {
+    color: var(--charcoal) !important;
+}
+
+/* ============================================
+   SECTIONS - Ocean Background
+   ============================================ */
+section {
+    background: transparent !important;
     position: relative;
     z-index: 10;
-    transition: var(--transition-smooth);
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: rgba(6, 182, 212, 0.15) !important;
+    opacity: 0.3;
+}
+
+/* Wszystkie sekcje - jasny tekst na ciemnym */
+#demo,
+#process,
+#values,
+#faq,
+#portfolio,
+#contact,
+#booking {
+    color: var(--charcoal) !important;
+}
+
+#demo h1, #demo h2, #demo h3, #demo h4,
+#process h1, #process h2, #process h3, #process h4,
+#values h1, #values h2, #values h3, #values h4,
+#faq h1, #faq h2, #faq h3, #faq h4,
+#portfolio h1, #portfolio h2, #portfolio h3, #portfolio h4,
+#contact h1, #contact h2, #contact h3, #contact h4,
+#booking h1, #booking h2, #booking h3, #booking h4 {
+    color: var(--charcoal) !important;
+}
+
+#demo p, #demo li,
+#process p, #process li,
+#values p, #values li,
+#faq p, #faq li,
+#portfolio p, #portfolio li,
+#contact p, #contact li,
+#booking p, #booking li {
+    color: var(--warm-gray) !important;
+}
+
+/* ============================================
+   KARTY I ELEMENTY - Ocean Theme
+   ============================================ */
+.bg-white,
+.bg-gray-50,
+.card,
+.service-card,
+.value-card,
+.faq-item {
+    background: rgba(30, 41, 59, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(6, 182, 212, 0.2) !important;
+    transition: var(--transition);
+}
+
+.bg-white:hover,
+.bg-gray-50:hover,
+.card:hover,
+.service-card:hover,
+.value-card:hover,
+.group:hover .bg-white,
+.group:hover .bg-gray-50 {
+    border-color: var(--sage) !important;
+    box-shadow: var(--shadow-accent) !important;
+    transform: translateY(-4px);
+}
+
+/* Tekst w kartach - jasny */
+.bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4,
+.bg-gray-50 h1, .bg-gray-50 h2, .bg-gray-50 h3, .bg-gray-50 h4,
+.card h1, .card h2, .card h3, .card h4 {
+    color: var(--charcoal) !important;
+}
+
+.bg-white p, .bg-white li,
+.bg-gray-50 p, .bg-gray-50 li,
+.card p, .card li {
+    color: var(--warm-gray) !important;
+}
+
+/* ============================================
+   TEXT COLORS - OCEAN THEME
+   ============================================ */
+.text-gray-900,
+.text-gray-800,
+.text-gray-700,
+.text-gray-600 {
+    color: var(--charcoal) !important;
+}
+
+.text-gray-500,
+.text-gray-400 {
+    color: var(--warm-gray) !important;
+}
+
+.text-primary,
+.text-blue-600,
+.text-blue-700,
+.text-blue-800,
+.text-accent {
+    color: var(--sage) !important;
+}
+
+.text-orange-600,
+.text-orange-500 {
+    color: var(--terra) !important;
+}
+
+/* WYJĄTKI - Białe teksty - NAJWYŻSZY PRIORYTET */
+.text-white,
+.text-white *,
+.text-white h1,
+.text-white h2, 
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+.text-white p,
+.text-white span,
+.text-white button,
+.text-white a,
+.text-white li,
+.text-white div {
+    color: #ffffff !important;
+}
+
+/* Wymuś kolor charcoal dla elementów które tego wymagają */
+.text-charcoal,
+.text-charcoal * {
+    color: var(--charcoal) !important;
+}
+
+/* ============================================
+   BUTTONS - Ocean Theme
+   ============================================ */
+button,
+.btn-primary,
+button[type="submit"],
+.cta-button,
+.bg-primary,
+.bg-blue-600,
+.bg-blue-700,
+.bg-accent {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%) !important;
+    color: var(--ivory) !important;
+    box-shadow: var(--shadow-accent) !important;
+    border: none;
+    transition: var(--transition);
     cursor: pointer;
-}
-
-.step-indicator:hover {
-    transform: scale(1.2);
-}
-
-.step-indicator.active {
-    transform: scale(1.3);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
-}
-
-.step-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition-smooth);
-}
-
-.step-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    animation: fadeInUp 0.6s ease-out;
-}
-
-#progress-bar {
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Enhanced Cards and Components */
-.group:hover .group-hover\\:rotate-6 {
-    transform: rotate(6deg);
-}
-
-.group:hover .group-hover\\:scale-105 {
-    transform: scale(1.05);
-}
-
-.group:hover .group-hover\\:-translate-y-2 {
-    transform: translateY(-8px);
-}
-
-/* FAQ Enhanced Styles */
-.faq-item .faq-question {
-    transition: var(--transition-smooth);
-}
-
-.faq-item .faq-question:hover {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
-}
-
-.faq-answer {
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                padding 0.3s ease;
-}
-
-.faq-answer.max-h-96 {
-    max-height: 24rem;
-}
-
-.faq-answer.max-h-0 {
-    max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    overflow: hidden;
-}
-
-/* Calendar Enhanced Styles */
-.calendar-day {
-    transition: var(--transition-smooth);
-    position: relative;
-}
-
-.calendar-day:hover:not(:disabled) {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-soft);
-}
-
-.calendar-day.bg-primary {
-    animation: gentlePulse 2s infinite;
-}
-
-.time-slot {
-    transition: var(--transition-smooth);
-    position: relative;
-}
-
-.time-slot:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-soft);
-}
-
-.time-slot.selected {
-    animation: gentlePulse 2s infinite;
-}
-
-/* Form Enhancements */
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    transform: translateY(-1px);
-}
-
-button {
-    transition: var(--transition-smooth);
+    font-weight: 600;
     position: relative;
     overflow: hidden;
 }
@@ -324,533 +377,435 @@ button {
 button::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
 }
 
 button:hover::before {
-    left: 100%;
+    width: 300px;
+    height: 300px;
 }
 
-button:hover {
+button:hover,
+.btn-primary:hover,
+button[type="submit"]:hover,
+.cta-button:hover {
+    background: linear-gradient(135deg, var(--sage-dark) 0%, var(--terra) 100%) !important;
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5) !important;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-strong);
 }
 
 button:active {
     transform: translateY(0);
 }
 
-/* Portfolio Item Enhanced */
-.portfolio-item,
-.group .rounded-2xl {
-    transition: var(--transition-smooth);
-    position: relative;
+.btn-secondary {
+    background: transparent !important;
+    border: 2px solid var(--sage) !important;
+    color: var(--sage) !important;
 }
 
-.portfolio-item:hover,
-.group:hover .rounded-2xl {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-strong);
+.btn-secondary:hover {
+    background: var(--sage) !important;
+    color: var(--ivory) !important;
 }
 
-/* Gradient Backgrounds */
-.bg-gradient-to-br {
-    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+.bg-orange-600,
+.bg-orange-500 {
+    background: var(--terra) !important;
+    color: #ffffff !important;
 }
 
-/* Enhanced Scrollbar */
+/* ============================================
+   ICON CONTAINERS - Ocean Theme
+   ============================================ */
+.bg-primary.rounded-xl,
+.bg-primary.rounded-2xl,
+.bg-blue-500,
+.bg-blue-600,
+.bg-accent.rounded-xl,
+.bg-accent.rounded-2xl,
+.bg-green-600 {
+    background: var(--sage) !important;
+    color: #ffffff !important;
+    box-shadow: var(--shadow-md);
+}
+
+.bg-purple-600,
+.bg-indigo-600 {
+    background: var(--warm-gray) !important;
+    color: #ffffff !important;
+}
+
+/* ============================================
+   GRADIENT BACKGROUNDS - Ocean
+   ============================================ */
+.bg-gradient-to-br,
+.bg-gradient-to-r {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.bg-cream {
+    background: var(--cream) !important;
+}
+
+.bg-ivory {
+    background: var(--ivory) !important;
+}
+
+/* ============================================
+   FORMS - Ocean Theme
+   ============================================ */
+input,
+textarea,
+select {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    color: var(--charcoal) !important;
+    backdrop-filter: blur(5px);
+    transition: var(--transition);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--sage) !important;
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2) !important;
+    outline: none;
+    background: rgba(30, 41, 59, 0.7) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--warm-gray) !important;
+}
+
+label {
+    color: var(--charcoal) !important;
+}
+
+/* ============================================
+   CALENDAR - Ocean Theme
+   ============================================ */
+.calendar {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    backdrop-filter: blur(10px);
+}
+
+.calendar-header {
+    border-bottom: 1px solid rgba(6, 182, 212, 0.2) !important;
+}
+
+.calendar-month {
+    color: var(--sage) !important;
+}
+
+.calendar-day,
+.time-slot {
+    background: rgba(45, 82, 120, 0.4) !important;
+    color: var(--charcoal) !important;
+    border: 1px solid rgba(6, 182, 212, 0.2) !important;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.calendar-day:hover:not(:disabled),
+.time-slot:hover:not(:disabled) {
+    background: var(--sage) !important;
+    color: var(--ivory) !important;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+.calendar-day.selected,
+.calendar-day.bg-primary,
+.time-slot.selected {
+    background: linear-gradient(135deg, var(--sage), var(--terra)) !important;
+    color: var(--ivory) !important;
+    border-color: var(--terra) !important;
+    box-shadow: var(--shadow-accent);
+}
+
+.calendar-day.disabled {
+    opacity: 0.3 !important;
+}
+
+/* ============================================
+   TIMELINE - Ocean Theme
+   ============================================ */
+.step-indicator {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(6, 182, 212, 0.3);
+    color: var(--charcoal);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.step-indicator:hover {
+    background: var(--sage-light);
+    border-color: var(--sage);
+    transform: scale(1.1);
+}
+
+.step-indicator.active {
+    background: var(--sage) !important;
+    color: white;
+    border-color: var(--sage);
+    transform: scale(1.15);
+    box-shadow: var(--shadow-accent);
+}
+
+#progress-bar {
+    background: var(--sage) !important;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   FAQ - Ocean Theme
+   ============================================ */
+.faq-item .faq-question {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 2px solid rgba(6, 182, 212, 0.2) !important;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.faq-item .faq-question:hover {
+    border-color: var(--sage) !important;
+    box-shadow: var(--shadow-md);
+    transform: translateX(3px);
+}
+
+.faq-item .faq-question h3 {
+    color: var(--charcoal) !important;
+}
+
+.faq-item .faq-question .fas {
+    color: var(--sage) !important;
+}
+
+.faq-answer {
+    background: rgba(30, 41, 59, 0.4) !important;
+    border-left: 3px solid var(--sage);
+    backdrop-filter: blur(5px);
+}
+
+.faq-answer p {
+    color: var(--warm-gray) !important;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer.max-h-96 {
+    max-height: 24rem;
+}
+
+/* ============================================
+   FOOTER - Ocean Theme
+   ============================================ */
+footer {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border-top: 1px solid rgba(6, 182, 212, 0.2) !important;
+    color: var(--charcoal) !important;
+    backdrop-filter: blur(10px);
+}
+
+footer h4,
+footer h1,
+footer h2,
+footer h3,
+footer h5,
+footer h6 {
+    color: var(--sage) !important;
+}
+
+footer a {
+    color: var(--warm-gray) !important;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--sage) !important;
+}
+
+footer p,
+footer li,
+footer span {
+    color: var(--warm-gray) !important;
+}
+
+/* ============================================
+   SCROLLBAR - Ocean Theme
+   ============================================ */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: var(--ivory);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%);
-    border-radius: 4px;
+    background: var(--sage);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #1d4ed8 0%, var(--primary-color) 100%);
+    background: var(--sage-dark);
 }
 
-/* Loading States */
-.loading {
-    position: relative;
-    overflow: hidden;
+/* ============================================
+   MOBILE MENU - Ocean Theme
+   ============================================ */
+#mobileMenu {
+    backdrop-filter: blur(20px);
+    background: rgba(15, 23, 42, 0.98) !important;
 }
 
-.loading::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: shimmer 2s infinite;
+#mobileMenu a {
+    color: var(--charcoal) !important;
 }
 
-/* Mobile Optimizations */
+#mobileMenu a:hover {
+    color: var(--sage) !important;
+}
+
+/* ============================================
+   ANIMATIONS - Ocean Wave
+   ============================================ */
+@keyframes wave-flow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 8px rgba(6, 182, 212, 0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-up { 
+    animation: fadeInUp 1s ease-out forwards; 
+}
+
+.animation-delay-200 { 
+    animation-delay: 0.2s; 
+    opacity: 0; 
+}
+
+.animation-delay-400 { 
+    animation-delay: 0.4s; 
+    opacity: 0; 
+}
+
+.animation-delay-600 { 
+    animation-delay: 0.6s; 
+    opacity: 0; 
+}
+
+.pulse-animation { 
+    animation: gentlePulse 3s infinite; 
+}
+
+.step-content {
+    display: none;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.step-content.active {
+    display: block;
+    opacity: 1;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.text-charcoal { color: var(--charcoal) !important; }
+.text-sage { color: var(--sage) !important; }
+.text-terra { color: var(--terra) !important; }
+.bg-cream { background: var(--cream) !important; }
+.bg-ivory { background: var(--ivory) !important; }
+
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow-md { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
-    :root {
-        font-size: 14px;
-    }
-
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    /* Hero adjustments */
-    #hero h1 {
-        font-size: 2.5rem;
-        line-height: 1.1;
-    }
-
-    #hero .text-2xl {
-        font-size: 1.25rem;
-    }
-
-    /* Timeline mobile adjustments */
-    .step-content {
-        padding: 1rem;
-    }
-
-    /* Card adjustments */
-    .p-8 {
-        padding: 1.5rem;
-    }
-
-    .p-6 {
-        padding: 1rem;
-    }
-
-    /* Button adjustments */
-    button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
+    html { font-size: 14px; }
+    .p-8 { padding: 1.5rem; }
+    .p-6 { padding: 1rem; }
+    
+    body::before,
+    body::after {
+        width: 200px;
+        height: 200px;
     }
 }
 
 @media (max-width: 640px) {
-    /* Further mobile optimizations */
-    #hero h1 {
-        font-size: 3rem; /* Zwiększone z 2rem */
-        margin-bottom: 1rem;
-    }
-    
-    #hero .text-2xl,
-    #hero .text-3xl {
-        font-size: 1.5rem; /* Zwiększony opis */
-    }
-    
-    #hero p {
-        font-size: 1.125rem; /* Zwiększony tekst opisu */
-    }
-
-    .text-5xl,
-    .text-6xl {
-        font-size: 2rem;
-    }
-
-    .text-4xl {
-        font-size: 1.75rem;
-    }
-
-    .text-3xl {
-        font-size: 1.5rem;
-    }
-
-    .py-32 {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
-
-    .py-20 {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
-}
-
-/* High DPI Display Optimizations */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .portfolio-item img,
-    img {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-
-    .pulse-animation,
-    .float-animation {
-        animation: none;
-    }
-
-    .step-content.active {
-        animation: none;
-    }
-}
-
-/* Print Styles */
-@media print {
-    #hero video,
-    #mobileMenu,
-    #videoModal,
-    nav {
-        display: none !important;
-    }
-
-    body {
-        font-size: 12pt;
-        line-height: 1.5;
-        color: black;
-        background: white;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        page-break-after: avoid;
-        color: black;
-    }
-
-    .py-32, .py-20 {
-        padding: 1rem 0;
-    }
-}
-
-/* Focus Styles for Accessibility */
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-.step-indicator:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
-}
-
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
-    .text-gray-600 {
-        color: #000000;
-    }
-
-    .text-gray-400 {
-        color: #333333;
-    }
-
-    button {
-        border: 2px solid currentColor;
-    }
-}
-
-/* Logo Styles - Transparent Background */
-.logo-main, .logo-footer {
-    transition: var(--transition-smooth);
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-    object-fit: contain;
-    image-rendering: optimizeQuality;
-}
-
-/* Ensure logo images have transparent background */
-.logo-main img, .logo-footer img,
-img[src*="favicon"], img[src*="apple-touch-icon"] {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    outline: none !important;
-    object-fit: contain;
-    image-rendering: optimizeQuality;
-}
-
-/* Ensure favicon PNG files maintain transparency */
-img[src*="favicon-32x32.png"], img[src*="favicon-16x16.png"] {
-    background: transparent !important;
-    image-rendering: crisp-edges;
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text-dark: #f1f5f9;
-        --text-light: #cbd5e1;
-        --background-light: #0f172a;
-        --border-light: #334155;
-    }
-    
-    /* Ensure logo transparency in dark mode */
-    .logo-main, .logo-footer {
-        background: none !important;
-        backdrop-filter: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* Additional dark mode adjustments */
-    body {
-        background-color: #0f172a;
-        color: #f1f5f9;
-    }
-    
-    .bg-white {
-        background-color: #1e293b !important;
-    }
-    
-    .text-gray-900 {
-        color: #f1f5f9 !important;
-    }
-    
-    .text-gray-600 {
-        color: #cbd5e1 !important;
-    }
-    
-    .bg-background {
-        background-color: #0f172a !important;
-    }
-    
-    /* Ensure logo parent containers remain transparent */
-    nav .flex.items-center,
-    footer .flex.items-center {
-        background: transparent !important;
-        backdrop-filter: none !important;
-    }
-}
-
-/* Performance Optimizations */
-.group .rounded-2xl,
-.portfolio-item,
-.faq-item,
-.step-content,
-.calendar-day,
-.time-slot {
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-/* Enhanced Backdrop Filters */
-.backdrop-blur-sm {
-    backdrop-filter: blur(4px);
-}
-
-.backdrop-blur {
-    backdrop-filter: blur(8px);
-}
-
-.backdrop-blur-lg {
-    backdrop-filter: blur(16px);
-}
-
-/* Custom Utility Classes */
-.text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.transition-smooth {
-    transition: var(--transition-smooth);
-}
-
-/* Additional Logo Transparency Fixes */
-.logo-main, .logo-footer {
-    /* Ensure no parent element applies background */
-    isolation: isolate;
-}
-
-/* Force transparent background for logo containers */
-nav .text-white.font-space.font-bold.flex.items-center,
-footer .font-serif.flex.items-center {
-    background: transparent !important;
-    backdrop-filter: none !important;
-}
-
-/* High DPI Logo Rendering */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .logo-main, .logo-footer {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
-
-/* Specific styles for ICO and PNG favicon files */
-img[src$=".ico"] {
-    image-rendering: pixelated; /* Better for ICO files */
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-}
-
-img[src*="apple-touch-icon"] {
-    border-radius: 15%; /* Apple-style rounded corners */
-}
-
-/* Video Modal Enhancements */
-#videoModal {
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.9);
-}
-
-#modalVideo {
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-strong);
-    max-height: 80vh;
-    max-width: 90vw;
-}
-
-/* Intersection Observer Fade In */
-.fade-in-observer {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in-observer.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Special Effects */
-.shimmer-effect {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
-}
-
-/* Mobile Menu Enhanced */
-#mobileMenu {
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.95);
-}
-
-#mobileMenu a {
-    transition: var(--transition-smooth);
-}
-
-#mobileMenu a:hover {
-    transform: translateX(10px);
-    color: var(--accent-color);
-}
-
-/* 🎯 ULTIMATE EDITOR - 2.11.2025, 20:15:34 */
-
-.font-serif.text-2xl.mb-4 {
-    color: #374151 !important;
-}
-
-.text-gray-600.font-space.leading-relaxed {
-    color: #0a3161 !important;
-}
-
-.text-orange-600.font-semibold.mb-3.flex.items-center.gap-2 {
-    color: #0a3161 !important;
-}
-
-.text-gray-600.leading-relaxed {
-    color: #0a3161 !important;
-}
-
-.bg-blue-50.border-l-4.border-blue-600.p-6.rounded-r-xl {
-    background-color: #fef3c7 !important;
-    border-color: #f59e0b !important;
-}
-
-.text-orange-600.font-serif.text-xl.mb-3 {
-    color: #0a3161 !important;
-}
-
-.text-gray-700.leading-relaxed {
-    color: #0a3161 !important;
-}
-
-.text-orange-600.font-semibold.mb-2 {
-    color: #0a3161 !important;
-}
-
-.bg-gradient-to-br.from-orange-500.to-orange-600 {
-    background: linear-gradient(to bottom right, #f59e0b, #f59e0b) !important;
-}
-
-.text-gray-800.leading-relaxed {
-    color: #0a3161 !important;
-}
-
-.text-blue-600.font-bold.mb-6 {
-    color: #0a3161 !important;
-}
-
-.text-gray-700 {
-    color: #0a3161 !important;
-}
-
-.bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg.hover\:bg-orange-700 {
-    background-color: #f59e0b !important;
-}
-
-.bg-orange-600.text-white.px-8.py-4.rounded-xl.font-semibold.text-lg.hover\:bg-orange-700:hover {
-    background-color: #db7900 !important;
-}
-
-.text-blue-600.font-serif.text-2xl.mb-6 {
-    color: #0a3161 !important;
-}
-
-.text-gray-800.mb-8.leading-relaxed {
-    color: #0a3161 !important;
-}
-
-.bg-gradient-to-br.from-blue-600.to-blue-700 {
-    background: linear-gradient(to bottom right, #3b82f6, #3b82f6) !important;
-}
-
-.text-blue-600.font-serif.font-bold.text-5xl.mb-6 {
-    color: #0a3161 !important;
-}
-
-.text-gray-800.text-lg.leading-relaxed.max-w-3xl.mx-auto {
-    color: #0a3161 !important;
-}
-
-.text-orange-600.font-serif.text-4xl.font-bold.mb-6 {
-    color: #0a3161 !important;
-}
-
-.faq-question.w-full.p-8 {
-    background-color: #db7900 !important;
-    border-color: #fff7ed !important;
-}
-
-.text-gray-800.font-serif.text-xl.flex-1.text-left {
-    color: #f8f4ee !important;
-}
-
-.text-orange-600.text-2xl.transition-transform.duration-300 {
-    color: #f8f4ee !important;
-}
-
-.faq-answer.overflow-hidden.transition-all.duration-300.ease-in-out {
-    background-color: #fff7ed !important;
-}
-
-.text-gray-700.leading-relaxed.text-lg {
-    color: #0a3161 !important;
+    #hero h1 { font-size: 2.5rem; }
+    .py-32 { padding-top: 4rem; padding-bottom: 4rem; }
+    .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
 }
