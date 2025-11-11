@@ -1,29 +1,29 @@
 /* ============================================
-   SIMPLE NAVY - Prosty, Profesjonalny
-   Dla każdego, schludny, bez dziwactw
+   DARK ORANGE - Elegancki, Nowoczesny
+   Inspirowany screenshotem - ciemny + pomarańcz
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* === SIMPLE NAVY PALETTE === */
-    --charcoal: #e8eaf6;
-    --warm-gray: #c5cae9;
-    --sand: #5c6bc0;
-    --cream: #3949ab;
-    --ivory: #283593;
+    /* === DARK ORANGE PALETTE === */
+    --charcoal: #ffffff;            /* Biały tekst na ciemnym */
+    --warm-gray: #e0e0e0;           /* Jasny szary tekst */
+    --sand: #1a2332;                /* Ciemny granatowy akcent */
+    --cream: #0f1419;               /* Bardzo ciemne tło - karty */
+    --ivory: #0a0e13;               /* Najciemniejsze tło główne */
     
-    --sage: #5c6bc0;
-    --sage-dark: #3949ab;
-    --sage-light: #5c6bc01a;
+    --sage: #ff9500;                /* Pomarańczowy - główny akcent */
+    --sage-dark: #e07800;           /* Ciemniejszy pomarańczowy - hover */
+    --sage-light: #ff95001a;        /* Przezroczysty pomarańczowy - tła */
     
-    --terra: #7986cb;
-    --terra-light: #7986cb1a;
+    --terra: #ffb84d;               /* Jasny pomarańczowy - elementy wyróżnione */
+    --terra-light: #ffb84d1a;       /* Przezroczysty jasny pomarańczowy */
     
-    --shadow-sm: 0 1px 3px rgba(92, 107, 192, 0.08);
-    --shadow-md: 0 4px 12px rgba(92, 107, 192, 0.12);
-    --shadow-lg: 0 10px 25px rgba(92, 107, 192, 0.16);
-    --shadow-accent: 0 4px 14px rgba(92, 107, 192, 0.35);
+    --shadow-sm: 0 1px 3px rgba(255, 149, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(255, 149, 0, 0.15);
+    --shadow-lg: 0 10px 25px rgba(255, 149, 0, 0.2);
+    --shadow-accent: 0 4px 14px rgba(255, 149, 0, 0.4);
     
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
@@ -50,12 +50,12 @@ html {
 body {
     font-family: var(--font-body);
     background: linear-gradient(to bottom,
-        #283593 0%,
-        #303f9f 20%,
-        #3949ab 40%,
-        #4054b2 60%,
-        #4a5fb9 80%,
-        #5c6bc0 100%
+        #0a0e13 0%,
+        #0d1117 20%,
+        #0f1419 40%,
+        #12181f 60%,
+        #151d26 80%,
+        #1a2332 100%
     ) !important;
     background-attachment: fixed !important;
     color: var(--charcoal);
@@ -74,7 +74,7 @@ body::before {
     right: 10%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(92, 107, 192, 0.08) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(255, 149, 0, 0.06) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
@@ -87,7 +87,7 @@ body::after {
     left: 10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(121, 134, 203, 0.05) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(255, 184, 77, 0.04) 0%, transparent 70%) !important;
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
@@ -126,8 +126,8 @@ p, li {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(92, 107, 192, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(121, 134, 203, 0.08) 0%, transparent 50%) !important;
+        radial-gradient(circle at 30% 20%, rgba(255, 149, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 184, 77, 0.06) 0%, transparent 50%) !important;
     z-index: 1;
 }
 
@@ -139,8 +139,8 @@ p, li {
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.2 !important;
-    filter: grayscale(15%) brightness(0.9) !important;
+    opacity: 0.15 !important;
+    filter: grayscale(20%) brightness(0.7) !important;
 }
 
 /* ============================================
@@ -148,8 +148,8 @@ p, li {
    ============================================ */
 nav {
     backdrop-filter: blur(12px) saturate(120%) !important;
-    background: rgba(40, 53, 147, 0.95) !important;
-    border-bottom: 1px solid rgba(92, 107, 192, 0.2) !important;
+    background: rgba(10, 14, 19, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 149, 0, 0.15) !important;
     transition: var(--transition);
     position: fixed;
     top: 0;
@@ -159,8 +159,8 @@ nav {
 }
 
 nav.scrolled {
-    background: rgba(40, 53, 147, 0.98) !important;
-    box-shadow: 0 4px 15px rgba(40, 53, 147, 0.3) !important;
+    background: rgba(10, 14, 19, 0.98) !important;
+    box-shadow: 0 4px 15px rgba(10, 14, 19, 0.5) !important;
 }
 
 nav a {
@@ -183,7 +183,7 @@ nav a::after {
 }
 
 nav a:hover {
-    color: var(--terra) !important;
+    color: var(--sage) !important;
 }
 
 nav a:hover::after {
@@ -200,7 +200,7 @@ nav a {
    ============================================ */
 #mobileMenu {
     backdrop-filter: blur(20px) !important;
-    background: rgba(40, 53, 147, 0.98) !important;
+    background: rgba(10, 14, 19, 0.98) !important;
 }
 
 #mobileMenu a {
@@ -208,7 +208,7 @@ nav a {
 }
 
 #mobileMenu a:hover {
-    color: var(--terra) !important;
+    color: var(--sage) !important;
 }
 
 /* HAMBURGER BUTTON - TŁO = KOLOR NAGŁÓWKA */
@@ -216,7 +216,7 @@ button[class*="fa-bars"],
 .mobile-menu-button,
 [aria-label="Menu"],
 #mobileMenuBtn {
-    background: rgba(40, 53, 147, 0.95) !important;
+    background: rgba(10, 14, 19, 0.95) !important;
     color: var(--charcoal) !important;
 }
 
@@ -236,7 +236,7 @@ section::before {
     left: 10%;
     right: 10%;
     height: 1px;
-    background: rgba(92, 107, 192, 0.08) !important;
+    background: rgba(255, 149, 0, 0.05) !important;
     opacity: 0.3;
 }
 
@@ -264,6 +264,13 @@ section::before {
     color: var(--warm-gray) !important;
 }
 
+/* Pomarańczowe teksty akcentowe */
+.text-primary,
+h2 span.italic,
+h1 span.italic {
+    color: var(--sage) !important;
+}
+
 /* ============================================
    KARTY
    ============================================ */
@@ -272,9 +279,9 @@ section::before {
 .card, 
 .service-card, 
 .value-card {
-    background: rgba(57, 73, 171, 0.5) !important;
+    background: rgba(15, 20, 25, 0.6) !important;
     backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(92, 107, 192, 0.2) !important;
+    border: 1px solid rgba(255, 149, 0, 0.15) !important;
     transition: var(--transition);
 }
 
@@ -303,6 +310,13 @@ section::before {
     color: var(--warm-gray) !important;
 }
 
+/* Karty z gradientem */
+.bg-gradient-to-br,
+.bg-gradient-to-r {
+    background: linear-gradient(135deg, rgba(15, 20, 25, 0.8) 0%, rgba(26, 35, 50, 0.6) 100%) !important;
+    border: 1px solid rgba(255, 149, 0, 0.15) !important;
+}
+
 /* ============================================
    TEXT COLORS
    ============================================ */
@@ -328,7 +342,7 @@ section::before {
 
 .text-orange-600,
 .text-orange-500 {
-    color: var(--terra) !important;
+    color: var(--sage) !important;
 }
 
 /* WYJĄTKI - Białe teksty */
@@ -384,7 +398,7 @@ div[class*="w-16 h-16"].bg-primary,
 div[class*="w-12 h-12"].bg-terra,
 div[class*="w-16 h-16"].bg-terra {
     background: var(--terra) !important;
-    color: #ffffff !important;
+    color: #0a0e13 !important;
 }
 
 .bg-purple-600,
@@ -402,12 +416,12 @@ button,
 button[type="submit"],
 .cta-button {
     background: var(--sage) !important;
-    color: #ffffff !important;
+    color: #0a0e13 !important;
+    font-weight: 700 !important;
     box-shadow: var(--shadow-md) !important;
     border: none;
     transition: var(--transition);
     cursor: pointer;
-    font-weight: 600;
     position: relative;
     overflow: hidden;
 }
@@ -434,7 +448,7 @@ button:hover,
 .btn-primary:hover,
 button[type="submit"]:hover,
 .cta-button:hover {
-    background: var(--sage-dark) !important;
+    background: var(--terra) !important;
     box-shadow: var(--shadow-accent) !important;
     transform: translateY(-2px) !important;
 }
@@ -451,24 +465,7 @@ button:active {
 
 .btn-secondary:hover {
     background: var(--sage) !important;
-    color: #ffffff !important;
-}
-
-/* ============================================
-   GRADIENT BACKGROUNDS
-   ============================================ */
-.bg-gradient-to-br,
-.bg-gradient-to-r {
-    background: rgba(57, 73, 171, 0.5) !important;
-    border: 1px solid rgba(92, 107, 192, 0.2);
-}
-
-.bg-cream {
-    background: var(--cream) !important;
-}
-
-.bg-ivory {
-    background: var(--ivory) !important;
+    color: #0a0e13 !important;
 }
 
 /* ============================================
@@ -477,8 +474,8 @@ button:active {
 input, 
 textarea, 
 select {
-    background: rgba(57, 73, 171, 0.4) !important;
-    border: 1px solid rgba(92, 107, 192, 0.3) !important;
+    background: rgba(15, 20, 25, 0.6) !important;
+    border: 1px solid rgba(255, 149, 0, 0.2) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(5px);
     transition: var(--transition);
@@ -488,15 +485,15 @@ input:focus,
 textarea:focus, 
 select:focus {
     border-color: var(--sage) !important;
-    background: rgba(57, 73, 171, 0.6) !important;
-    box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.2) !important;
+    background: rgba(15, 20, 25, 0.8) !important;
+    box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.15) !important;
     outline: none;
 }
 
 input::placeholder, 
 textarea::placeholder {
     color: var(--warm-gray) !important;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 label {
@@ -511,8 +508,8 @@ label {
 }
 
 .faq-item .faq-question {
-    background: rgba(57, 73, 171, 0.5) !important;
-    border: 2px solid rgba(92, 107, 192, 0.3) !important;
+    background: rgba(15, 20, 25, 0.6) !important;
+    border: 2px solid rgba(255, 149, 0, 0.2) !important;
     backdrop-filter: blur(10px) !important;
     padding: 1.25rem !important;
     border-radius: 12px !important;
@@ -537,7 +534,7 @@ label {
 }
 
 .faq-answer {
-    background: rgba(48, 63, 159, 0.4) !important;
+    background: rgba(13, 17, 23, 0.6) !important;
     border-left: 3px solid var(--sage) !important;
     border-radius: 0 0 12px 12px !important;
     margin-top: -8px !important;
@@ -563,15 +560,15 @@ label {
    CALENDAR - PROSTY I PRZYJEMNY
    ============================================ */
 .calendar {
-    background: rgba(57, 73, 171, 0.5) !important;
-    border: 1px solid rgba(92, 107, 192, 0.3) !important;
+    background: rgba(15, 20, 25, 0.6) !important;
+    border: 1px solid rgba(255, 149, 0, 0.2) !important;
     border-radius: 16px !important;
     padding: 1.5rem !important;
     backdrop-filter: blur(10px) !important;
 }
 
 .calendar-header {
-    border-bottom: 1px solid rgba(92, 107, 192, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 149, 0, 0.15) !important;
     padding-bottom: 1rem !important;
     margin-bottom: 1.5rem !important;
 }
@@ -590,8 +587,8 @@ label {
 
 .calendar-day,
 .time-slot {
-    background: rgba(74, 95, 185, 0.4) !important;
-    border: 1px solid rgba(92, 107, 192, 0.25) !important;
+    background: rgba(21, 29, 38, 0.5) !important;
+    border: 1px solid rgba(255, 149, 0, 0.15) !important;
     color: var(--charcoal) !important;
     padding: 0.75rem !important;
     border-radius: 8px !important;
@@ -602,7 +599,7 @@ label {
 
 .calendar-day:hover:not(:disabled),
 .time-slot:hover:not(:disabled) {
-    background: rgba(92, 107, 192, 0.5) !important;
+    background: rgba(255, 149, 0, 0.15) !important;
     border-color: var(--sage) !important;
     transform: translateY(-1px) !important;
     box-shadow: var(--shadow-sm) !important;
@@ -612,8 +609,9 @@ label {
 .calendar-day.selected,
 .time-slot.selected {
     background: var(--sage) !important;
-    color: #ffffff !important;
+    color: #0a0e13 !important;
     border-color: var(--sage) !important;
+    font-weight: 700 !important;
     box-shadow: var(--shadow-md) !important;
 }
 
@@ -627,23 +625,24 @@ label {
    TIMELINE
    ============================================ */
 .step-indicator {
-    background: rgba(74, 95, 185, 0.4) !important;
-    border: 2px solid rgba(92, 107, 192, 0.3) !important;
+    background: rgba(21, 29, 38, 0.5) !important;
+    border: 2px solid rgba(255, 149, 0, 0.2) !important;
     color: var(--charcoal);
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .step-indicator:hover {
-    background: rgba(92, 107, 192, 0.5) !important;
+    background: rgba(255, 149, 0, 0.15) !important;
     border-color: var(--sage) !important;
     transform: scale(1.1);
 }
 
 .step-indicator.active {
     background: var(--sage) !important;
+    color: #0a0e13 !important;
     border-color: var(--sage) !important;
-    color: white;
+    font-weight: 700;
     box-shadow: var(--shadow-accent) !important;
     transform: scale(1.15);
 }
@@ -657,8 +656,8 @@ label {
    FOOTER
    ============================================ */
 footer {
-    background: rgba(40, 53, 147, 0.95) !important;
-    border-top: 1px solid rgba(92, 107, 192, 0.2) !important;
+    background: rgba(10, 14, 19, 0.95) !important;
+    border-top: 1px solid rgba(255, 149, 0, 0.15) !important;
     color: var(--charcoal) !important;
     backdrop-filter: blur(10px);
 }
@@ -678,13 +677,28 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--terra) !important;
+    color: var(--sage) !important;
 }
 
 footer p,
 footer li,
 footer span {
     color: var(--warm-gray) !important;
+}
+
+/* ============================================
+   QUOTE SECTIONS - jak na screenie
+   ============================================ */
+blockquote {
+    background: rgba(255, 149, 0, 0.08) !important;
+    border: 1px solid rgba(255, 149, 0, 0.2) !important;
+    border-radius: 16px !important;
+    padding: 2rem !important;
+}
+
+blockquote .text-primary,
+blockquote span.font-bold {
+    color: var(--sage) !important;
 }
 
 /* ============================================
@@ -733,11 +747,11 @@ footer span {
 @keyframes gentlePulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(92, 107, 192, 0.4);
+        box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.4);
     }
     50% {
         transform: scale(1.02);
-        box-shadow: 0 0 0 8px rgba(92, 107, 192, 0);
+        box-shadow: 0 0 0 8px rgba(255, 149, 0, 0);
     }
 }
 
@@ -793,6 +807,16 @@ footer span {
 .shadow-sm { box-shadow: var(--shadow-sm) !important; }
 .shadow-md { box-shadow: var(--shadow-md) !important; }
 .shadow-lg { box-shadow: var(--shadow-lg) !important; }
+
+/* Dodatkowe elementy wyróżnione pomarańczą */
+.border-l-4,
+.border-primary {
+    border-color: var(--sage) !important;
+}
+
+.w-24.h-1.bg-primary {
+    background: var(--sage) !important;
+}
 
 /* ============================================
    ACCESSIBILITY
