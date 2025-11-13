@@ -1954,21 +1954,32 @@ button[aria-label="Close"]:hover {
     }
 }
 
-/* Naprawka dla przycisków - tylko usunięcie animacji */
+/* Naprawka przycisków nawigacji w sekcji proces */
 #prev-step, #next-step {
-    transition: box-shadow 0.3s ease, opacity 0.3s ease !important;
+    font-family: 'Space Grotesk', sans-serif !important;
 }
 
-/* Zapobieganie dziwnej animacji po kliknięciu */
-#prev-step:active, #next-step:active {
-    transform: none !important;
-    animation: none !important;
+#prev-step {
+    background: white !important;
+    color: #1a2838 !important;
+    border: 1px solid rgba(59, 159, 243, 0.25) !important;
 }
 
-/* Usunięcie efektu focus który mógł powodować problemy */
-#prev-step:focus, #next-step:focus {
-    outline: none !important;
-    box-shadow: 0 0 0 3px rgba(59, 159, 243, 0.1) !important;
+#prev-step:hover:not(:disabled) {
+    background: rgba(59, 159, 243, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+#next-step {
+    background: #3b9ff3 !important;
+    color: white !important;
+    border: 1px solid #3b9ff3 !important;
+}
+
+#next-step:hover {
+    background: #5db2ff !important;
+    border-color: #5db2ff !important;
+    transform: translateY(-2px) !important;
 }
 
 /* Mobile - przyciski jeden pod drugim */
@@ -1981,6 +1992,7 @@ button[aria-label="Close"]:hover {
     #prev-step, #next-step {
         width: 100% !important;
         justify-content: center !important;
+        padding: 0.875rem 1.5rem !important;
     }
 }
 
