@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>SkyView Digital - Twoja Firma z Lotu Ptaka | Drony i Strony Internetowe</title>
     
     <!-- Podstawowe Meta Tagi SEO -->
@@ -102,9 +102,11 @@
         <!-- Navigation -->
         <nav class="relative z-20 p-6">
             <div class="container mx-auto flex justify-between items-center">
-                <div class="text-charcoal font-space font-bold text-2xl flex items-center">
-                    <img src="images/skyview-logo.png" alt="SkyView Digital Logo" class="mr-3 h-10 w-auto logo-main">
-                    SkyView Digital
+                <div class="text-charcoal font-space font-bold text-xl md:text-2xl flex items-center gap-2 md:gap-3">
+                    <div class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
+                        <img src="images/skyview-logo.png" alt="SkyView Digital Logo" class="w-full h-full object-contain logo-main">
+                    </div>
+                    <span class="whitespace-nowrap">SkyView Digital</span>
                 </div>
                 <div class="hidden md:flex space-x-8 text-charcoal">
                     <a href="#demo" class="hover:text-accent transition">Portfolio</a>
@@ -112,7 +114,7 @@
                     <a href="#values" class="hover:text-accent transition">Nasza Filozofia</a>
                     <a href="#booking" class="hover:text-accent transition">Kontakt</a>
                 </div>
-                <button class="md:hidden text-charcoal text-2xl" id="mobileMenuBtn">
+                <button class="md:hidden text-charcoal p-2" id="mobileMenuBtn" style="font-size: 1.375rem;">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -123,31 +125,31 @@
             <!-- Subtle overlay for better text contrast without hiding background -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
             
-            <div class="max-w-4xl relative z-10 p-8 md:p-12">
-                <h1 class="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); opacity: 0; animation: fadeIn 0.8s ease-out 0.2s forwards;">
+            <div class="max-w-4xl relative z-10 p-4 md:p-8 lg:p-12">
+                <h1 class="font-serif font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-5 md:mb-8 leading-tight text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); opacity: 0; animation: fadeIn 0.8s ease-out 0.2s forwards;">
                     Tworzymy historie,<br>
                     <span class="italic font-bold" style="font-family: 'Inter', sans-serif; color: #f59e0b;">które latają</span>
                 </h1>
                 
-                <blockquote class="text-2xl md:text-3xl mb-8 font-serif italic leading-relaxed px-6 py-4 rounded-2xl border-2" style="background: linear-gradient(135deg, rgba(171, 111, 9, 0.15) 0%, rgba(171, 111, 9, 0.1) 100%); backdrop-filter: blur(12px); border: 2px solid #ab6f09; border-left-color: #ab6f09; color: #ab6f09; text-shadow: 0 0 20px rgba(171, 111, 9, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.4s forwards;">
+                <blockquote class="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-5 md:mb-8 font-serif italic leading-relaxed px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl border-2" style="background: linear-gradient(135deg, rgba(171, 111, 9, 0.15) 0%, rgba(171, 111, 9, 0.1) 100%); backdrop-filter: blur(12px); border: 2px solid #ab6f09; border-left-color: #ab6f09; color: #ab6f09; text-shadow: 0 0 20px rgba(171, 111, 9, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.4s forwards;">
                     "It's not about what you sell, it's about what you tell."
                 </blockquote>
                 
-                <p class="text-base md:text-lg lg:text-xl mb-10 max-w-3xl mx-auto font-space leading-relaxed text-white" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.4); opacity: 0; animation: fadeIn 0.8s ease-out 0.6s forwards;">
+                <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-3xl mx-auto font-space leading-relaxed text-white" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.4); opacity: 0; animation: fadeIn 0.8s ease-out 0.6s forwards;">
                     Historia to podstawa dobrego brandingu. Problem w tym, że większość nie potrafi jej dobrze opowiedzieć.<br>
                     Dlatego tu jesteśmy! Opowiadamy TWOJĄ historię z perspektywy gwiazd!<br>
                     Dzięki profesjonalnemu filmowaniu dronem Twoja marka zyskuje skrzydła i wyróżnia się na tle konkurencji jak nigdy wcześniej.
                 </p>
                 
-                <button id="hero-cta-btn" class="font-bold py-6 px-12 rounded-2xl text-lg lg:text-xl shadow-2xl transform transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, #ff9500 0%, #3b9ff3 100%); color: #ffffff; font-weight: 700; box-shadow: 0 8px 30px rgba(255, 149, 0, 0.4), 0 4px 20px rgba(59, 159, 243, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.8s forwards;">
+                <button id="hero-cta-btn" class="font-bold py-4 px-7 md:py-5 md:px-10 lg:py-6 lg:px-12 rounded-xl md:rounded-2xl text-base md:text-lg lg:text-xl shadow-2xl transform transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, #ff9500 0%, #3b9ff3 100%); color: #ffffff; font-weight: 700; box-shadow: 0 8px 30px rgba(255, 149, 0, 0.4), 0 4px 20px rgba(59, 159, 243, 0.3); opacity: 0; animation: fadeIn 0.8s ease-out 0.8s forwards;">
                     ☕ UMÓW SIĘ NA WIRTUALNĄ KAWĘ
                 </button>
                 <br>
             </div>
         </div>
         
-        <!-- Scroll Indicator - Only on mobile -->
-        <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10 md:hidden">
+        <!-- Scroll Indicator - Only on desktop -->
+        <div class="hidden md:block absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10">
             <div class="animate-bounce text-white text-2xl">
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -169,23 +171,23 @@
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
                     <div class="relative group">
                         <!-- Image that will be hidden when video plays -->
-                        <img id="pierwsza-historia-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=450&fit=crop" alt="Nasza Pierwsza Historia" class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img id="pierwsza-historia-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=450&fit=crop" alt="Nasza Pierwsza Historia" class="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105">
                         
                         <!-- Video element that will be shown when playing -->
-                        <div id="video-container" class="relative hidden">
-                            <video id="pierwsza-historia-video" class="w-full h-0 object-cover transition-all duration-700" controls playsinline webkit-playsinline>
+                        <div id="video-container" class="relative hidden rounded-2xl overflow-hidden">
+                            <video id="pierwsza-historia-video" class="w-full h-0 object-cover transition-all duration-700 rounded-2xl" controls playsinline webkit-playsinline style="aspect-ratio: 16/9;">
                                 <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                             </video>
-                            <button id="close-video-btn" class="absolute top-2 right-2 md:top-4 md:right-4 text-white p-2 md:p-3 rounded-full transition-all duration-300 z-10" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.3);">
+                            <button id="close-video-btn" class="absolute top-2 right-2 md:top-4 md:right-4 text-white p-2 md:p-3 rounded-full transition-all duration-300 z-50" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.3);">
                                 <i class="fas fa-times text-sm md:text-lg" style="color: #3b9ff3;"></i>
                             </button>
                         </div>
                         
-                        <div id="pierwsza-historia-overlay" class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
-                            <div class="absolute bottom-8 left-8 right-8">
-                                <h3 class="font-serif text-3xl mb-2 font-space" style="color: #ffffff; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Pierwsza historia</h3>
-                                <p class="mb-4 font-space" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Każdy projekt zaczyna się od słuchania. Dopiero potem latamy.</p>
-                                <button id="play-historia-btn" class="inline-flex items-center px-6 py-3 bg-white/30 backdrop-blur-sm text-white rounded-lg hover:bg-white/40 transition-all duration-300 font-mono shadow-lg">
+                        <div id="pierwsza-historia-overlay" class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-300" style="z-index: 10;">
+                            <div class="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8">
+                                <h3 class="font-serif text-xl sm:text-2xl md:text-3xl mb-2 font-space" style="color: #ffffff; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Pierwsza historia</h3>
+                                <p class="text-sm sm:text-base mb-3 md:mb-4 font-space" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Każdy projekt zaczyna się od słuchania. Dopiero potem latamy.</p>
+                                <button id="play-historia-btn" class="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-white/30 backdrop-blur-sm text-white text-sm md:text-base rounded-lg hover:bg-white/40 transition-all duration-300 font-mono shadow-lg">
                                     <i class="fas fa-play mr-2"></i>
                                     Zobacz Jak Tworzymy
                                 </button>

@@ -99,16 +99,42 @@ function initPortfolioModal() {
             // Start playing video
             isVideoPlaying = true;
             
-            // Hide image and overlay
-            img.style.display = 'none';
-            overlay.style.display = 'none';
+            // Dodaj klasę video-active do kontenera
+            container.classList.add('video-active');
             
-            // Show and expand video to 16:9 aspect ratio
+            // NAPRAWIONE - ukryj obraz i overlay, pokaż video
+            img.style.display = 'none';
+            img.style.opacity = '0';
+            img.style.visibility = 'hidden';
+            img.style.height = '0';
+            img.classList.add('hidden');
+            
+            overlay.style.display = 'none';
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            overlay.style.pointerEvents = 'none';
+            overlay.classList.add('hidden');
+            
+            // Show video container - WIDOCZNE
             videoContainer.classList.remove('hidden');
             videoContainer.style.display = 'block';
+            videoContainer.style.position = 'relative';
+            videoContainer.style.visibility = 'visible';
+            videoContainer.style.opacity = '1';
+            videoContainer.style.zIndex = '20';
+            videoContainer.style.minHeight = '200px';
+            
+            // Video element - WIDOCZNY - USUŃ KLASĘ h-0
+            video.classList.remove('h-0');
+            video.style.display = 'block';
             video.style.height = 'auto';
+            video.style.minHeight = '200px';
+            video.style.maxHeight = 'none';
+            video.style.width = '100%';
             video.style.opacity = '1';
+            video.style.visibility = 'visible';
             video.style.aspectRatio = '16/9';
+            video.style.background = '#000';
             
             // Add controls back when playing
             video.setAttribute('controls', 'controls');
@@ -132,6 +158,9 @@ function initPortfolioModal() {
     function resetToImage() {
         isVideoPlaying = false;
         
+        // Usuń klasę video-active z kontenera
+        container.classList.remove('video-active');
+        
         // Pause and reset video
         video.pause();
         video.currentTime = 0;
@@ -139,21 +168,48 @@ function initPortfolioModal() {
         // Force remove controls to prevent them from showing
         video.removeAttribute('controls');
         
-        // Hide video container completely
+        // Hide video container completely - PRZYWRÓĆ h-0
         videoContainer.classList.add('hidden');
         videoContainer.style.display = 'none';
+        videoContainer.style.opacity = '0';
+        videoContainer.style.visibility = 'hidden';
+        videoContainer.style.minHeight = '0';
+        video.classList.add('h-0');
         video.style.height = '0';
+        video.style.minHeight = '0';
+        video.style.maxHeight = '0';
         video.style.opacity = '0';
+        video.style.display = 'block';
         
-        // Show image and overlay again
-        img.style.display = 'block';
-        overlay.style.display = 'block';
+        // Show image and overlay again - PRZYWRÓĆ DOKŁADNIE JAK BYŁO
+        // Resetuj style obrazu
+        img.style.removeProperty('display');
+        img.style.removeProperty('opacity');
+        img.style.removeProperty('visibility');
+        img.style.removeProperty('position');
+        img.style.removeProperty('z-index');
+        img.style.removeProperty('height');
+        img.style.removeProperty('width');
+        img.classList.remove('hidden');
+        
+        // Resetuj style overlay - całkowity reset
+        overlay.style.removeProperty('display');
+        overlay.style.removeProperty('opacity');
+        overlay.style.removeProperty('visibility');
+        overlay.style.removeProperty('position');
+        overlay.style.removeProperty('z-index');
+        overlay.style.removeProperty('pointer-events');
+        overlay.classList.remove('hidden');
+        
+        // Upewnij się, że overlay jest widoczny
+        overlay.style.pointerEvents = 'auto';
         
         // Remove the ended event listener
         video.removeEventListener('ended', resetToImage);
         
         // Force a reflow to ensure everything updates
         void videoContainer.offsetHeight;
+        void img.offsetHeight;
     }
 
     // ESC key to close video
