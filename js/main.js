@@ -1,7 +1,66 @@
 // SkyView Digital - Enhanced Main JavaScript File
 
+// Lazy Loading dla obrazów - ładowanie z wyprzedzeniem
+function setupLazyLoading() {
+    // Znajdź wszystkie obrazy do lazy loadingu
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    // Załaduj prawdziwy obraz
+                    img.src = img.dataset.src;
+                    // Usuń klasę lazy
+                    img.classList.remove('lazy');
+                    // Usuń data-src po załadowaniu
+                    img.removeAttribute('data-src');
+                    // Przestań obserwować
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            // Ładuj obrazy 300px przed pojawieniem się w viewport
+            rootMargin: '300px 0px',
+            threshold: 0.01
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback dla starszych przeglądarek
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+        });
+    }
+}
+
+// Preload ważnych obrazów
+function preloadImportantImages() {
+    // Preload hero i pierwszych widocznych obrazów
+    const importantImages = [
+        'images/skyview-logo.png',
+        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=450&fit=crop'
+    ];
+    
+    importantImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+    });
+}
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Preload ważnych obrazów
+    preloadImportantImages();
+    
+    // Setup lazy loading
+    setupLazyLoading();
+    
     // Initialize AOS (Animate On Scroll)
     AOS.init({
         duration: 1000,

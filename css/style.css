@@ -1082,6 +1082,64 @@ input:focus-visible {
 }
 
 /* ============================================
+   LAZY LOADING - Style dla lazy loading obrazów
+   ============================================ */
+img.lazy {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+img.lazy:not([data-src]) {
+    filter: none;
+}
+
+/* Placeholder dla ładujących się obrazów */
+img[data-src] {
+    background: #f0f0f0;
+    background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   FIX - Naprawka dla uciętych kropek w sekcji proces
+   ============================================ */
+.step-indicator {
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+}
+
+/* Kontener dla kropek - większy padding */
+#process .relative {
+    padding: 1rem 1.5rem !important;
+    overflow: visible !important;
+}
+
+/* Progress bar container */
+#process .max-w-4xl > .relative:first-child {
+    margin: 2rem 1rem !important;
+    padding: 0.5rem !important;
+}
+
+@media (max-width: 768px) {
+    /* Większy padding dla kropek na mobile */
+    #process .flex.justify-between {
+        padding: 0 0.5rem !important;
+    }
+    
+    .step-indicator {
+        min-width: 20px !important;
+        min-height: 20px !important;
+    }
+}
+
+/* ============================================
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
@@ -1639,65 +1697,157 @@ button[aria-label="Close"]:hover {
     }
 }
 
-/* Poprawka centrowania elementu formularza na mobile */
+/* Poprawka centrowania elementu formularza na mobile - POSZERZONE I WYŚRODKOWANE */
 @media (max-width: 768px) {
-    /* Centrowanie elementów w sekcji spotkania */
+    /* Container sekcji booking - pełna szerokość */
+    #booking .container {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    /* Grid w sekcji booking */
     #booking .grid {
-        padding: 0 1rem !important;
+        padding: 0 0.5rem !important;
+        gap: 2rem !important;
+        margin: 0 !important;
     }
     
-    /* Centrowanie kalendarza i formularza */
+    /* POSZERZONE ramki kalendarza i formularza - PRAWDZIWE WYŚRODKOWANIE */
     #booking .bg-white {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        max-width: calc(100% - 2rem) !important;
-        width: 100% !important;
+        margin: 0 auto !important;
+        max-width: calc(100% - 1rem) !important;
+        width: calc(100% - 1rem) !important;
+        padding: 1.25rem !important;
+        border-radius: 0.75rem !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
     }
     
-    /* Specjalnie dla elementów z p-8 */
-    #booking .p-8 {
-        padding: 1.5rem !important;
+    /* Większe tytuły sekcji */
+    #booking h3 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
     }
     
-    /* Poprawka dla kalendarza */
+    /* Poprawka dla kalendarza - WIĘKSZY */
     .calendar-widget {
         width: 100% !important;
         margin: 0 auto !important;
-        padding: 0.75rem !important;
+        padding: 0 !important;
     }
     
-    /* Poprawka dla formularza kontaktowego */
+    /* WIĘKSZE dni tygodnia */
+    .calendar-widget .font-semibold {
+        font-size: 0.875rem !important;
+        padding: 0.5rem 0.25rem !important;
+    }
+    
+    /* WIĘKSZE dni kalendarza */
+    .calendar-day {
+        min-height: 45px !important;
+        font-size: 1rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    /* Poprawka dla formularza kontaktowego - WIĘKSZE INPUTY */
     #bookingForm {
         width: 100% !important;
         max-width: 100% !important;
     }
     
-    /* Poprawka dla dni kalendarza na mobile */
-    .calendar-widget .grid-cols-7 {
-        gap: 0.25rem !important;
+    #bookingForm label {
+        font-size: 0.9375rem !important;
+        margin-bottom: 0.5rem !important;
     }
     
-    .calendar-widget .p-2 {
-        padding: 0.25rem !important;
-        font-size: 0.75rem !important;
+    #bookingForm input,
+    #bookingForm select,
+    #bookingForm textarea {
+        padding: 0.875rem !important;
+        font-size: 1rem !important;
+        border-radius: 0.5rem !important;
+    }
+    
+    #bookingForm button {
+        padding: 1rem 2rem !important;
+        font-size: 1.125rem !important;
+    }
+    
+    /* Poprawka dla dni kalendarza na mobile */
+    .calendar-widget .grid-cols-7 {
+        gap: 0.125rem !important;
+    }
+    
+    /* Time slots - większe */
+    #time-slots-container button {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9375rem !important;
     }
 }
 
 /* Dodatkowe reguły dla bardzo małych ekranów */
 @media (max-width: 480px) {
-    .px-4 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
-    .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
-    .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+    .px-4 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+    .px-6 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+    .px-8 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+    
+    /* MAKSYMALNE POSZERZENIE BOOKING na małych ekranach */
+    #booking .bg-white {
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        padding: 1.25rem 1rem !important;
+        box-shadow: none !important;
+        border-top: 1px solid #e5e7eb !important;
+        border-bottom: 1px solid #e5e7eb !important;
+    }
+    
+    /* Container booking - pełna szerokość */
+    #booking .container,
+    #booking .max-w-6xl {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    /* Grid bez paddingów */
+    #booking .grid {
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+    
+    /* Nagłówki sekcji - większe i wycentrowane */
+    #booking h3 {
+        font-size: 1.625rem !important;
+        text-align: center !important;
+        margin-bottom: 1.5rem !important;
+    }
     
     /* Kalendarz na bardzo małych ekranach */
     .calendar-widget {
-        padding: 0.75rem !important;
+        padding: 0.5rem !important;
+        width: 100% !important;
     }
     
     .calendar-day {
-        min-height: 35px !important;
-        font-size: 0.875rem !important;
-        padding: 0.375rem !important;
+        min-height: 40px !important;
+        font-size: 0.9375rem !important;
+        padding: 0.5rem 0.25rem !important;
+    }
+    
+    /* Formularze - większe inputy */
+    #bookingForm input,
+    #bookingForm select,
+    #bookingForm textarea {
+        font-size: 16px !important; /* Zapobiega zoom na iOS */
+        padding: 1rem !important;
+    }
+    
+    /* Przyciski - większe */
+    #bookingForm button,
+    .btn-primary {
+        padding: 1rem 2rem !important;
+        font-size: 1.125rem !important;
+        width: 100% !important;
     }
     
     /* Overlay w pierwszej historii - lepsze dopasowanie */
