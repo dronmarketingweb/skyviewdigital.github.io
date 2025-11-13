@@ -782,14 +782,12 @@ label {
     color: var(--charcoal);
     transition: all 0.3s ease;
     cursor: pointer;
-    position: relative;
-    z-index: 10;
 }
 
 .step-indicator:hover {
     background: rgba(59, 159, 243, 0.2) !important;
     border-color: var(--terra) !important;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .step-indicator.active {
@@ -797,21 +795,12 @@ label {
     color: #ffffff !important;
     border-color: var(--terra) !important;
     box-shadow: var(--shadow-accent) !important;
-    transform: scale(1.25);
-}
-
-/* Progress bar container adjustment */
-#process .relative:has(#progress-bar) {
-    margin-left: 12px;
-    margin-right: 12px;
+    transform: scale(1.15);
 }
 
 #progress-bar {
     background: linear-gradient(90deg, var(--sage), var(--terra)) !important;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Adjust margins to prevent cutting off dots */
-    margin-left: 0;
-    margin-right: 0;
 }
 
 /* ============================================
@@ -1967,69 +1956,13 @@ button[aria-label="Close"]:hover {
 
 /* Naprawka dla przycisków - tylko usunięcie animacji */
 #prev-step, #next-step {
-    transition: box-shadow 0.3s ease, opacity 0.3s ease, background-color 0.3s ease !important;
-    position: relative !important;
-    overflow: hidden !important;
-    isolation: isolate !important;
-}
-
-/* Disabled state for buttons */
-#prev-step:disabled,
-#next-step:disabled {
-    opacity: 0.5 !important;
-    background-color: rgba(148, 163, 184, 0.2) !important;
-    cursor: not-allowed !important;
-    animation: none !important;
-}
-
-#prev-step:disabled:hover,
-#next-step:disabled:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    background-color: rgba(148, 163, 184, 0.2) !important;
-}
-
-/* Remove any pulsing animation on disabled state */
-#prev-step:disabled:active,
-#next-step:disabled:active {
-    animation: none !important;
-    background-color: rgba(148, 163, 184, 0.2) !important;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease !important;
 }
 
 /* Zapobieganie dziwnej animacji po kliknięciu */
 #prev-step:active, #next-step:active {
     transform: none !important;
     animation: none !important;
-}
-
-/* Ripple effect containment */
-#prev-step::before,
-#next-step::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-    pointer-events: none;
-    z-index: 0;
-}
-
-#prev-step:active::before,
-#next-step:active::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* Ensure button content is above ripple */
-#prev-step > *,
-#next-step > * {
-    position: relative;
-    z-index: 1;
 }
 
 /* Usunięcie efektu focus który mógł powodować problemy */
@@ -2048,47 +1981,6 @@ button[aria-label="Close"]:hover {
     #prev-step, #next-step {
         width: 100% !important;
         justify-content: center !important;
-        /* Fix ripple effect on mobile */
-        -webkit-tap-highlight-color: transparent !important;
-        isolation: isolate !important;
-        overflow: hidden !important;
-        position: relative !important;
-    }
-    
-    /* Disable problematic pseudo-elements on mobile that cause white circles */
-    #prev-step::before,
-    #next-step::before,
-    #prev-step::after,
-    #next-step::after {
-        display: none !important;
-    }
-    
-    /* Alternative click effect for mobile */
-    #prev-step:not(:disabled):active,
-    #next-step:not(:disabled):active {
-        background-color: rgba(0, 0, 0, 0.1) !important;
-        transition: background-color 0.2s !important;
-    }
-    
-    /* Disabled state on mobile - more transparent gray */
-    #prev-step:disabled,
-    #next-step:disabled {
-        background-color: rgba(148, 163, 184, 0.15) !important;
-        color: rgba(255, 255, 255, 0.4) !important;
-        border-color: rgba(148, 163, 184, 0.3) !important;
-        animation: none !important;
-        -webkit-animation: none !important;
-    }
-    
-    /* Remove any orange flash on disabled click */
-    #prev-step:disabled:active,
-    #next-step:disabled:active,
-    #prev-step:disabled:focus,
-    #next-step:disabled:focus {
-        animation: none !important;
-        -webkit-animation: none !important;
-        background-color: rgba(148, 163, 184, 0.15) !important;
-        outline: none !important;
     }
 }
 
