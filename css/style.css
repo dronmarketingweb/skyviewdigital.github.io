@@ -1115,18 +1115,29 @@ img[data-src] {
     flex-shrink: 0 !important;
 }
 
-/* Kontener dla kropek - NAPRAWIONY */
+/* Kontener dla kropek - NAPRAWIONY z przestrzenią na powiększanie */
 #process .relative {
     overflow: visible !important;
 }
 
-/* Progress bar container - WIĘCEJ MIEJSCA OD GÓRY */
+/* Przestrzeń dla powiększających się kropek */
+#process .flex.justify-between.relative {
+    padding: 8px 0 !important;
+    margin: 0 8px !important;
+}
+
+/* Kropki - większa przestrzeń na powiększanie */
+#process .step-indicator {
+    margin: 0 2px !important;
+}
+
+/* Progress bar container - WIĘCEJ MIEJSCA OD GÓRY I NA BOKI */
 #process .max-w-4xl > .relative:first-child {
     margin: 3rem auto 2rem !important;
-    padding-top: 1.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding: 1.5rem 1rem 1rem !important;
     position: relative !important;
     overflow: visible !important;
+    min-height: 40px !important;
 }
 
 /* Pasek postępu - dokładne wyrównanie */
@@ -1940,6 +1951,48 @@ button[aria-label="Close"]:hover {
     #time-slots-container button {
         padding: 0.75rem 1rem !important;
         font-size: 0.9375rem !important;
+    }
+}
+
+/* Naprawka przycisków nawigacji w sekcji proces */
+#prev-step, #next-step {
+    font-family: 'Space Grotesk', sans-serif !important;
+}
+
+#prev-step {
+    background: white !important;
+    color: #1a2838 !important;
+    border: 1px solid rgba(59, 159, 243, 0.25) !important;
+}
+
+#prev-step:hover:not(:disabled) {
+    background: rgba(59, 159, 243, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+#next-step {
+    background: #3b9ff3 !important;
+    color: white !important;
+    border: 1px solid #3b9ff3 !important;
+}
+
+#next-step:hover {
+    background: #5db2ff !important;
+    border-color: #5db2ff !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Mobile - przyciski jeden pod drugim */
+@media (max-width: 640px) {
+    #process .flex.justify-between.mt-12 {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    #prev-step, #next-step {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 0.875rem 1.5rem !important;
     }
 }
 
